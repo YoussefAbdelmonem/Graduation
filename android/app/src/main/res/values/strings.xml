@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">meaw</string>
+    <string name="facebook_app_id">1382965965567983</string>
+    <string name="fb_login_protocol_scheme">fb1382965965567983</string>
+    <string name="facebook_client_token">415a07aa202636369379504669e88f4b</string>
+</resources>
+
