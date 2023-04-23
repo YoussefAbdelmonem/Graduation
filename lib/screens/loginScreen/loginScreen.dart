@@ -258,13 +258,13 @@ class LoginScreen extends StatelessWidget {
    cubit.userLogin(email: CacheHelper.getData(key: 'email'), password:CacheHelper.getData(key: 'password'));
    await cubit.getMyData();
    }else {
-   //  await cubit.userLogin(email: emailController.text,
-   //      password: passController.text);
-   // cubit.rememberMe(
-   //     emailController.text, passController.text,
-   //     cubit.ischecked1);
-   //    await cubit.getMyData();
-   //  print('amira'+ cubit.userData!.profileImage.toString());
+    await cubit.userLogin(email: emailController.text,
+        password: passController.text);
+   cubit.rememberMe(
+       emailController.text, passController.text,
+       cubit.ischecked1);
+      await cubit.getMyData();
+    print('amira'+ cubit.userData!.profileImage.toString());
    }
    }
    }

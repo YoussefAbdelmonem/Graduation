@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
    List<Widget> itemsScreens = [
      const TranslationScreen(),
-      ServicesScreen(),
+      ServicesScreen( ),
       ProductsScreen(),
      const ChatScreen(),
    ];
@@ -94,18 +94,20 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               bottomNavigationBar: BottomNavigationBar(
                 elevation: 8.0,
-                items: const [
+                items:  [
                   BottomNavigationBarItem(
                     icon: Icon(Icons.mic_none),
                     label: 'Translate',
                   ),
+                  //t3deeeeeeel
                   BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage('assets/images/services.png')),
-                    label: 'Services',
+                    label:CatCubit.get(context).userData!.userType==2? 'Services':'Add',
                   ),
+                  //t3deeeeeeel
                   BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage('assets/images/products.png')),
-                    label: 'Products',
+                    label:CatCubit.get(context).userData!.userType==2? 'Products':'Posts',
                   ),
                   BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage('assets/images/chat.png')),

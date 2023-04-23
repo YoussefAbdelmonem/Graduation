@@ -214,7 +214,8 @@ class ProfileScreen extends StatelessWidget {
                       Container(
                         height: .6 * height,
                         child: SingleChildScrollView(
-                          child: Column(
+                          child:userData.userType==2||userData.userType==3?
+                          Column(
                             children: [
                               listTile(
                                 function:(){
@@ -275,7 +276,37 @@ class ProfileScreen extends StatelessWidget {
                                   icon: 'assets/images/Vector.png',
                                   label: 'Help')
                             ],
-                          ),
+                          ):
+                          Column(
+                            children: [
+                              listTile(
+                                  function:(){
+                                 //   navigateTo(context,ListScreen());
+                                  },
+                                  image: 'assets/images/🦆 emoji _heavy plus sign_.png',
+                                  icon: 'assets/images/Vector.png',
+                                  label: 'Add post'),
+                              listTile(
+                                  function:(){
+                                   // navigateTo(context,ListScreen());
+                                  },
+                                  image: 'assets/images/house.png',
+                                  icon: 'assets/images/Vector.png',
+                                  label: 'Your posts'),
+                              listTile(
+                                  image: 'assets/images/global.png',
+                                  icon: 'assets/images/Vector.png',
+                                  label: 'Language'),
+                              listTile(
+                                  image: 'assets/images/setting2.png',
+                                  icon: 'assets/images/Vector.png',
+                                  label: 'Setting'),
+                              listTile(
+                                  image: 'assets/images/messagequestion.png',
+                                  icon: 'assets/images/Vector.png',
+                                  label: 'Help')
+                            ],
+                          )
                         ),
                       ),
                       myDividerLong(),

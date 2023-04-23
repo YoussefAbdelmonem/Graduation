@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:meaw/cubit/animalCubit.dart';
 import 'package:meaw/yousef/screen/products_accessories/products_accessories_screen.dart';
 import 'package:meaw/yousef/utilis/urilis.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -39,7 +40,9 @@ class ProductsScreen extends StatelessWidget {
           body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
-          child: Column(
+          //t3deeeeel
+          child:CatCubit.get(context).userData!.userType==2?
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
@@ -243,7 +246,12 @@ class ProductsScreen extends StatelessWidget {
 
               ),
             ],
-          ),
+          ):
+              Column(
+                children: [
+                  // your posts
+                ],
+              )
         ),
       )),
     );

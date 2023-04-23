@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:meaw/components/colors.dart';
 import 'package:meaw/components/components.dart';
+import 'package:meaw/cubit/animalCubit.dart';
+import 'package:meaw/model.dart';
 import 'package:meaw/screens/bottomNavScreen/services/SearchScreen.dart';
 import 'package:meaw/screens/servicesScreens/careScreen/careScreen.dart';
 import 'package:meaw/screens/servicesScreens/diseaseScreen/cubit/articleModel.dart';
@@ -20,7 +22,7 @@ import 'package:meaw/yousef/screen/map/map_screen/map_screen.dart';
 import 'package:meaw/yousef/utilis/urilis.dart';
 
 class ServicesScreen extends StatefulWidget {
-   ServicesScreen({Key? key}) : super(key: key);
+   ServicesScreen() : super();
 
   @override
   State<ServicesScreen> createState() => _ServicesScreenState();
@@ -45,10 +47,12 @@ class _ServicesScreenState extends State<ServicesScreen> {
    List<String>bodyList = [];
    List<ArticleModel> articleModel = [];
    List<ArticleModel> articleModelResult = [];
+   UserModel? userModel;
    @override
   void initState() {
     // TODO: implement initState
      articleModelResult.clear();
+     print("hhjkkk${CatCubit.get(context).userData!.userType}");
   }
   @override
   Widget build(BuildContext context) {
@@ -96,6 +100,8 @@ class _ServicesScreenState extends State<ServicesScreen> {
                   return Container();
                 }
               }),
+//t3deeeel
+          if(CatCubit.get(context).userData!.userType==2)
           Form(
             key: formKey,
             child: Column(
@@ -129,7 +135,9 @@ class _ServicesScreenState extends State<ServicesScreen> {
               ],
             ),
           ),
+          if(CatCubit.get(context).userData!.userType==2)
           const SizedBox(height: 10,),
+          if(CatCubit.get(context).userData!.userType==2)
           Expanded(
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
