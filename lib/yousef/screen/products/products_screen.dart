@@ -41,7 +41,8 @@ class ProductsScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           //t3deeeeel
-          child:CatCubit.get(context).userData!.userType==2?
+          child:
+          // CatCubit.get(context).userData!.userType==2?
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -246,12 +247,7 @@ class ProductsScreen extends StatelessWidget {
 
               ),
             ],
-          ):
-              Column(
-                children: [
-                  // your posts
-                ],
-              )
+          )
         ),
       )),
     );

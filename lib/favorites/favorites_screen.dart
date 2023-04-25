@@ -160,7 +160,7 @@ class FavoritesScreen extends StatelessWidget {
                                     ),
                                   ),
                                   SizedBox(
-                                    height: 6.h,
+                                    height: 4.h,
                                   ),
                                 ],
                               ),

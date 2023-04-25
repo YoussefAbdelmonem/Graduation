@@ -102,12 +102,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   //t3deeeeeeel
                   BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage('assets/images/services.png')),
-                    label:CatCubit.get(context).userData!.userType==2? 'Services':'Add',
+                    label: 'Services',
+                    // CatCubit.get(context).userData!.userType==2? 'Services':'Add',
                   ),
                   //t3deeeeeeel
                   BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage('assets/images/products.png')),
-                    label:CatCubit.get(context).userData!.userType==2? 'Products':'Posts',
+                    label: 'Products',
+                    // CatCubit.get(context).userData!.userType==2? 'Products':'Posts',
                   ),
                   BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage('assets/images/chat.png')),

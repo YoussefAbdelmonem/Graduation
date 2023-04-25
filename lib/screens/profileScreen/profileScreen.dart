@@ -51,27 +51,6 @@ class ProfileScreen extends StatelessWidget {
           },
           builder: (context, state) {
             return Scaffold(
-              // appBar: AppBar(
-              //   centerTitle: true,
-              //   title:  Text('My Profile',
-              //     style: GoogleFonts.roboto(
-              //         fontSize: 26,
-              //         color:Colors.black,
-              //         fontWeight: FontWeight.w500
-              //     ),
-              //   ),
-              //   backgroundColor: Colors.white,
-              //   leading: IconButton(
-              //     onPressed: (){Navigator.pop(context);},
-              //     icon: const Icon(IconBroken.Arrow___Left_2,color: defaultColor,),
-              //   ),
-              //   actions: [
-              //     defaultTextButton(
-              //       function: (){navigateTo(context, const AddCatScreen());},
-              //       text: 'Add Cat'
-              //     ),
-              //   ],
-              // ),
               body: Center(
                 child: SingleChildScrollView(
                   child: Column(
@@ -213,101 +192,103 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       Container(
                         height: .6 * height,
-                        child: SingleChildScrollView(
-                          child:userData.userType==2||userData.userType==3?
-                          Column(
-                            children: [
-                              listTile(
-                                function:(){
-                                  navigateTo(context,ListScreen());
-                                },
-                                  image: 'assets/images/house.png',
-                                  icon: 'assets/images/Vector.png',
-                                  label: 'Pet Profile'),
-                              listTile(
-                                function: (){
-                                  navigateTo(context, FavoritesScreen());
-                                },
-                                  image: 'assets/images/heart.png',
-                                  icon: 'assets/images/Vector.png',
-                                  label: 'Favourites'),
-                              listTile(
-                                function:(){
-                                  navigateTo(context, NotificationScreen());
-                                },
-                                  image: 'assets/images/notification.png',
-                                  icon: 'assets/images/Vector.png',
-                                  label: 'Notifications'),
-                              listTile(
-                                  image: 'assets/images/schedule.png',
-                                  icon: 'assets/images/Vector.png',
-                                  label: 'Schedule'),
-                              listTile(
-                                  image: 'assets/images/report.png',
-                                  icon: 'assets/images/Vector.png',
-                                  label: 'Report'),
-                              listTile(
-                                  image: 'assets/images/global.png',
-                                  icon: 'assets/images/Vector.png',
-                                  label: 'Language'),
-                              listTile(
-                                function: (){
-                                  Utils.openScreen(context, BlocProvider(
-                                      create: (BuildContext context)=>MapsCubit(MapsRepository(PlacesWebservices())),
-                                      child: const MapScreen()));
 
-                                },
-                                  image: 'assets/images/location.png',
-                                  icon: 'assets/images/Vector.png',
-                                  label: 'Location'),
-                              listTile(
-                                function: (){
-                                  navigateTo(context,ShelterScreen());
-                                },
-                                  image: 'assets/images/hospital.png',
-                                  icon: 'assets/images/Vector.png',
-                                  label: 'Shelter'),
-                              listTile(
-                                  image: 'assets/images/setting2.png',
-                                  icon: 'assets/images/Vector.png',
-                                  label: 'Setting'),
-                              listTile(
-                                  image: 'assets/images/messagequestion.png',
-                                  icon: 'assets/images/Vector.png',
-                                  label: 'Help')
-                            ],
-                          ):
-                          Column(
-                            children: [
-                              listTile(
+                          // child:userData.userType==2||userData.userType==3?
+                        child : SingleChildScrollView(
+                          child: Column(
+                              children: [
+                                listTile(
                                   function:(){
-                                 //   navigateTo(context,ListScreen());
+                                    navigateTo(context,ListScreen());
                                   },
-                                  image: 'assets/images/🦆 emoji _heavy plus sign_.png',
-                                  icon: 'assets/images/Vector.png',
-                                  label: 'Add post'),
-                              listTile(
+                                    image: 'assets/images/house.png',
+                                    icon: 'assets/images/Vector.png',
+                                    label: 'Pet Profile'),
+                                listTile(
+                                  function: (){
+                                    navigateTo(context, FavoritesScreen());
+                                  },
+                                    image: 'assets/images/heart.png',
+                                    icon: 'assets/images/Vector.png',
+                                    label: 'Favourites'),
+                                listTile(
                                   function:(){
-                                   // navigateTo(context,ListScreen());
+                                    navigateTo(context, NotificationScreen());
                                   },
-                                  image: 'assets/images/house.png',
-                                  icon: 'assets/images/Vector.png',
-                                  label: 'Your posts'),
-                              listTile(
-                                  image: 'assets/images/global.png',
-                                  icon: 'assets/images/Vector.png',
-                                  label: 'Language'),
-                              listTile(
-                                  image: 'assets/images/setting2.png',
-                                  icon: 'assets/images/Vector.png',
-                                  label: 'Setting'),
-                              listTile(
-                                  image: 'assets/images/messagequestion.png',
-                                  icon: 'assets/images/Vector.png',
-                                  label: 'Help')
-                            ],
-                          )
-                        ),
+                                    image: 'assets/images/notification.png',
+                                    icon: 'assets/images/Vector.png',
+                                    label: 'Notifications'),
+                                listTile(
+                                    image: 'assets/images/schedule.png',
+                                    icon: 'assets/images/Vector.png',
+                                    label: 'Schedule'),
+                                listTile(
+                                    image: 'assets/images/report.png',
+                                    icon: 'assets/images/Vector.png',
+                                    label: 'Report'),
+                                listTile(
+                                    image: 'assets/images/global.png',
+                                    icon: 'assets/images/Vector.png',
+                                    label: 'Language'),
+                                listTile(
+                                  function: (){
+                                    Utils.openScreen(context, BlocProvider(
+                                        create: (BuildContext context)=>MapsCubit(MapsRepository(PlacesWebservices())),
+                                        child: const MapScreen()));
+
+                                  },
+                                    image: 'assets/images/location.png',
+                                    icon: 'assets/images/Vector.png',
+                                    label: 'Location'),
+                                listTile(
+                                  function: (){
+                                    navigateTo(context,ShelterScreen());
+                                  },
+                                    image: 'assets/images/hospital.png',
+                                    icon: 'assets/images/Vector.png',
+                                    label: 'Shelter'),
+                                listTile(
+                                    image: 'assets/images/setting2.png',
+                                    icon: 'assets/images/Vector.png',
+                                    label: 'Setting'),
+                                listTile(
+                                    image: 'assets/images/messagequestion.png',
+                                    icon: 'assets/images/Vector.png',
+                                    label: 'Help')
+                              ],
+                            ),
+                        )
+                          // Column(
+                          //   children: [
+                          //     listTile(
+                          //         function:(){
+                          //        //   navigateTo(context,ListScreen());
+                          //         },
+                          //         image: 'assets/images/🦆 emoji _heavy plus sign_.png',
+                          //         icon: 'assets/images/Vector.png',
+                          //         label: 'Add post'),
+                          //     listTile(
+                          //         function:(){
+                          //          // navigateTo(context,ListScreen());
+                          //         },
+                          //         image: 'assets/images/house.png',
+                          //         icon: 'assets/images/Vector.png',
+                          //         label: 'Your posts'),
+                          //     listTile(
+                          //         image: 'assets/images/global.png',
+                          //         icon: 'assets/images/Vector.png',
+                          //         label: 'Language'),
+                          //     listTile(
+                          //         image: 'assets/images/setting2.png',
+                          //         icon: 'assets/images/Vector.png',
+                          //         label: 'Setting'),
+                          //     listTile(
+                          //         image: 'assets/images/messagequestion.png',
+                          //         icon: 'assets/images/Vector.png',
+                          //         label: 'Help')
+                          //   ],
+                          // )
+
                       ),
                       myDividerLong(),
                       Padding(
