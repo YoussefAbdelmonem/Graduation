@@ -22,18 +22,6 @@ class Chat extends StatefulWidget {
 
 class _ChatState extends State<Chat> {
 int selected_index=3;
-_onTap(int index) {
-  final List<Widget> _children = [
-    Translate(),
-    Services(),
-    Products(),
-    Chat(),
-  ];
-  Navigator.of(context)
-      .push(MaterialPageRoute<Null>(builder: (BuildContext context) {
-    return _children[selected_index];
-  }));
-}
 
   List<ChatDoctors> listOfDoctors = [
     ChatDoctors(
@@ -303,21 +291,7 @@ _onTap(int index) {
                 ))
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(showUnselectedLabels: true,onTap: (index){setState(() {
-          selected_index=index;_onTap(selected_index);
-        });},currentIndex:selected_index,backgroundColor: Colors.white,unselectedItemColor: Colors.black,selectedItemColor: KColorPrimary,items: const [
-          BottomNavigationBarItem(label: 'Translate',
-              icon:ImageIcon(AssetImage('assets/images/translation_icon.png')) ),
-          BottomNavigationBarItem(label: 'Services ',
-            icon: ImageIcon(AssetImage('assets/images/servives_icon.png')),
-          ),
-          BottomNavigationBarItem(label: 'Products',
-            icon:  ImageIcon(AssetImage('assets/images/products_icon.png')),
-          ),
-          BottomNavigationBarItem(label: 'Chat',
-            icon:  ImageIcon(AssetImage('assets/images/chat_icon.png')),
-          )
-        ]),
+
 
       ),
     );
