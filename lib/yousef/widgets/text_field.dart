@@ -18,10 +18,13 @@ class TextFieldWidget extends StatelessWidget {
   InputDecoration? inputDecoration;
   ValueChanged<String>? onChanged;
   TextAlignVertical? textAlignVertical;
+  Function(String s)? onsubmit;
   bool? enable;
 
   TextFieldWidget(
-      {required this.onChanged,
+      {
+        Function(String s)? onsubmit,
+        required this.onChanged,
         this.password = false,
         this.exp = false,
         this.expanded = false,
@@ -49,6 +52,7 @@ class TextFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onSubmitted:onsubmit ,
       textAlignVertical: textAlignVertical,
       controller: controller,
       // inputFormatters: exp ? [CardExpirationFormatter()] : [],

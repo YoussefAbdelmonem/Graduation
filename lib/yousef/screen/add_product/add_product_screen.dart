@@ -97,7 +97,8 @@ class AddProduct extends StatelessWidget {
                                 // e.g, e.code == 'canceled'
                               }
 
-                              AddProductModel productModel = AddProductModel(
+                              AddProductModel productModel =
+                              AddProductModel(
                                 name: name.text,
                                 price: price.text,
                                 cart: false,

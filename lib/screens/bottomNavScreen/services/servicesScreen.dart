@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:meaw/components/colors.dart';
 import 'package:meaw/components/components.dart';
+import 'package:meaw/components/constants.dart';
 import 'package:meaw/cubit/animalCubit.dart';
 import 'package:meaw/model.dart';
 import 'package:meaw/screens/bottomNavScreen/services/SearchScreen.dart';
@@ -45,8 +46,10 @@ class _ServicesScreenState extends State<ServicesScreen> {
 
    bool button4 = false;
    List<String>bodyList = [];
+
    List<ArticleModel> articleModel = [];
    List<ArticleModel> articleModelResult = [];
+
    UserModel? userModel;
    @override
   void initState() {
@@ -76,8 +79,14 @@ class _ServicesScreenState extends State<ServicesScreen> {
                         body: data['body'],
                         likes: data['likes'],
                         views: data['views'],
-                        id: data["id"].toString().trim()));
-                    bodyList.add(data['body']);
+                        id: data["id"].toString().trim(),
+                      type: data['type']
+                    ));
+                    bodySet.add(data['body']
+                    );
+                    bodySet!.forEach((element1) {
+                      bodyList.add(element1);
+                    });
                   }
                   // List<Widget> mWidgets = [];
                   //
@@ -101,7 +110,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
                 }
               }),
 //t3deeeel
-          if(CatCubit.get(context).userData!.userType==2)
+           //if(CatCubit.get(context).userData!.userType==3)
           Form(
             key: formKey,
             child: Column(
@@ -111,12 +120,18 @@ class _ServicesScreenState extends State<ServicesScreen> {
                     List<String> result=[];
                    for(var i=0;i<bodyList.length;i++) {
                      if(bodyList[i].toLowerCase().trim().contains(v.toLowerCase())){
-                       result.add(bodyList[i]);
-                       articleModelResult.add(articleModel[i]);
+                       resultSet.add(bodyList[i]);
+                       articleModelResultSet.add(articleModel[i]);
                      }
+                     print("result set${resultSet.length}");
+                     print("articleModelResultSet${articleModelResultSet.length}");
                    };
+                    articleModelResultSet!.forEach((element1) {
+                      articleModelResult.add(element1);
+                    });
+                    print("your result real${articleModelResult.length}");
                    if(result!=null&&searchController.text!=''){
-                   navigateTo(context, SearchScreen(articleModel: articleModelResult,));
+                   navigateTo(context, SearchScreen(articleModel: articleModelResultSet.toList(),));
                    }
                    // print('my List'+result.first);
                   },
@@ -135,9 +150,9 @@ class _ServicesScreenState extends State<ServicesScreen> {
               ],
             ),
           ),
-          if(CatCubit.get(context).userData!.userType==2)
+           //if(CatCubit.get(context).userData!.userType==3)
           const SizedBox(height: 10,),
-          if(CatCubit.get(context).userData!.userType==2)
+           //if(CatCubit.get(context).userData!.userType==3)
           Expanded(
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),

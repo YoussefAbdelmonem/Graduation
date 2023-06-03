@@ -67,7 +67,14 @@ dependencies:
   material_floating_search_bar:
   lottie:
   flutter_rating_bar:
-
+  modal_bottom_sheet: ^2.1.2
+  record: ^4.4.4
+  audioplayers: ^3.0.0
+  lecle_downloads_path_provider: ^0.0.2+8
+  http_parser: ^4.0.2
+  mime: ^1.0.4
+  flutter_sound: ^9.2.13
+  audio_waveforms: ^1.0.4
 
 
 dev_dependencies:

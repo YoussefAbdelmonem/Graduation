@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:meaw/yousef/screen/pages/services/constants.dart';
+import 'package:meaw/yousef/screen/payment/payment_method/paymentProduct.dart';
 import 'package:meaw/yousef/screen/payment/payment_method/payment_methods_screen.dart';
 import 'package:meaw/yousef/utilis/urilis.dart';
 
@@ -195,7 +196,7 @@ class _MyCartState extends State<MyCart> {
                           backgroundColor: KColorPrimary,
                           padding: const EdgeInsets.symmetric(vertical: 15)),
                       onPressed: () {
-                        Utils.openScreen(context, PaymentMethodsScreen());
+                        Utils.openScreen(context, PaymentMethodsProductScreen());
                       },
                       child: Text(
                         'Pay Now',

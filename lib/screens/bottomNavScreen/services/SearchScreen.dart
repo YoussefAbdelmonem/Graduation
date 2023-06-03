@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:meaw/components/components.dart';
+import 'package:meaw/components/constants.dart';
 import 'package:meaw/screens/bottomNavScreen/services/servicesScreen.dart';
 import 'package:meaw/screens/servicesScreens/diseaseScreen/article.dart';
 import 'package:meaw/screens/servicesScreens/diseaseScreen/cubit/articleModel.dart';
 import 'package:meaw/screens/servicesScreens/diseaseScreen/cubit/cubit.dart';
+import 'package:meaw/yousef/utilis/urilis.dart';
 class SearchScreen extends StatefulWidget {
    SearchScreen({required this .articleModel}) : super();
 List articleModel;
@@ -21,12 +24,37 @@ class _SearchScreenState extends State<SearchScreen> {
           SizedBox(
             height: 50.h,
           ),
-          appBaar(
-              context: context,
-              screen: ServicesScreen(),
-              label:'Articles' ,
-              width: 100.h
+          articleAppBaar(context: context, label: 'Articles', width:  100.h
+
           ),
+          // Row(
+          //   children: [
+          //     InkWell(
+          //       onTap: () {
+          //         //navigateAndFinish(context, screen);
+          //          Utils.backWidget(context);
+          //       },
+          //       child: Image(
+          //           image: AssetImage('assets/images/arrowleft.png')),
+          //     ),
+          //     SizedBox(
+          //       width: 100.h,
+          //     ),
+          //     Text(
+          //       'Articles',
+          //       style: GoogleFonts.roboto(
+          //           fontSize: 26,
+          //           color: Colors.black,
+          //           fontWeight: FontWeight.w500),
+          //     ),
+          //   ],
+          // ),
+          // appBaar(
+          //     context: context,
+          //     screen: ServicesScreen(),
+          //     label:'Articles' ,
+          //     width: 100.h
+          // ),
           SizedBox(
             height: 30.h,
           ),
@@ -41,7 +69,8 @@ class _SearchScreenState extends State<SearchScreen> {
                   title:widget.articleModel[index].title!,
                   body: widget.articleModel[index].body!,
                   likes:widget. articleModel[index].likes!,
-                  views: widget.articleModel[index].views!
+                  views: widget.articleModel[index].views!,
+                type: widget.articleModel[index].type!,
               );
               print('yuuii'+widget.articleModel[index].id!);
               print('yuuii'+widget.articleModel[index].views!.toString());
@@ -58,7 +87,7 @@ class _SearchScreenState extends State<SearchScreen> {
           separatorBuilder: (context,index)=>SizedBox(
             height: 15,
           ),
-          itemCount: widget.articleModel.length
+          itemCount: resultSet.length
       )
         ],
       ),

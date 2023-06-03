@@ -33,7 +33,8 @@ bool liked=false;
     required int likes,
     required int views,
     required String body,
-    required String title
+    required String title,
+    required String type
   })async
   {
     print('MyID: '+id.toString());
@@ -46,7 +47,8 @@ bool liked=false;
             views:views+1 ,
             id: id,
           body:body,
-          title:title
+          title:title,
+        type: type
     );
     FirebaseFirestore.instance
         .collection('articles')

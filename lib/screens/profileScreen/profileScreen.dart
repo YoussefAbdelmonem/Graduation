@@ -4,10 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:meaw/components/colors.dart';
 import 'package:meaw/components/components.dart';
+import 'package:meaw/components/constants.dart';
 import 'package:meaw/components/local/shared_pref.dart';
 import 'package:meaw/cubit/animalCubit.dart';
 import 'package:meaw/cubit/animalStates.dart';
 import 'package:meaw/favorites/favorites_screen.dart';
+import 'package:meaw/getPosts/getPosts.dart';
 import 'package:meaw/petProfileList/list.dart';
 import 'package:meaw/screens/homeScreen/HomeScreen.dart';
 import 'package:meaw/screens/loginScreen/loginScreen.dart';
@@ -15,6 +17,7 @@ import 'package:meaw/screens/profileScreen/updateProfile/updateProfile.dart';
 import 'package:meaw/style/icon_broken.dart';
 import 'package:meaw/yousef/data/maps/repo/maps_repo.dart';
 import 'package:meaw/yousef/data/maps/web_services/maps_web_servies.dart';
+import 'package:meaw/yousef/screen/add_product/add_product_screen.dart';
 import 'package:meaw/yousef/screen/map/map_screen/cubit/map_cubit.dart';
 import 'package:meaw/yousef/screen/map/map_screen/map_screen.dart';
 import 'package:meaw/yousef/screen/notifications/notifications_screen.dart';
@@ -23,7 +26,6 @@ import 'package:meaw/yousef/utilis/urilis.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CatCubit, CatStates>(
@@ -192,9 +194,9 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       Container(
                         height: .6 * height,
-
-                          // child:userData.userType==2||userData.userType==3?
-                        child : SingleChildScrollView(
+                          child:
+                          userType==3?
+                         SingleChildScrollView(
                           child: Column(
                               children: [
                                 listTile(
@@ -258,36 +260,36 @@ class ProfileScreen extends StatelessWidget {
                               ],
                             ),
                         )
-                          // Column(
-                          //   children: [
-                          //     listTile(
-                          //         function:(){
-                          //        //   navigateTo(context,ListScreen());
-                          //         },
-                          //         image: 'assets/images/🦆 emoji _heavy plus sign_.png',
-                          //         icon: 'assets/images/Vector.png',
-                          //         label: 'Add post'),
-                          //     listTile(
-                          //         function:(){
-                          //          // navigateTo(context,ListScreen());
-                          //         },
-                          //         image: 'assets/images/house.png',
-                          //         icon: 'assets/images/Vector.png',
-                          //         label: 'Your posts'),
-                          //     listTile(
-                          //         image: 'assets/images/global.png',
-                          //         icon: 'assets/images/Vector.png',
-                          //         label: 'Language'),
-                          //     listTile(
-                          //         image: 'assets/images/setting2.png',
-                          //         icon: 'assets/images/Vector.png',
-                          //         label: 'Setting'),
-                          //     listTile(
-                          //         image: 'assets/images/messagequestion.png',
-                          //         icon: 'assets/images/Vector.png',
-                          //         label: 'Help')
-                          //   ],
-                          // )
+                          :Column(
+                            children: [
+                              listTile(
+                                  function:(){
+                                    navigateTo(context,AddProduct());
+                                  },
+                                  image: 'assets/images/🦆 emoji _heavy plus sign_.png',
+                                  icon: 'assets/images/Vector.png',
+                                  label: 'Add post'),
+                              listTile(
+                                  function:(){
+                                    navigateTo(context,GetPosts());
+                                  },
+                                  image: 'assets/images/house.png',
+                                  icon: 'assets/images/Vector.png',
+                                  label: 'Your posts'),
+                              listTile(
+                                  image: 'assets/images/global.png',
+                                  icon: 'assets/images/Vector.png',
+                                  label: 'Language'),
+                              listTile(
+                                  image: 'assets/images/setting2.png',
+                                  icon: 'assets/images/Vector.png',
+                                  label: 'Setting'),
+                              listTile(
+                                  image: 'assets/images/messagequestion.png',
+                                  icon: 'assets/images/Vector.png',
+                                  label: 'Help')
+                            ],
+                          )
 
                       ),
                       myDividerLong(),
@@ -304,6 +306,10 @@ class ProfileScreen extends StatelessWidget {
                             ),
                             TextButton(
                                 onPressed: () {
+                                  CacheHelper.removeData(key: 'uId');
+                                  CacheHelper.removeData(key: 'userType');
+                                  uId='';
+                                  userType=null;
                                   CatCubit.get(context).signOut();
                                 },
                                 child: Text(

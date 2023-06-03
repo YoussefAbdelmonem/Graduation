@@ -17,8 +17,16 @@ enum PaymentType {
 }
 
 class PaymentMethodsScreen extends StatefulWidget {
-  PaymentMethodsScreen({Key? key}) : super(key: key);
-
+  PaymentMethodsScreen({ this.shelterid,this.postid,this.price,this.petweight,this.petage,this.petcategory,this.petgender,this.petimage,this.petname}) : super();
+String? shelterid;
+  String? postid;
+  String? price;
+  String? petcategory;
+  String? petgender;
+  String? petage;
+  String? petweight;
+  String? petimage;
+  String? petname;
   @override
   State<PaymentMethodsScreen> createState() => _PaymentMethodsScreenState();
 }
@@ -177,7 +185,11 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
                 onTap: () {
 
                   if(paymentType == PaymentType.cashPayment) {
-                    Utils.openScreen(context,  CashPaymentScreen());
+                    Utils.openScreen(context,  CashPaymentScreen(
+                      shelterid: widget.shelterid,postid:widget.postid,price: widget.price,petweight: widget.petweight,
+                    petname:widget.petname,petage: widget.petage,petcategory: widget.petcategory,petgender: widget.petgender,
+                      petimage: widget.petimage,
+                    ));
                   } else if(paymentType == PaymentType.visaPayment) {
                     Utils.openScreen(context,  VisaPaymentScreen());
                   } else if(paymentType == PaymentType.paypalPayment) {

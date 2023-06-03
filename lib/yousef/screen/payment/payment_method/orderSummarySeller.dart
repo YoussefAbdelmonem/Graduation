@@ -1,42 +1,29 @@
-
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:meaw/components/components.dart';
-import 'package:meaw/components/constants.dart';
 import 'package:meaw/getPosts/getCubit/getCubit.dart';
 import 'package:meaw/getPosts/getCubit/getStates.dart';
 import 'package:meaw/yousef/screen/pages/orderdone.dart';
 import 'package:meaw/yousef/screen/pages/services/constants.dart';
-import 'package:meaw/yousef/screen/payment/payment_cash/orderModel.dart';
-
-class OrderSummary extends StatelessWidget {
-   OrderSummary({this.price,this.phone,this.address,this.name,
-     this.postid,this.shelterid,this.addressDetails,this.petage,this.petcategory,this.petgender,this.petimage,this.petname,this.petweight
-   }) : super();
-   String? shelterid;
-   String? price;
-   String? postid;
-   String? name;
-   String? address;
-   String? phone;
-   String? petage;
-   String? petname;
-   String? petgender;
-   String? petcategory;
-   String? petimage;
-   String? petweight;
-   String? addressDetails;
-   double? priceCompute(){
-     double total=0.0;
-     total=(double.tryParse(price!)!+50)!;
-         return total;
-   }
+class OrderSummarySeller extends StatelessWidget {
+  OrderSummarySeller({
+    required this.name,
+    required this.phone,
+    required this.address
+  }) : super();
+  String? name;
+  String? address;
+  String? phone;
+  // double? priceCompute(){
+  //   double total=0.0;
+  //   total=(double.tryParse(price!)!+50)!;
+  //   return total;
+  // }
   @override
   Widget build(BuildContext context) {
+
         return Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
@@ -84,7 +71,7 @@ class OrderSummary extends StatelessWidget {
                                 style: TextStyle(color: KColorPrimary),
                               ),
                               Expanded(child: Container()),
-                               Text('${price} EGP')
+                              Text('100 EGP')
                             ],
                           ),
                           SizedBox(
@@ -111,7 +98,7 @@ class OrderSummary extends StatelessWidget {
                                 style: TextStyle(color: KColorPrimary),
                               ),
                               Expanded(child: Container()),
-                               Text('${priceCompute()} EGP')
+                              Text('150 EGP')
                             ],
                           )
                         ],
@@ -172,7 +159,7 @@ class OrderSummary extends StatelessWidget {
                           SizedBox(
                             height: 7.h,
                           ),
-                           SizedBox(
+                          SizedBox(
                             width: double.infinity,
                             child: Text(
                               '${phone}',
@@ -225,26 +212,6 @@ class OrderSummary extends StatelessWidget {
                                 backgroundColor: KColorPrimary,
                                 padding: const EdgeInsets.symmetric(vertical: 15)),
                             onPressed: () async{
-                              FirebaseFirestore firestoreInstance = FirebaseFirestore.instance;
-                              OrderModel orderModel=OrderModel(
-                                  address: address,
-                                addressDetails: addressDetails,
-                                phone: phone,
-                                postid: postid,
-                                name: name,
-                                petage: petage,
-                                petcategory: petcategory,
-                                petgender:petgender ,
-                                petimage: petimage,
-                                  petname: petname,
-                                  petweight:petweight ,
-                              );
-                              //don`t forget to change collection with uid
-                              await firestoreInstance
-                                  .collection("orders")
-                                  .doc(shelterid)
-                                  .collection(uId!)
-                              .add(orderModel.toMap());
                               navigateTo(context, Order_Done());
                             },
                             child: Text(
@@ -258,5 +225,6 @@ class OrderSummary extends StatelessWidget {
                 ),
               )),
         );
+
   }
 }

@@ -363,7 +363,6 @@ class _UpdateProfileState extends State<UpdateProfile> {
       phone: phoneController.text,
       email:emailController.text,
       gender:selectedGender
-
     );
   }
 }

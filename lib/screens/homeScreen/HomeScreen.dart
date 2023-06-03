@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meaw/components/colors.dart';
 import 'package:meaw/components/components.dart';
+import 'package:meaw/components/constants.dart';
 import 'package:meaw/components/local/shared_pref.dart';
 import 'package:meaw/cubit/animalCubit.dart';
 import 'package:meaw/cubit/animalStates.dart';
+import 'package:meaw/getPosts/getPosts.dart';
 import 'package:meaw/petProfileList/list.dart';
 import 'package:meaw/screens/bottomNavScreen/chat/chatScreen.dart';
 import 'package:meaw/screens/bottomNavScreen/products/productScreen.dart';
@@ -14,6 +16,7 @@ import 'package:meaw/screens/bottomNavScreen/services/servicesScreen.dart';
 import 'package:meaw/screens/bottomNavScreen/translation/translationScreen.dart';
 import 'package:meaw/screens/profileScreen/profileScreen.dart';
 import 'package:meaw/screens/servicesScreens/diseaseScreen/article.dart';
+import 'package:meaw/yousef/screen/add_product/add_product_screen.dart';
 import 'package:meaw/yousef/screen/products/products_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -27,12 +30,17 @@ class _HomeScreenState extends State<HomeScreen> {
   int currentScreen = 0;
 
    List<Widget> itemsScreens = [
-     const TranslationScreen(),
+      TranslationScreen(),
       ServicesScreen( ),
       ProductsScreen(),
      const ChatScreen(),
    ];
-
+  List<Widget> items2Screens = [
+    TranslationScreen(),
+    AddProduct( ),
+    GetPosts(),
+    //const ChatScreen(),
+  ];
   @override
   Widget build(BuildContext context) {
     //print('photo ${CatCubit.get(context).userData?.profileImage}');
@@ -48,11 +56,14 @@ class _HomeScreenState extends State<HomeScreen> {
             return Scaffold(
               backgroundColor: Colors.white,
               appBar: AppBar(
-                // leading: InkWell(
-                //   onTap: (){
-                //    // navigateTo(context, Article());
-                //   },
-                //     child: Image(image:AssetImage( 'assets/images/hambergermenu.png'))),
+                leading: InkWell(
+                  onTap: (){
+                    if (reverse==true)
+                    navigateTo(context, (HomeScreen()));
+                    audio=0;
+                    reverse=false;
+                  },
+                    child:reverse==true? Icon(Icons.arrow_back,size: 30,color: defaultColor,):Icon(Icons.arrow_back,size: 26,color: Colors.white,)),
                 backgroundColor: Colors.white,
                 elevation: 0.0,
                 actions: [
@@ -102,15 +113,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   //t3deeeeeeel
                   BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage('assets/images/services.png')),
-                    label: 'Services',
-                    // CatCubit.get(context).userData!.userType==2? 'Services':'Add',
+                    label:
+                    //'Services',
+                     userType==3? 'Services':'Add',
                   ),
                   //t3deeeeeeel
                   BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage('assets/images/products.png')),
-                    label: 'Products',
-                    // CatCubit.get(context).userData!.userType==2? 'Products':'Posts',
+                    label:
+                    //'Products',
+                     userType==3? 'Products':'Posts',
                   ),
+                  if(userType==3)
                   BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage('assets/images/chat.png')),
                     label: 'Chat',
@@ -127,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 unselectedItemColor: Colors.grey,
                 selectedItemColor: defaultColor,
               ),
-              body: itemsScreens[currentScreen],
+              body: userType==3?itemsScreens[currentScreen]:items2Screens[currentScreen],
             );
           },
         );

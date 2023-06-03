@@ -143,7 +143,7 @@ class CatCubit extends Cubit<CatStates>
         email: email,
         password: password
     ).then((value) {
-      emit(CatSignInSuccessState(value.user!.uid));
+      emit(CatSignInSuccessState(value.user!.uid,));
     }
     ).catchError((error) {
       emit(CatSignInErrorState(error.toString()));
@@ -154,6 +154,8 @@ class CatCubit extends Cubit<CatStates>
   Future<void> getMyData()async{
     await FirebaseFirestore.instance.collection("users").doc(uId??CacheHelper.getData(key: 'uId')).get().then((value){
       userData = UserModel.fromJson(value.data()!);
+      CacheHelper.saveData(key: 'userType', value: userData!.userType);
+      print('your typeee${userData!.userType}');
       emit(CatGetUserSuccessState());
     });
   }

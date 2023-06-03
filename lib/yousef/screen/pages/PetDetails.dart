@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:meaw/components/components.dart';
+import 'package:meaw/getPosts/getCubit/model.dart';
 import 'package:meaw/yousef/screen/pages/services/constants.dart';
+import 'package:meaw/yousef/screen/payment/payment_method/payment_methods_screen.dart';
 
 class PetDetails extends StatelessWidget {
-  const PetDetails({Key? key}) : super(key: key);
-
+  PetDetails({required this.petModel}) : super();
+PostModel petModel;
   @override
   Widget build(BuildContext context) {
     return Scaffold(backgroundColor: Color(0xffffffff),
@@ -28,7 +31,7 @@ class PetDetails extends StatelessWidget {
           children: [
             Container(
               margin: EdgeInsets.only(top: 25, right: 29),
-              child: Image.asset('assets/images/pet_detail.png'),
+              child: Image.network('${petModel!.image}'),
             ),
             SizedBox(
               height: 7.h,
@@ -36,14 +39,14 @@ class PetDetails extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  'Lola',
+                  '${petModel!.name}',
                   style: TextStyle(fontSize: 24.sp, color: KColorPrimary),
                 ),
                 SizedBox(
                   width: 215.w,
                 ),
                 Text(
-                  'Girl',
+                  '${petModel!.gender}',
                   style: TextStyle(fontSize: 19.sp, color: Color(0xffEA7B9C)),
                 )
               ],
@@ -53,13 +56,13 @@ class PetDetails extends StatelessWidget {
             ),
             Row(
               children: [
-                GestureDetector(
-                  child: const Image(
-                    image: AssetImage('assets/images/location.png'),
-                  ),
-                ),
+                // GestureDetector(
+                //   child: const Image(
+                //     image: AssetImage('assets/images/location.png'),
+                //   ),
+                // ),
                 Text(
-                  ' Mansoura(30km away)',
+                  ' ${petModel!.price }\$',
                   style: TextStyle(fontSize: 16.sp),
                 )
               ],
@@ -86,7 +89,7 @@ class PetDetails extends StatelessWidget {
                             height: 9.h,
                           ),
                           Text(
-                            ' 1 Year 2 Months',style: TextStyle(fontSize: 14.sp),
+                            ' ${petModel!.age}',style: TextStyle(fontSize: 14.sp),
                           )
                         ],
                       ),
@@ -111,7 +114,7 @@ class PetDetails extends StatelessWidget {
                           SizedBox(
                             height: 9.h,
                           ),
-                           Text(' 4 Kg 5Gram',style: TextStyle(fontSize: 14.sp),)
+                           Text('${petModel!.weight}',style: TextStyle(fontSize: 14.sp),)
                         ],
                       ),
                     )
@@ -133,7 +136,7 @@ class PetDetails extends StatelessWidget {
             SizedBox(
                 width: double.infinity,
                 child: Text(
-                  ' Doesn\'t have any diseases and \n efects vaccainated ',
+                  ' ${petModel!.health} ',
                   style: TextStyle(fontSize: 16.sp),
                   textAlign: TextAlign.justify,
                 )),
@@ -153,7 +156,7 @@ class PetDetails extends StatelessWidget {
             SizedBox(
                 width: double.infinity,
                 child: Text(
-                  ' So lovely baby , love hugs , playfull one.',
+                  ' ${petModel!.behavior}',
                   style: TextStyle(fontSize: 16.sp),
 
                 )),
@@ -165,7 +168,12 @@ class PetDetails extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                         backgroundColor: KColorPrimary,
                         padding: const EdgeInsets.symmetric(vertical: 15)),
-                    onPressed: () {},
+                    onPressed: () {
+                      navigateTo(context, PaymentMethodsScreen(shelterid: petModel!.shelterid,postid:petModel!.id ,price:petModel!.price
+                        ,petname: petModel.name,petimage: petModel.image,petgender: petModel.gender,petcategory: petModel.category,petage: petModel.age,
+                        petweight: petModel.weight,
+                      ));
+                    },
                     child: Text(
                       'Adoption',
                       style: TextStyle(fontSize: 20.sp),

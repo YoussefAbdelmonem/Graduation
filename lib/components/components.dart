@@ -88,7 +88,7 @@ Widget defaultTextFormFieldForSearch({
   String? hint,
   String?initval,
   IconData? prefix,
-  IconData? suffix,
+  Widget? suffix,
   Function()? onSuffixPressed,
   Function()? onTap,
   Function(String s)? onSubmit,
@@ -116,7 +116,9 @@ Widget defaultTextFormFieldForSearch({
           prefixIcon: Icon(
             prefix,color:Colors.grey,
           ),
-          suffixIcon: IconButton(icon: Icon(suffix), onPressed: onSuffixPressed,color: Color.fromRGBO(231, 229, 229, 1),),
+          suffixIcon: suffix
+          // IconButton(icon: Icon(suffix), onPressed: onSuffixPressed,color: Color.fromRGBO(231, 229, 229, 1),)
+          ,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: const BorderSide(color: defaultColor),
@@ -244,7 +246,14 @@ Widget myDivider() => Padding(
     width: double.infinity,
   ),
 );
-
+Widget myDividerFilter() => Padding(
+  padding: const EdgeInsetsDirectional.only(end: 10),
+  child: Container(
+    color: defaultColor,
+    height: 2,
+    width: double.infinity,
+  ),
+);
 Widget myDividerLong() => Container(
   color: Colors.grey[300],
   height: 1,
@@ -323,7 +332,7 @@ DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
 );
 Widget appBaar({
   required BuildContext context,
-  required Widget screen,
+   required Widget screen,
   required String label,
   required double width
 }){
@@ -332,6 +341,7 @@ Widget appBaar({
       InkWell(
         onTap: () {
           navigateAndFinish(context, screen);
+         // Utils.backWidget(context);
         },
         child: Image(
             image: AssetImage('assets/images/arrowleft.png')),

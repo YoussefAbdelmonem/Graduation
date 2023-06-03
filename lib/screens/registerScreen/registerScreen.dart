@@ -171,14 +171,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                                 },
                               ),
-                              /*
+
                               Checkbox(value:cubit.ischecked2 ,
 
                                   onChanged:(value){
                                     cubit.checkChange2();
                                   }
                               ),
-                              */
+
                               Text('Shelter',),
                             ],
                           ),
@@ -194,14 +194,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   });
                                 },
                               ),
-                                /*
+
                               Checkbox(value:cubit.ischecked2 ,
 
                                   onChanged:(value){
                                     cubit.checkChange2();
                                   }
                               ),
-                              */
+
                               Text('Seller',),
                             ],
                           ),
@@ -217,14 +217,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   });
                                 },
                               ),
-                              /*
+
                               Checkbox(value:cubit.ischecked2 ,
 
                                   onChanged:(value){
                                     cubit.checkChange2();
                                   }
                               ),
-                              */
+
                               Text('Normal User',),
                             ],
                           ),

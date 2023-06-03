@@ -8,6 +8,7 @@ class ArticleModel
   int? likes;
   //String? userId;
   String? id;
+  String?type;
 
   ArticleModel({
 
@@ -15,7 +16,8 @@ class ArticleModel
     required this.title,
     required this.body,
     required this.likes,
-    this.id
+    this.id,
+    this.type
     // required this.userId,
   });
   ArticleModel.fromJson(Map<String,dynamic>json)
@@ -25,6 +27,7 @@ class ArticleModel
     body = json['body'];
     likes = json['likes'];
     id = json['id'];
+    type = json['type'];
   }
   Map<String,dynamic> toMap()
   {
@@ -33,7 +36,8 @@ class ArticleModel
       'title': title,
       'body':body,
       'likes':likes,
-      'id':id
+      'id':id,
+      'type':type
       // 'userId':userId,
     };
   }

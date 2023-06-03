@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meaw/components/colors.dart';
 import 'package:meaw/components/components.dart';
+import 'package:meaw/components/constants.dart';
 import 'package:meaw/screens/servicesScreens/diseaseScreen/article.dart';
 import 'package:meaw/screens/servicesScreens/diseaseScreen/cubit/articleModel.dart';
 import 'package:meaw/screens/servicesScreens/diseaseScreen/cubit/cubit.dart';
@@ -17,6 +18,10 @@ class DiseaseScreen extends StatefulWidget {
 
 class _DiseaseScreenState extends State<DiseaseScreen> {
   List<String> bodyList=[];
+  List<ArticleModel>diseaseList=[];
+  Set<String> bodySet={};
+  Set<ArticleModel> careSet={};
+  Set<ArticleModel>diseaseSet={};
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ArticleCubit,ArticleStates>(
@@ -42,8 +47,28 @@ class _DiseaseScreenState extends State<DiseaseScreen> {
                             body: data['body'],
                             likes: data['likes'],
                             views: data['views'],
-                            id: data["id"].toString().trim()));
-                        bodyList.add(data['body']);
+                            id: data["id"].toString().trim(),
+                            type: data["type"]
+                        ));
+                        articleModel!.forEach((element1) {
+                          bodySet.add(element1.body.toString());
+                          if (element1.type =='disease' ) {
+                            diseaseSet.add(element1);
+                            print("disase set${diseaseSet.length.toString()}");
+                          }else{
+                            careSet.add(element1);
+                          }
+                        });
+                        bodySet!.forEach((element1) {
+                          bodyList.add(element1);
+                        });
+                        diseaseSet!.forEach((element1) {
+                          diseaseList.add(element1);
+                          print("disase List${diseaseList.length.toString()}");
+                        });
+                        careSet!.forEach((element1) {
+                          careList.add(element1);
+                        });
                       }
                       // List<Widget> mWidgets = [];
                       //
@@ -65,23 +90,24 @@ class _DiseaseScreenState extends State<DiseaseScreen> {
                         shrinkWrap: true,
                           physics: BouncingScrollPhysics(),
                           itemBuilder: (context,index)=>  buildContainer(
-                            title:'${articleModel[index].title}',
+                            title:'${diseaseList[index].title}',
                             onPressed:(){
                              ArticleCubit.get(context).updateArticle(
-                               id:articleModel[index].id! ,
-                               title:articleModel[index].title!,
-                               body: articleModel[index].body!,
-                               likes: articleModel[index].likes!,
-                                 views: articleModel[index].views!
+                               id:diseaseList[index].id! ,
+                               title:diseaseList[index].title!,
+                               body: diseaseList[index].body!,
+                               likes: diseaseList[index].likes!,
+                                 views: diseaseList[index].views!,
+                               type: diseaseList[index].type!
                              );
-                              print('yuuii'+articleModel[index].id!);
-                             print('yuuii'+articleModel[index].views!.toString());
+                              print('yuuii'+diseaseList[index].id!);
+                             print('yuuii'+diseaseList[index].views!.toString());
                               navigateTo(context, Article(
-                                body: articleModel[index].body!,
-                                title:articleModel[index].title! ,
-                                likes: articleModel[index].likes!,
-                                views: articleModel[index].views!,
-                                id:articleModel[index].id! ,
+                                body: diseaseList[index].body!,
+                                title:diseaseList[index].title! ,
+                                likes: diseaseList[index].likes!,
+                                views: diseaseList[index].views!,
+                                id:diseaseList[index].id! ,
                               ));
                             },
                             image: 'assets/images/catDiseas.png',
@@ -89,7 +115,7 @@ class _DiseaseScreenState extends State<DiseaseScreen> {
                           separatorBuilder: (context,index)=>SizedBox(
                             height: 15,
                           ),
-                          itemCount: articleModel.length
+                          itemCount: diseaseSet.length
                       ) ;
                     } else {
                       return const Center(
@@ -101,6 +127,7 @@ class _DiseaseScreenState extends State<DiseaseScreen> {
                   }),
             ],
           )
+          //kkkkkkkkkk
           // buildContainer(
           //   title: 'Upper \nRespiratory\nInfection',
           //   onPressed: (){
@@ -199,3 +226,81 @@ class _DiseaseScreenState extends State<DiseaseScreen> {
     ),
   );
 }
+// Column(
+// children: [
+// const SizedBox(
+// height: 10,
+// ),
+// StreamBuilder<QuerySnapshot>(
+// stream:
+// ArticleCubit.get(context).getArticles(),
+// builder: (context, snapshot) {
+// if (snapshot.hasData) {
+// List<ArticleModel> articleModel = [];
+// for (var doc in snapshot.data!.docs) {
+// var data =
+// doc.data() as Map<String, dynamic>;
+// articleModel.add(ArticleModel(
+// title: data['title'],
+// body: data['body'],
+// likes: data['likes'],
+// views: data['views'],
+// id: data["id"].toString().trim()));
+// bodyList.add(data['body']);
+// }
+// // List<Widget> mWidgets = [];
+// //
+// // catModel.map((e) {
+// //   var c = petItem(e: e);
+// //   mWidgets.add(c);
+// // }).toList();
+// //
+// // mWidgets.insert(
+// //     0,
+// //     InkWell(
+// //       onTap: () {
+// //         navigateTo(context, AddCatScreen());
+// //       },
+// //       child: addItem(),
+// //     ));
+//
+// return ListView.separated(
+// shrinkWrap: true,
+// physics: BouncingScrollPhysics(),
+// itemBuilder: (context,index)=>  buildContainer(
+// title:'${articleModel[index].title}',
+// onPressed:(){
+// ArticleCubit.get(context).updateArticle(
+// id:articleModel[index].id! ,
+// title:articleModel[index].title!,
+// body: articleModel[index].body!,
+// likes: articleModel[index].likes!,
+// views: articleModel[index].views!
+// );
+// print('yuuii'+articleModel[index].id!);
+// print('yuuii'+articleModel[index].views!.toString());
+// navigateTo(context, Article(
+// body: articleModel[index].body!,
+// title:articleModel[index].title! ,
+// likes: articleModel[index].likes!,
+// views: articleModel[index].views!,
+// id:articleModel[index].id! ,
+// ));
+// },
+// image: 'assets/images/catDiseas.png',
+// ),
+// separatorBuilder: (context,index)=>SizedBox(
+// height: 15,
+// ),
+// itemCount: articleModel.length
+// ) ;
+// } else {
+// return const Center(
+// child: CircularProgressIndicator(
+// color: defaultColor,
+// ),
+// );
+// }
+// }),
+// ],
+// )

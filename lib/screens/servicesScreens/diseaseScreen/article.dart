@@ -134,14 +134,17 @@ class _ArticleState extends State<Article> {
                                 title:widget.title!,
                                 body: widget.body!,
                                 likes: articleModel!.likes!+1,
-                                views: articleModel!.views!
+                                views: articleModel!.views!,
+                              type: articleModel!.type!
                             );}else{
                               ArticleCubit.get(context).updateArticle(
                                   id:widget.id! ,
                                   title:widget.title!,
                                   body: widget.body!,
                                   likes: articleModel!.likes!-1,
-                                  views: articleModel!.views!);
+                                  views: articleModel!.views!,
+                                type: articleModel!.type!
+                              );
                             }
                           },
                           icon:Icon(ArticleCubit.get(context).liked==false?Icons.favorite_border_outlined:Icons.favorite,

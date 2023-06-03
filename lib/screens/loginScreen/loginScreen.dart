@@ -26,6 +26,7 @@ class LoginScreen extends StatelessWidget {
       listener: (context,state){
         if(state is CatSignInSuccessState)
         {
+         // CacheHelper.saveData(key: 'userType',);
           CacheHelper.saveData(
               key: 'uId',
               value: state.uId

@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:meaw/components/components.dart';
+import 'package:meaw/screens/homeScreen/HomeScreen.dart';
 import 'package:meaw/yousef/screen/pages/services/constants.dart';
 
 
 class Order_Done extends StatelessWidget {
-  const Order_Done({Key? key}) : super(key: key);
-
+   Order_Done({this.shelterid,this.postid,this.price,this.address,this.phone,this.name}) : super();
+   String? shelterid;
+   String? price;
+   String? postid;
+   String? name;
+   String? address;
+   String? phone;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +30,7 @@ class Order_Done extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset('assets/images/orderDone.png'),
+              Image.asset('assets/images/Done.png'),
               Container(margin: const EdgeInsets.only(top: 30,),
                   child: Text(
                     'Your order has successfully\n placed.',
@@ -37,7 +44,9 @@ class Order_Done extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                           backgroundColor: KColorPrimary,
                           padding: const EdgeInsets.symmetric(vertical: 15)),
-                      onPressed: () {},
+                      onPressed: () {
+                        navigateTo(context,HomeScreen());
+                      },
                       child: Text(
                         'Back To Home',
                         style: TextStyle(fontSize: 20.sp),
