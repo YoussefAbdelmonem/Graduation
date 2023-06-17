@@ -17,6 +17,7 @@ import 'package:meaw/screens/bottomNavScreen/translation/translationScreen.dart'
 import 'package:meaw/screens/profileScreen/profileScreen.dart';
 import 'package:meaw/screens/servicesScreens/diseaseScreen/article.dart';
 import 'package:meaw/yousef/screen/add_product/add_product_screen.dart';
+import 'package:meaw/yousef/screen/pages/Chat.dart';
 import 'package:meaw/yousef/screen/products/products_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -33,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
       TranslationScreen(),
       ServicesScreen( ),
       ProductsScreen(),
-     const ChatScreen(),
+     Chat(),
    ];
   List<Widget> items2Screens = [
     TranslationScreen(),
@@ -121,10 +122,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage('assets/images/products.png')),
                     label:
-                    //'Products',
-                     userType==3? 'Products':'Posts',
+                    'Products',
+                    // userType==3? 'Products':'Posts',
                   ),
-                  if(userType==3)
+                  // if(userType==3)
                   BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage('assets/images/chat.png')),
                     label: 'Chat',
@@ -141,7 +142,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 unselectedItemColor: Colors.grey,
                 selectedItemColor: defaultColor,
               ),
-              body: userType==3?itemsScreens[currentScreen]:items2Screens[currentScreen],
+              body:itemsScreens[currentScreen],
+              //userType==3?itemsScreens[currentScreen]:items2Screens[currentScreen],
             );
           },
         );

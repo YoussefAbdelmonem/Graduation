@@ -51,136 +51,138 @@ class _ArticleState extends State<Article> {
               // bodyList.add(data['body']);
             }
         return Scaffold(
-          body: Stack(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 19.0),
-                child: SingleChildScrollView(child: Column(
-                  children: [
-                    SizedBox(
-                      height: 220,
+          body: SafeArea(
+            child: Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 19.0),
+                  child: SingleChildScrollView(child: Column(
+                    children: [
+                      SizedBox(
+                        height: 220,
+                      ),
+                      Text('${widget.body}'),
+                    ],
+                  )),
+                ),
+                Positioned(
+                  top: 10,
+                  child: Container(
+                    padding: EdgeInsets.only(left: 19),
+                    height:220 ,
+                    width: 390,
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(color: Colors.grey,offset:Offset(.5, 0),blurRadius: .2 ),
+                        ],
+                        color: Colors.white
                     ),
-                    Text('${widget.body}'),
-                  ],
-                )),
-              ),
-              Positioned(
-                top: 10,
-                child: Container(
-                  padding: EdgeInsets.only(left: 19),
-                  height:220 ,
-                  width: 390,
-                  decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(color: Colors.grey,offset:Offset(.5, 0),blurRadius: .2 ),
-                      ],
-                      color: Colors.white
-                  ),
-                  child: Column(children: [
-                    SizedBox(
-                      height: 50.h,
-                    ),
-                    articleAppBaar(
-                        context: context,
-                       // screen: ServicesScreen(),
-                        label:'Article' ,
-                        width: 100.h
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          height: 60,
-                          width: 216,
-                          child: Text(
-                            '${widget.title}',
-                            style: GoogleFonts.roboto(
-                                fontSize: 26,
-                                color:defaultColor,
-                                fontWeight: FontWeight.w500
+                    child: Column(children: [
+                      SizedBox(
+                        height: 50.h,
+                      ),
+                      articleAppBaar(
+                          context: context,
+                         // screen: ServicesScreen(),
+                          label:'Article' ,
+                          width: 100.h
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            height: 60,
+                            width: 216,
+                            child: Text(
+                              '${widget.title}',
+                              style: GoogleFonts.roboto(
+                                  fontSize: 26,
+                                  color:defaultColor,
+                                  fontWeight: FontWeight.w500
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 19,
-                    ),
-                    Row(
-                      children: [
-                        ImageIcon(AssetImage('assets/images/sss/Linear/eye.png')),
-                        SizedBox(
-                          width: 7.w
-                          ,
-                        ),
-                        Text('${articleModel!.views!} Views',
-                          style: GoogleFonts.roboto(
-                              fontSize: 16,
-                              color:Colors.grey,
-                              fontWeight: FontWeight.w400
+                        ],
+                      ),
+                      SizedBox(
+                        height: 19,
+                      ),
+                      Row(
+                        children: [
+                          ImageIcon(AssetImage('assets/images/sss/Linear/eye.png')),
+                          SizedBox(
+                            width: 7.w
+                            ,
                           ),
-                        ),Spacer(),
-                        IconButton(
-                          onPressed: (){
-                            // ArticleCubit.get(context).changelikes();
-                            setState(() {
-                              ArticleCubit.get(context).liked=!ArticleCubit.get(context).liked;
-                            });
-                            if(ArticleCubit.get(context).liked==true){
-                            ArticleCubit.get(context).updateArticle(
-                                id:widget.id! ,
-                                title:widget.title!,
-                                body: widget.body!,
-                                likes: articleModel!.likes!+1,
-                                views: articleModel!.views!,
-                              type: articleModel!.type!
-                            );}else{
+                          Text('${articleModel!.views!} Views',
+                            style: GoogleFonts.roboto(
+                                fontSize: 16,
+                                color:Colors.grey,
+                                fontWeight: FontWeight.w400
+                            ),
+                          ),Spacer(),
+                          IconButton(
+                            onPressed: (){
+                              // ArticleCubit.get(context).changelikes();
+                              setState(() {
+                                ArticleCubit.get(context).liked=!ArticleCubit.get(context).liked;
+                              });
+                              if(ArticleCubit.get(context).liked==true){
                               ArticleCubit.get(context).updateArticle(
                                   id:widget.id! ,
                                   title:widget.title!,
                                   body: widget.body!,
-                                  likes: articleModel!.likes!-1,
+                                  likes: articleModel!.likes!+1,
                                   views: articleModel!.views!,
                                 type: articleModel!.type!
-                              );
-                            }
-                          },
-                          icon:Icon(ArticleCubit.get(context).liked==false?Icons.favorite_border_outlined:Icons.favorite,
-                          color:ArticleCubit.get(context).liked==false?Colors.red:Colors.red ,
-                          ) ),
-                        Text(
-                          '${articleModel!.likes!}',
-                          style: GoogleFonts.roboto(
-                              fontSize: 16,
-                              color:Colors.grey,
-                              fontWeight: FontWeight.w400
-                          ),
-                        ),
-                        Spacer(),
-                        Image(image:AssetImage('assets/images/Iconsax/Linear/save2.png')),
-                        SizedBox(
-                          width: 7.w
-                          ,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 40.0),
-                          child: Text('Bookmark now',
+                              );}else{
+                                ArticleCubit.get(context).updateArticle(
+                                    id:widget.id! ,
+                                    title:widget.title!,
+                                    body: widget.body!,
+                                    likes: articleModel!.likes!-1,
+                                    views: articleModel!.views!,
+                                  type: articleModel!.type!
+                                );
+                              }
+                            },
+                            icon:Icon(ArticleCubit.get(context).liked==false?Icons.favorite_border_outlined:Icons.favorite,
+                            color:ArticleCubit.get(context).liked==false?Colors.red:Colors.red ,
+                            ) ),
+                          Text(
+                            '${articleModel!.likes!}',
                             style: GoogleFonts.roboto(
                                 fontSize: 16,
                                 color:Colors.grey,
                                 fontWeight: FontWeight.w400
                             ),
                           ),
-                        ),
-                      ],
-                    ),
+                          Spacer(),
+                          Image(image:AssetImage('assets/images/Iconsax/Linear/save2.png')),
+                          SizedBox(
+                            width: 7.w
+                            ,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 40.0),
+                            child: Text('Bookmark now',
+                              style: GoogleFonts.roboto(
+                                  fontSize: 16,
+                                  color:Colors.grey,
+                                  fontWeight: FontWeight.w400
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
 
-                  ],),
+                    ],),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
     } else {

@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -65,14 +66,31 @@ class ProductsScreen extends StatelessWidget {
               ),
               SizedBox(
                 height: 200.h,
-                child: PageView(
-                  controller: controller,
-                  children: [
+                child: CarouselSlider(
+                  items: [
                     Image.asset("assets/images/pageview.png"),
                     Image.asset("assets/images/pageview.png"),
                     Image.asset("assets/images/pageview.png"),
                     Image.asset("assets/images/pageview.png"),
                   ],
+                  options: CarouselOptions(
+                    height: 300,
+                    aspectRatio: 16/9,
+                    viewportFraction: 0.8,
+                    initialPage: 0,
+                    enableInfiniteScroll: true,
+                    reverse: false,
+                    autoPlay: true,
+                    autoPlayInterval: Duration(seconds: 3),
+                    autoPlayAnimationDuration: Duration(milliseconds: 800),
+                    autoPlayCurve: Curves.fastOutSlowIn,
+                    enlargeCenterPage: true,
+                    enlargeFactor: 0.3,
+                    // onPageChanged: callbackFunction,
+                    scrollDirection: Axis.horizontal,
+                  ),
+
+
                 ),
               ),
               SizedBox(
@@ -92,6 +110,7 @@ class ProductsScreen extends StatelessWidget {
                         radius: 4.0,
                         dotWidth: 12.0,
                         dotHeight: 8.0,
+
                         paintStyle: PaintingStyle.stroke,
                         strokeWidth: 1.5,
                         dotColor: greyDot,
@@ -113,47 +132,51 @@ class ProductsScreen extends StatelessWidget {
               ),
               Row(
                 children: [
-                  GestureDetector(
-                    onTap: () {
-                      Utils.openScreen(context,
-                          ProductsAccessoriesScreen(isFood: kindData.food));
-                    },
-                    child: Column(
-                      children: [
-                        Image.asset("assets/images/food.png"),
-                        SizedBox(
-                          height: 12.h,
-                        ),
-                        TextWidget(
-                          title: "Food",
-                          fontWeight: FontWeight.w400,
-                          fontSize: 18.sp,
-                        ),
-                      ],
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        Utils.openScreen(context,
+                            ProductsAccessoriesScreen(isFood: kindData.food));
+                      },
+                      child: Column(
+                        children: [
+                          Image.asset("assets/images/edit_food2.png",),
+                          SizedBox(
+                            height: 12.h,
+                          ),
+                          TextWidget(
+                            title: "Food",
+                            fontWeight: FontWeight.w400,
+                            fontSize: 18.sp,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(
                     width: 6.w,
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      Utils.openScreen(
-                          context,
-                          ProductsAccessoriesScreen(
-                              isFood: kindData.accessories));
-                    },
-                    child: Column(
-                      children: [
-                        Image.asset("assets/images/accessories.png"),
-                        SizedBox(
-                          height: 12.h,
-                        ),
-                        TextWidget(
-                          title: "Accessories",
-                          fontWeight: FontWeight.w400,
-                          fontSize: 18.sp,
-                        ),
-                      ],
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        Utils.openScreen(
+                            context,
+                            ProductsAccessoriesScreen(
+                                isFood: kindData.accessories));
+                      },
+                      child: Column(
+                        children: [
+                          Image.asset("assets/images/accessories.png"),
+                          SizedBox(
+                            height: 12.h,
+                          ),
+                          TextWidget(
+                            title: "Accessories",
+                            fontWeight: FontWeight.w400,
+                            fontSize: 18.sp,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],

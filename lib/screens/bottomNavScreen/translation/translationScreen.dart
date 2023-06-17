@@ -109,7 +109,7 @@ var num =1;
                           Image.asset('assets/images/meow.png',height: 400,),
                           if(audio==0)
                            SizedBox(height: 50,),
-                          if(audio==0&&userType==3)
+                          //if(audio==0&&userType==3)
                           TextButton(
                             onPressed: ()async{
                               setState(() {

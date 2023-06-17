@@ -19,15 +19,16 @@ class NotificationScreen extends StatelessWidget {
           children: [
             Row(
               children: [
-                // Utils.backWidget(context),
-                SizedBox(
-                  width: 20.w,
-                ),
+                Utils.backWidget(context),
+                Spacer(),
                 TextWidget(
                   title: "Notification".tr(),
                   fontSize: 26.sp,
                   fontWeight: FontWeight.w700,
                 ),
+                Spacer(),
+
+
               ],
             ),
             SizedBox(
@@ -119,7 +120,7 @@ class NotificationScreen extends StatelessWidget {
       child: Row(
           children: [
             SizedBox(
-              width: 8.w,
+              width: 10.w,
             ),
             Image.asset("assets/images/noti.png"),
             SizedBox(
@@ -148,15 +149,16 @@ class NotificationScreen extends StatelessWidget {
 
               ],
             ),
-            SizedBox(
-              width: 50.w,
-            ),
+           Spacer(),
             TextWidget(
               title: "2min",
               fontSize: 13.sp,
               fontWeight: FontWeight.w400,
               color: mainColor,
             ),
+            SizedBox(
+              width: 10.w,
+            )
           ]),
     ),
   );

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:meaw/screens/servicesScreens/diseaseScreen/cubit/articleModel.dart';
 
 String? uId;
@@ -11,3 +13,12 @@ List<ArticleModel>careList=[];
 Set<ArticleModel> articleModelResultSet = {};
 Set<String>bodySet = {};
 Set<String> resultSet={};
+
+
+const KPrimaryColor=Color(0xff274460);
+const KLogo='assets/images/chat/img.png';
+const KCollection='messages';
+const KMessageField='message';
+const KCreatedAt ='created at';
+const KId ='id';
+const KColorPrimary= Color(0xffA35638);

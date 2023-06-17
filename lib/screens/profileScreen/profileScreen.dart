@@ -1,6 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:meaw/components/colors.dart';
 import 'package:meaw/components/components.dart';
@@ -9,20 +9,17 @@ import 'package:meaw/components/local/shared_pref.dart';
 import 'package:meaw/cubit/animalCubit.dart';
 import 'package:meaw/cubit/animalStates.dart';
 import 'package:meaw/favorites/favorites_screen.dart';
-import 'package:meaw/getPosts/getPosts.dart';
 import 'package:meaw/petProfileList/list.dart';
-import 'package:meaw/screens/homeScreen/HomeScreen.dart';
 import 'package:meaw/screens/loginScreen/loginScreen.dart';
 import 'package:meaw/screens/profileScreen/updateProfile/updateProfile.dart';
-import 'package:meaw/style/icon_broken.dart';
-import 'package:meaw/yousef/data/maps/repo/maps_repo.dart';
-import 'package:meaw/yousef/data/maps/web_services/maps_web_servies.dart';
-import 'package:meaw/yousef/screen/add_product/add_product_screen.dart';
-import 'package:meaw/yousef/screen/map/map_screen/cubit/map_cubit.dart';
-import 'package:meaw/yousef/screen/map/map_screen/map_screen.dart';
 import 'package:meaw/yousef/screen/notifications/notifications_screen.dart';
+import 'package:meaw/yousef/screen/pages/Report.dart';
+import 'package:meaw/yousef/screen/pages/Setting.dart';
 import 'package:meaw/yousef/screen/shelter/shelter_screen.dart';
 import 'package:meaw/yousef/utilis/urilis.dart';
+
+import '../../yousef/screen/pages/Schedule.dart';
+import '../../yousef/screen/pages/help.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -67,24 +64,17 @@ class ProfileScreen extends StatelessWidget {
                             ),
                             Row(
                               children: [
-                                InkWell(
-                                  onTap: (){
-                                    navigateTo(context, HomeScreen());
-                                  },
-                                  child: Image(
-                                      image: AssetImage(
-                                          'assets/images/arrowleft.png')),
-                                ),
-                                SizedBox(
-                                  width: 70,
-                                ),
+                                Utils.backWidget(context),
+                                Spacer(),
                                 Text(
                                   'My Profile',
                                   style: GoogleFonts.roboto(
-                                      fontSize: 26,
+                                      fontSize: 26.sp,
                                       color: Colors.black,
                                       fontWeight: FontWeight.w500),
                                 ),
+                                Spacer(),
+
                               ],
                             ),
                             SizedBox(
@@ -137,7 +127,7 @@ class ProfileScreen extends StatelessWidget {
                                               Text(
                                                 '${userData!.name}',
                                                 style: GoogleFonts.roboto(
-                                                    fontSize: 16,
+                                                    fontSize: 24.sp,
                                                     color: Colors.black,
                                                     fontWeight: FontWeight.w500),
                                               ),
@@ -147,10 +137,10 @@ class ProfileScreen extends StatelessWidget {
                                       ),
 
                                       Text(
-                                        '${userData!.email}',
+                                        '${userData.email}',
                                         style: GoogleFonts.roboto(
-                                            fontSize: 12,
-                                            color: Colors.black,
+                                            fontSize: 20.sp,
+                                            color: Colors.black54,
                                             fontWeight: FontWeight.w400),
                                       ),
                                       // TextButton(
@@ -195,7 +185,7 @@ class ProfileScreen extends StatelessWidget {
                       Container(
                         height: .6 * height,
                           child:
-                          userType==3?
+                          // userType==3?
                          SingleChildScrollView(
                           child: Column(
                               children: [
@@ -210,7 +200,7 @@ class ProfileScreen extends StatelessWidget {
                                   function: (){
                                     navigateTo(context, FavoritesScreen());
                                   },
-                                    image: 'assets/images/heart.png',
+                                    image: 'assets/images/love.png',
                                     icon: 'assets/images/Vector.png',
                                     label: 'Favourites'),
                                 listTile(
@@ -222,26 +212,21 @@ class ProfileScreen extends StatelessWidget {
                                     label: 'Notifications'),
                                 listTile(
                                     image: 'assets/images/schedule.png',
+                                    function: (){
+
+                                      Utils.openScreen(context, ScheduleScreen());
+
+                                    },
                                     icon: 'assets/images/Vector.png',
                                     label: 'Schedule'),
                                 listTile(
                                     image: 'assets/images/report.png',
+                                    function: (){
+                                      Utils.openScreen(context, ReportScreen());
+                                    },
                                     icon: 'assets/images/Vector.png',
                                     label: 'Report'),
-                                listTile(
-                                    image: 'assets/images/global.png',
-                                    icon: 'assets/images/Vector.png',
-                                    label: 'Language'),
-                                listTile(
-                                  function: (){
-                                    Utils.openScreen(context, BlocProvider(
-                                        create: (BuildContext context)=>MapsCubit(MapsRepository(PlacesWebservices())),
-                                        child: const MapScreen()));
 
-                                  },
-                                    image: 'assets/images/location.png',
-                                    icon: 'assets/images/Vector.png',
-                                    label: 'Location'),
                                 listTile(
                                   function: (){
                                     navigateTo(context,ShelterScreen());
@@ -252,44 +237,54 @@ class ProfileScreen extends StatelessWidget {
                                 listTile(
                                     image: 'assets/images/setting2.png',
                                     icon: 'assets/images/Vector.png',
+                                    function: (){
+
+                                      Utils.openScreen(context, SettingScreen());
+
+                                    },
                                     label: 'Setting'),
                                 listTile(
                                     image: 'assets/images/messagequestion.png',
+                                    function: (){
+
+                                      Utils.openScreen(context, HelpScreen());
+
+                                    },
                                     icon: 'assets/images/Vector.png',
                                     label: 'Help')
                               ],
                             ),
                         )
-                          :Column(
-                            children: [
-                              listTile(
-                                  function:(){
-                                    navigateTo(context,AddProduct());
-                                  },
-                                  image: 'assets/images/🦆 emoji _heavy plus sign_.png',
-                                  icon: 'assets/images/Vector.png',
-                                  label: 'Add post'),
-                              listTile(
-                                  function:(){
-                                    navigateTo(context,GetPosts());
-                                  },
-                                  image: 'assets/images/house.png',
-                                  icon: 'assets/images/Vector.png',
-                                  label: 'Your posts'),
-                              listTile(
-                                  image: 'assets/images/global.png',
-                                  icon: 'assets/images/Vector.png',
-                                  label: 'Language'),
-                              listTile(
-                                  image: 'assets/images/setting2.png',
-                                  icon: 'assets/images/Vector.png',
-                                  label: 'Setting'),
-                              listTile(
-                                  image: 'assets/images/messagequestion.png',
-                                  icon: 'assets/images/Vector.png',
-                                  label: 'Help')
-                            ],
-                          )
+                          // :Column(
+                          //   children: [
+                          //     listTile(
+                          //         function:(){
+                          //           navigateTo(context,AddProduct());
+                          //         },
+                          //         image: 'assets/images/🦆 emoji _heavy plus sign_.png',
+                          //         icon: 'assets/images/Vector.png',
+                          //         label: 'Add post'),
+                          //     listTile(
+                          //         function:(){
+                          //           navigateTo(context,GetPosts());
+                          //         },
+                          //         image: 'assets/images/house.png',
+                          //         icon: 'assets/images/Vector.png',
+                          //         label: 'Your posts'),
+                          //     listTile(
+                          //         image: 'assets/images/global.png',
+                          //         icon: 'assets/images/Vector.png',
+                          //         label: 'Language'),
+                          //     listTile(
+                          //         image: 'assets/images/setting2.png',
+                          //         icon: 'assets/images/Vector.png',
+                          //         label: 'Setting'),
+                          //     listTile(
+                          //         image: 'assets/images/messagequestion.png',
+                          //         icon: 'assets/images/Vector.png',
+                          //         label: 'Help')
+                          //   ],
+                          // )
 
                       ),
                       myDividerLong(),

@@ -4,14 +4,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meaw/yousef/screen/pages/services/constants.dart';
 
-class Report extends StatefulWidget {
-  const Report({Key? key}) : super(key: key);
+import '../../utilis/urilis.dart';
+
+class ReportScreen extends StatefulWidget {
+  const ReportScreen({Key? key}) : super(key: key);
 
   @override
-  State<Report> createState() => _ReportState();
+  State<ReportScreen> createState() => _ReportScreenState();
 }
 
-class _ReportState extends State<Report> {
+class _ReportScreenState extends State<ReportScreen> {
   final formKey = GlobalKey<FormState>();
   String? radioValue = '';
   final textController1 = TextEditingController();
@@ -24,6 +26,8 @@ class _ReportState extends State<Report> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+
+
         elevation: 0,
         title: Text(
           'Report a Pet',
@@ -36,13 +40,15 @@ class _ReportState extends State<Report> {
         systemOverlayStyle: const SystemUiOverlayStyle(
             statusBarIconBrightness: Brightness.dark,
             statusBarColor: Colors.white),
-        leading: Container(
-            margin: const EdgeInsets.only(top: 7).r,
-            child: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.arrow_back,
-                ))),
+        // leading: Container(
+        //     margin: const EdgeInsets.only(top: 7).r,
+        //     child: IconButton(
+        //         onPressed: () {
+        //           Utils.backWidget(context);
+        //         },
+        //         icon: const Icon(
+        //           Icons.arrow_back,
+        //         ))),
         iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: Container(

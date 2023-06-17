@@ -7,8 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:meaw/components/components.dart';
 import 'package:meaw/components/constants.dart';
-import 'package:meaw/getPosts/getCubit/getCubit.dart';
-import 'package:meaw/getPosts/getCubit/getStates.dart';
+
 import 'package:meaw/yousef/screen/pages/orderdone.dart';
 import 'package:meaw/yousef/screen/pages/services/constants.dart';
 import 'package:meaw/yousef/screen/payment/payment_cash/orderModel.dart';
@@ -60,7 +59,7 @@ class OrderSummary extends StatelessWidget {
                       children: [
                         Text(
                           'Order Id: ',
-                          style: TextStyle(fontSize: 20.sp, color: KColorPrimary),
+                          style: TextStyle(fontSize: 20.sp, color: Color(0xffA35638)),
                         ),
                         Text(
                           '152432859510',
@@ -81,7 +80,7 @@ class OrderSummary extends StatelessWidget {
                             children: [
                               const Text(
                                 'Sub Total',
-                                style: TextStyle(color: KColorPrimary),
+                                style: TextStyle(color: Color(0xffA35638)),
                               ),
                               Expanded(child: Container()),
                                Text('${price} EGP')
@@ -94,7 +93,7 @@ class OrderSummary extends StatelessWidget {
                             children: [
                               const Text(
                                 'Shipping',
-                                style: TextStyle(color: KColorPrimary),
+                                style: TextStyle(color: Color(0xffA35638)),
                               ),
                               Expanded(child: Container()),
 
@@ -108,7 +107,7 @@ class OrderSummary extends StatelessWidget {
                             children: [
                               const Text(
                                 'Total',
-                                style: TextStyle(color: KColorPrimary),
+                                style: TextStyle(color: Color(0xffA35638)),
                               ),
                               Expanded(child: Container()),
                                Text('${priceCompute()} EGP')
@@ -124,7 +123,7 @@ class OrderSummary extends StatelessWidget {
                         width: double.infinity,
                         child: Text(
                           'Info',
-                          style: TextStyle(color: KColorPrimary, fontSize: 22.sp),
+                          style: TextStyle(color: Color(0xffA35638), fontSize: 22.sp),
                           textAlign: TextAlign.start,
                         )),
                     Container(
@@ -186,7 +185,7 @@ class OrderSummary extends StatelessWidget {
                         width: double.infinity,
                         child: Text(
                           'Delivery method',
-                          style: TextStyle(color: KColorPrimary, fontSize: 22.sp),
+                          style: TextStyle(color: Color(0xffA35638), fontSize: 22.sp),
                           textAlign: TextAlign.start,
                         )),
                     Container(
@@ -222,7 +221,7 @@ class OrderSummary extends StatelessWidget {
                         margin: const EdgeInsets.only(left: 20, right: 20, top: 20).r,
                         child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: KColorPrimary,
+                                backgroundColor: Color(0xffA35638),
                                 padding: const EdgeInsets.symmetric(vertical: 15)),
                             onPressed: () async{
                               FirebaseFirestore firestoreInstance = FirebaseFirestore.instance;

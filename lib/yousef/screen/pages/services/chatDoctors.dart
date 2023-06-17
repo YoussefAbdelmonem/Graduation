@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meaw/chat/chat_screen.dart';
 
 import '../ChatWithDoc.dart';
 
@@ -20,7 +21,7 @@ class ChatDoctors extends StatelessWidget {
       onTap: () {
         text == 'Dr. Mohammed'
             ? Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return const ChatWithDoc();
+                return  ChatPage();
               }))
             : null;
       },

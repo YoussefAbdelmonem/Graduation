@@ -47,7 +47,7 @@ class DioHelper {
     _dio.options.headers={
       "Content-Type" : "multipart/form-data"
     };
-FormData formData = new FormData.fromMap({
+FormData formData =  FormData.fromMap({
   'wavfile':await MultipartFile.fromFile(filePath,
       filename: fileName,
       contentType: MediaType("audio","wav")

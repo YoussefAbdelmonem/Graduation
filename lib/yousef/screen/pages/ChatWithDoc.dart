@@ -106,7 +106,7 @@ class ChatWithDoc extends StatelessWidget {
                       ),
                       Column(
                         children: [
-                          Image.asset('assets/images/img_6.png'),
+                          Image.asset('assets/images/img_1.png'),
                           const Text(
                             '14:12',
                             style: TextStyle(color: KChatTime),
@@ -145,7 +145,7 @@ class ChatWithDoc extends StatelessWidget {
                         vertical: 14),
                     Column(
                       children: [
-                        Image.asset('assets/images/img_6.png'),
+                        Image.asset('assets/images/img_5.png'),
                         const Text(
                           '14:23',
                           style: TextStyle(color: KChatTime),
