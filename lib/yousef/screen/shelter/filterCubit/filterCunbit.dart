@@ -22,9 +22,9 @@ var gender;
     ischeckedSmall = newbool;
     emit(checkChangeSmallSuccessState());
   }
-  bool? ischeckedMedium = false;
+  bool? isCheckedMedium = false;
   void onChangeCheckMedium(bool newbool){
-    ischeckedMedium = newbool;
+    isCheckedMedium = newbool;
     emit(checkChangeMediumSuccessState());
   }
   bool? ischeckedLarge = false;

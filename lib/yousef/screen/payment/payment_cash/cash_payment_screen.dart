@@ -49,7 +49,7 @@ class CashPaymentScreen extends StatelessWidget {
                     const Spacer(),
                     TextWidget(
                       title: "Cash Payment",
-                      fontSize: 26.sp,
+                      fontSize: 24.sp,
                       fontWeight: FontWeight.w500,
                     ),
                     const Spacer(),
@@ -107,7 +107,8 @@ class CashPaymentScreen extends StatelessWidget {
                   ),
                   ButtonWidget(
                     title: "Submit",
-                    radius: 1,
+                    radius: 6,
+                    // fontSize: 24.sp,
                     width: 46.w,
                     onTap: () async {
                       FirebaseFirestore firestoreInstance = FirebaseFirestore.instance;

@@ -20,7 +20,7 @@ class PlacesWebservices {
         Statics.suggestionsBaseUrl,
         queryParameters: {
           'input': place,
-          'types': 'address',
+          'types': 'hospital',
           'components': 'country:eg',
           'key': Statics.googleAPIKey,
           'sessiontoken': sessionToken

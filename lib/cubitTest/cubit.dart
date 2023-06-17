@@ -28,7 +28,7 @@ class LoginCubit extends Cubit<LoginStates>{
   //   emit(ChangeState());
   // }
   //User user;
-  UserModel? model;
+  UserModelDymmy? model;
  Future <void> userLogin({
     required String email,
     required String password,
@@ -42,7 +42,7 @@ class LoginCubit extends Cubit<LoginStates>{
       print(value.user);
       print('ok');
      // user = User.fromJson(value.data);
-       model= UserModel(uid: value.user!.uid);
+       model= UserModelDymmy(uid: value.user!.uid);
        if (model!=null){
          print(model!.uid);
        }
@@ -63,7 +63,7 @@ class LoginCubit extends Cubit<LoginStates>{
    if (_auth.currentUser==null){
      print('null');
    }else{
-     model= UserModel(uid:_auth.currentUser!.uid);
+     model= UserModelDymmy(uid:_auth.currentUser!.uid);
      if (model!=null){
        print(model!.uid);
      }

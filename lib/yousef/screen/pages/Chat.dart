@@ -30,36 +30,36 @@ int selected_index=3;
         trailing: '12:00',
         subtext: 'What is the problem?',
         text: 'Dr. Mohammed'),
-    ChatDoctors(
-        img: 'assets/images/img_2.png',
-        trailing: '12:00',
-        subtext: 'The cat needs care',
-        text: 'Dr. Salwa'),
-    ChatDoctors(
-        img: 'assets/images/img_3.png',
-        trailing: '06:00',
-        subtext: 'The cat is in good condition',
-        text: 'Dr. Nader'),
-    ChatDoctors(
-        img: 'assets/images/img_4.png',
-        trailing: '11:00',
-        subtext: 'Thanks for your help',
-        text: 'Dr. Ali'),
-  /*  ChatDoctors(
-        img: 'assets/images/img_1.png',
-        trailing: '11:30',
-        subtext: 'The cat is in bad condition ',
-        text: 'Dr. Mohammed'),
-    ChatDoctors(
-        img: 'assets/images/img_3.png',
-        trailing: '10:20',
-        subtext: 'Thanks a lot ',
-        text: 'Dr. Nader'),*/
-    ChatDoctors(
-        img: 'assets/images/img_2.png',
-        trailing: '10:00',
-        subtext: 'Ok',
-        text: 'Dr. Salwa'),
+    // ChatDoctors(
+    //     img: 'assets/images/img_2.png',
+    //     trailing: '12:00',
+    //     subtext: 'The cat needs care',
+    //     text: 'Dr. Salwa'),
+  //   ChatDoctors(
+  //       img: 'assets/images/img_3.png',
+  //       trailing: '06:00',
+  //       subtext: 'The cat is in good condition',
+  //       text: 'Dr. Nader'),
+  //   ChatDoctors(
+  //       img: 'assets/images/img_4.png',
+  //       trailing: '11:00',
+  //       subtext: 'Thanks for your help',
+  //       text: 'Dr. Ali'),
+  // /*  ChatDoctors(
+  //       img: 'assets/images/img_1.png',
+  //       trailing: '11:30',
+  //       subtext: 'The cat is in bad condition ',
+  //       text: 'Dr. Mohammed'),
+  //   ChatDoctors(
+  //       img: 'assets/images/img_3.png',
+  //       trailing: '10:20',
+  //       subtext: 'Thanks a lot ',
+  //       text: 'Dr. Nader'),*/
+  //   ChatDoctors(
+  //       img: 'assets/images/img_2.png',
+  //       trailing: '10:00',
+  //       subtext: 'Ok',
+  //       text: 'Dr. Salwa'),
   ];
 
   List listOfCalls = [
@@ -77,90 +77,90 @@ int selected_index=3;
       ]),
       'subText': 'incoming . Monday'
     },
-    {
-      'img': 'assets/images/img_2.png',
-      'text': 'Dr. Salwa',
-      'icon': Stack(children: [
-        Container(
-            margin: const EdgeInsets.only(top: 3, right: 5),
-            child: Image.asset('assets/images/redPhone.png')),
-        Container(
-          margin: const EdgeInsets.only(left: 8, top: 6),
-          child: Image.asset('assets/images/wrong.png'),
-        ),
-      ]),
-      'subText': 'Missed . saturday'
-    },
-    {
-      'img': 'assets/images/img_3.png',
-      'text': 'Dr. Nader',
-      'icon': Stack(children: [
-        Container(
-            margin: const EdgeInsets.only(top: 3, right: 5),
-            child: Image.asset('assets/images/greenPhone.png')),
-        Container(
-          margin: const EdgeInsets.only(left: 8, top: 4),
-          child: Image.asset('assets/images/greenOutLog.png'),
-        ),
-      ]),
-      'subText': 'Outgoing . Friday'
-    },
-    {
-      'img': 'assets/images/img_4.png',
-      'text': 'Dr. Ali',
-      'icon': Stack(children: [
-        Container(
-            margin: const EdgeInsets.only(top: 3, right: 5),
-            child: Image.asset('assets/images/greenPhone.png')),
-        Container(
-          margin: const EdgeInsets.only(left: 8),
-          child: Image.asset('assets/images/greenArrow.png'),
-        ),
-      ]),
-      'subText': 'incoming . Monday'
-    },
-    /*{
-      'img': 'assets/images/img_1.png',
-      'text': 'Dr. Mohammed',
-      'icon': Stack(children: [
-        Container(
-            margin: const EdgeInsets.only(top: 3, right: 5),
-            child: Image.asset('assets/images/greenPhone.png')),
-        Container(
-          margin: const EdgeInsets.only(left: 8),
-          child: Image.asset('assets/images/greenArrow.png'),
-        ),
-      ]),
-      'subText': 'incoming . Monday'
-    },*/
-   /* {
-      'img': 'assets/images/img_3.png',
-      'text': 'Dr. Nader',
-      'icon': Stack(children: [
-        Container(
-            margin: const EdgeInsets.only(top: 3, right: 5),
-            child: Image.asset('assets/images/greenPhone.png')),
-        Container(
-          margin: const EdgeInsets.only(left: 8, top: 4),
-          child: Image.asset('assets/images/greenOutLog.png'),
-        ),
-      ]),
-      'subText': 'Outgoing . Sunday'
-    },*/
-    {
-      'img': 'assets/images/img_2.png',
-      'text': 'Dr. Salwa',
-      'icon': Stack(children: [
-        Container(
-            margin: const EdgeInsets.only(top: 3, right: 5),
-            child: Image.asset('assets/images/redPhone.png')),
-        Container(
-          margin: const EdgeInsets.only(left: 8, top: 6),
-          child: Image.asset('assets/images/wrong.png'),
-        ),
-      ]),
-      'subText': 'Missed . saturday'
-    }
+   //  {
+   //    'img': 'assets/images/img_2.png',
+   //    'text': 'Dr. Salwa',
+   //    'icon': Stack(children: [
+   //      Container(
+   //          margin: const EdgeInsets.only(top: 3, right: 5),
+   //          child: Image.asset('assets/images/redPhone.png')),
+   //      Container(
+   //        margin: const EdgeInsets.only(left: 8, top: 6),
+   //        child: Image.asset('assets/images/wrong.png'),
+   //      ),
+   //    ]),
+   //    'subText': 'Missed . saturday'
+   //  },
+   //  {
+   //    'img': 'assets/images/img_3.png',
+   //    'text': 'Dr. Nader',
+   //    'icon': Stack(children: [
+   //      Container(
+   //          margin: const EdgeInsets.only(top: 3, right: 5),
+   //          child: Image.asset('assets/images/greenPhone.png')),
+   //      Container(
+   //        margin: const EdgeInsets.only(left: 8, top: 4),
+   //        child: Image.asset('assets/images/greenOutLog.png'),
+   //      ),
+   //    ]),
+   //    'subText': 'Outgoing . Friday'
+   //  },
+   //  {
+   //    'img': 'assets/images/img_4.png',
+   //    'text': 'Dr. Ali',
+   //    'icon': Stack(children: [
+   //      Container(
+   //          margin: const EdgeInsets.only(top: 3, right: 5),
+   //          child: Image.asset('assets/images/greenPhone.png')),
+   //      Container(
+   //        margin: const EdgeInsets.only(left: 8),
+   //        child: Image.asset('assets/images/greenArrow.png'),
+   //      ),
+   //    ]),
+   //    'subText': 'incoming . Monday'
+   //  },
+   //  /*{
+   //    'img': 'assets/images/img_1.png',
+   //    'text': 'Dr. Mohammed',
+   //    'icon': Stack(children: [
+   //      Container(
+   //          margin: const EdgeInsets.only(top: 3, right: 5),
+   //          child: Image.asset('assets/images/greenPhone.png')),
+   //      Container(
+   //        margin: const EdgeInsets.only(left: 8),
+   //        child: Image.asset('assets/images/greenArrow.png'),
+   //      ),
+   //    ]),
+   //    'subText': 'incoming . Monday'
+   //  },*/
+   // /* {
+   //    'img': 'assets/images/img_3.png',
+   //    'text': 'Dr. Nader',
+   //    'icon': Stack(children: [
+   //      Container(
+   //          margin: const EdgeInsets.only(top: 3, right: 5),
+   //          child: Image.asset('assets/images/greenPhone.png')),
+   //      Container(
+   //        margin: const EdgeInsets.only(left: 8, top: 4),
+   //        child: Image.asset('assets/images/greenOutLog.png'),
+   //      ),
+   //    ]),
+   //    'subText': 'Outgoing . Sunday'
+   //  },*/
+   //  {
+   //    'img': 'assets/images/img_2.png',
+   //    'text': 'Dr. Salwa',
+   //    'icon': Stack(children: [
+   //      Container(
+   //          margin: const EdgeInsets.only(top: 3, right: 5),
+   //          child: Image.asset('assets/images/redPhone.png')),
+   //      Container(
+   //        margin: const EdgeInsets.only(left: 8, top: 6),
+   //        child: Image.asset('assets/images/wrong.png'),
+   //      ),
+   //    ]),
+   //    'subText': 'Missed . saturday'
+   //  }
   ];
 
   ///Tabs
@@ -170,7 +170,7 @@ int selected_index=3;
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        drawer: const Drawer(),
+        // drawer: const Drawer(),
         appBar: AppBar(
           systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarIconBrightness: Brightness.dark,
@@ -270,25 +270,7 @@ int selected_index=3;
                 ],
               ),
             ),
-            Container(
-                color: Colors.white,
-                child: ListView.separated(
-                  itemBuilder: (context, i) {
-                    return ChatBodyDoctor(
-                        icon: listOfCalls[i]['icon'],
-                        img: listOfCalls[i]['img'],
-                        subtext: listOfCalls[i]['subText'],
-                        text: listOfCalls[i]['text']);
-                  },
-                  separatorBuilder: (BuildContext context, int index) {
-                    return  Divider(
-                      height: 40.h,
-                      thickness: 0.5,
-                      color: KColorPrimary,
-                    );
-                  },
-                  itemCount: listOfCalls.length,
-                ))
+            Container()
           ],
         ),
 

@@ -93,7 +93,7 @@ class FavoritesScreen extends StatelessWidget {
                                         width: double.infinity,
                                       ),
                                       Positioned(
-                                        left: 90,
+                                        left: 110.w,
                                         top: 2,
                                         child:  IconButton(onPressed: ()
                                         async {
@@ -118,13 +118,13 @@ class FavoritesScreen extends StatelessWidget {
                                   ),
                                   Padding(
                                     padding:  EdgeInsets.only(
-                                      left: 10.w,
+                                      left: 12.w,
 
                                     ),
                                     child: TextWidget(
                                       title: data?['name'] ?? '',
                                       fontWeight: FontWeight.w500,
-                                      fontSize: 16.sp,
+                                      fontSize: 20.sp,
                                     ),
                                   ),
                                   SizedBox(
@@ -138,9 +138,15 @@ class FavoritesScreen extends StatelessWidget {
                                     child: Row(
                                       children: [
                                         Container(
-                                          color: mainColor,
+
+                                          decoration: BoxDecoration(
+                                            color: mainColor,
+                                            borderRadius: BorderRadius.circular(4.r),
+                                          ),
                                           height: 20.h,
                                           width: 60.w,
+
+
 
                                           /// the price of the product
                                           child: Center(

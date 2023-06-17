@@ -1,4 +1,4 @@
-class UserModel{
+class UserModelDymmy{
   final String uid;
-  UserModel({required this.uid});
+  UserModelDymmy({required this.uid});
 }

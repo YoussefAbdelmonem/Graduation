@@ -5,7 +5,9 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meaw/model.dart';
+import 'package:meaw/models/userModel.dart';
 import 'package:meaw/yousef/constant/colors.dart';
+import 'package:meaw/yousef/data/models/add_shelter.dart';
 import 'package:meaw/yousef/utilis/validations.dart';
 import 'package:meaw/yousef/widgets/text_form_field.dart';
 
@@ -20,6 +22,11 @@ class AddProduct extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final name = TextEditingController(),
       price = TextEditingController(),
+  ///////
+      age = TextEditingController(),
+      gender = TextEditingController(),
+      health = TextEditingController(),
+      weight = TextEditingController(),
       phone = TextEditingController();
   String? image;
   File? pickedImage;
@@ -68,6 +75,34 @@ class AddProduct extends StatelessWidget {
                         validate: Validation().defaultValidation,
                         controller: price,
                       ),
+                      AddProductTextField(
+                        textDirection: TextDirection.rtl,
+                        label: 'العمر',
+                        keyboardType: TextInputType.number,
+                        validate: Validation().defaultValidation,
+                        controller: age,
+                      ),
+                      AddProductTextField(
+                        textDirection: TextDirection.rtl,
+                        label: 'النوع',
+                        keyboardType: TextInputType.number,
+                        validate: Validation().defaultValidation,
+                        controller: gender,
+                      ),
+                      AddProductTextField(
+                        textDirection: TextDirection.rtl,
+                        label: 'الصحه',
+                        keyboardType: TextInputType.number,
+                        validate: Validation().defaultValidation,
+                        controller: health,
+                      ),
+                      AddProductTextField(
+                        textDirection: TextDirection.rtl,
+                        label: 'الوزن',
+                        keyboardType: TextInputType.number,
+                        validate: Validation().defaultValidation,
+                        controller: weight,
+                      ),
 
 
                       const SizedBox(
@@ -97,13 +132,23 @@ class AddProduct extends StatelessWidget {
                                 // e.g, e.code == 'canceled'
                               }
 
-                              AddProductModel productModel =
-                              AddProductModel(
+                              // AddProductModel productModel =
+                              // AddProductModel(
+                              //   name: name.text,
+                              //   price: price.text,
+                              //   cart: false,
+                              //   favorite: false,
+                              //   image: image,
+                              // );
+                          AddPet addPet =    AddPet(
                                 name: name.text,
                                 price: price.text,
-                                cart: false,
-                                favorite: false,
+                                age: age.text,
+                                gender: gender.text,
+                                health: health.text,
+                                weight: weight.text,
                                 image: image,
+
                               );
                               UserModel user ;
                               ///
@@ -113,12 +158,14 @@ class AddProduct extends StatelessWidget {
                               .collection("accessories")
 
                               ///TODO .id and then pass the user id to  add product
-                                  .add(productModel.toMap());
+                                  .add(addPet.toMap());
 
 
                               name.clear();
                               price.clear();
                               phone.clear();
+                              weight.clear();
+
                               image = null;
                               pickedImage = pickedImage;
                             }

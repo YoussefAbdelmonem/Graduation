@@ -10,6 +10,7 @@ import 'package:meaw/yousef/screen/shelter/filterCubit/filterCunbit.dart';
 import 'package:meaw/yousef/screen/shelter/filterCubit/filterStates.dart';
 import 'package:meaw/yousef/screen/shelter/resultPet.dart';
 import 'package:meaw/yousef/screen/shelter/shelter_screen.dart';
+import 'package:meaw/yousef/utilis/urilis.dart';
 class BuildFilter extends StatefulWidget {
   BuildFilter({required this.postModelsList}) : super();
   List<PostModel> postModelsList;
@@ -42,12 +43,13 @@ class _BuildFilterState extends State<BuildFilter> {
         //  margin: EdgeInsets.only(bottom: MediaQuery.of(context).size.height*0.1),
           color: Colors.white,
           child: Padding(
-            padding: const EdgeInsets.only(left: 10.0,right: 10,top: 20,),
+            padding: const EdgeInsets.only(left: 14.0,right: 10,top: 20,bottom: 10),
             child: ListView(
                shrinkWrap: true,
                  physics: BouncingScrollPhysics(),
                  controller:controller ,
                 children: [
+                  16.ph,
                   Row(
                     children: [
                       Text('Filters',style: TextStyle(
@@ -259,7 +261,7 @@ class _BuildFilterState extends State<BuildFilter> {
                       Spacer(),
                       Checkbox(
                           activeColor: defaultColor,
-                          value:FilterCubit.get(context).ischeckedMedium ,
+                          value:FilterCubit.get(context).isCheckedMedium ,
                           onChanged:(newbool)
                           {
                             // setState(() {
@@ -315,7 +317,7 @@ class _BuildFilterState extends State<BuildFilter> {
                             FilterCubit.get(context).gender='';
                             FilterCubit.get(context).category='';
                             FilterCubit.get(context).ischeckedLarge=false;
-                            FilterCubit.get(context).ischeckedMedium=false;
+                            FilterCubit.get(context).isCheckedMedium=false;
                             FilterCubit.get(context).ischeckedSmall=false;
                             FilterCubit.get(context).ischeckedFemale=false;
                             FilterCubit.get(context).ischeckedMale=false;

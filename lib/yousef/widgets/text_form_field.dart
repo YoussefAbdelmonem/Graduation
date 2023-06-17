@@ -30,7 +30,7 @@ Widget defaultTextFormField({
 
           suffixIcon: IconButton(icon: Icon(suffix), onPressed: onSuffixPressed,color: mainColor,),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(4),
             borderSide: const BorderSide(color: mainColor),
           ),
           focusedBorder: OutlineInputBorder(

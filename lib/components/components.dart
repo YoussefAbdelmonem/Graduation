@@ -143,7 +143,7 @@ Widget defaultButton({
   double width = double.infinity, // give it default width but can edit later
   Color background = Colors.blue,
   bool isUpperCase = true,
-  double radius = 5.0,
+  double radius = 10.0,
   required String text,
   required Function()? onPressed,
 }) =>

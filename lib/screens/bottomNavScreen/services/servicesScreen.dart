@@ -50,7 +50,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
    List<ArticleModel> articleModel = [];
    List<ArticleModel> articleModelResult = [];
 
-   UserModel? userModel;
+   UserModelDymmy? userModel;
    @override
   void initState() {
     // TODO: implement initState
@@ -189,7 +189,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
                                   color: button1? secondaryButtonColor:defaultButtonColor,
                                   borderRadius: BorderRadius.circular(5),
                                 ),
-                                child: Image.asset('assets/images/dis.png',color: button1? defaultButtonColor:secondaryButtonColor,),
+                                child: Image.asset('assets/images/diseses.png',color: button1? defaultButtonColor:secondaryButtonColor,),
                               ),
                               const SizedBox(height: 8,),
                                Text('Diseases',
@@ -222,7 +222,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
                                   color: button2? defaultColor:defaultButtonColor,
                                   borderRadius: BorderRadius.circular(5),
                                 ),
-                                child: Image.asset('assets/images/care.png'),
+                                child: Image.asset('assets/images/chat/care.png'),
                               ),
                               const SizedBox(height: 8,),
                                Text('Care',
