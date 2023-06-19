@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:meaw/components/colors.dart';
 import 'package:meaw/components/components.dart';
+import 'package:meaw/components/constants.dart';
 import 'package:meaw/components/local/shared_pref.dart';
 import 'package:meaw/cubit/animalCubit.dart';
 import 'package:meaw/cubit/animalStates.dart';
@@ -12,6 +13,7 @@ import 'package:meaw/screens/forgetPass/forgetPassword.dart';
 import 'package:meaw/screens/homeScreen/HomeScreen.dart';
 import 'package:meaw/screens/registerScreen/registerScreen.dart';
 import 'package:meaw/style/icon_broken.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginScreen extends StatelessWidget {
    LoginScreen({Key? key}) : super(key: key);
@@ -27,6 +29,7 @@ class LoginScreen extends StatelessWidget {
         if(state is CatSignInSuccessState)
         {
          // CacheHelper.saveData(key: 'userType',);
+          //CacheHelper.saveData(key:'userTypee', value: value)
           CacheHelper.saveData(
               key: 'uId',
               value: state.uId
@@ -47,6 +50,7 @@ class LoginScreen extends StatelessWidget {
           );
         }
         else if(state is CatLoginFaceSuccessState){
+         // CacheHelper.saveData(key:'userTypee', value: value)
           CacheHelper.saveData(
               key: 'uId',
               value: state.uId
@@ -59,6 +63,7 @@ class LoginScreen extends StatelessWidget {
             });
           }
         else if(state is CatLoginGoogleSuccessState){
+         // CacheHelper.saveData(key:'userTypee', value: value)
           CacheHelper.saveData(
               key: 'uId',
               value: state.uGoogleId
@@ -73,10 +78,6 @@ class LoginScreen extends StatelessWidget {
       },
       builder: (context,state){
         var cubit = CatCubit.get(context);
-
-    // if(cubit.ischecked==true){
-    //   emailController.text=CacheHelper.getData(key: 'email')==null?'':CacheHelper.getData(key: 'email');
-    // }
             return Scaffold(
           backgroundColor: Colors.white,
           body: Center(
@@ -89,7 +90,7 @@ class LoginScreen extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
                       Image.asset('assets/images/cat.png',),
@@ -234,7 +235,8 @@ class LoginScreen extends StatelessWidget {
                             builder: (BuildContext context)=>GestureDetector(
                                 onTap: (){
                                   cubit.login();
-                                  //cubit.getMyData();
+                                  cubit.getMyData();
+
                                 },
                                 child: Image.asset('assets/images/facebook.png',width: 50,)),
                             fallback: (BuildContext context)=>const Center(child: CircularProgressIndicator(color: defaultColor,),),
@@ -253,19 +255,22 @@ class LoginScreen extends StatelessWidget {
   }
 
    void handleLogin(var cubit)async{
+    print("Logging in");
    if(formKey.currentState!.validate())
    {
    if(CacheHelper.getData(key: 'email') !=null){
    cubit.userLogin(email: CacheHelper.getData(key: 'email'), password:CacheHelper.getData(key: 'password'));
    await cubit.getMyData();
    }else {
+     print("entered else");
     await cubit.userLogin(email: emailController.text,
         password: passController.text);
    cubit.rememberMe(
        emailController.text, passController.text,
        cubit.ischecked1);
-      await cubit.getMyData();
-    print('amira'+ cubit.userData!.profileImage.toString());
+    uId = FirebaseAuth.instance.currentUser!.uid;
+    CacheHelper.saveData(key: "uId", value: uId);
+    await cubit.getMyData();
    }
    }
    }

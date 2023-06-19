@@ -36,26 +36,30 @@ class _TranslationScreenState extends State<TranslationScreen> {
       ..iosEncoder = IosEncoder.kAudioFormatMPEG4AAC
       ..sampleRate = 16000;
   }
-  double boxHeight = 250;
-  double boxWidth = 250;
+  // double boxHeight = 250;
+  // double boxWidth = 250;
   void expandBox(){
-    setState(() {
-      if (boxHeight == 300) {
-        boxHeight = 250;
-        boxWidth = 250;
-      } else {
-        boxHeight = 300;
-        boxWidth = 300;
-      }
-    });
-
+    // setState(() {
+    //   if (boxHeight == 300) {
+    //     boxHeight = 250;
+    //     boxWidth = 250;
+    //   } else {
+    //     boxHeight = 300;
+    //     boxWidth = 300;
+    //   }
+    // });
+    TranslateCubit.get(context).animate(
+        //boxHeight, boxWidth
+    );
   }
   void opposeBox(){
-    setState(() {
-      boxHeight=100;
-      boxWidth=100;
-    });
-
+    // setState(() {
+    //   boxHeight=100;
+    //   boxWidth=100;
+    // });
+    TranslateCubit.get(context).animateSmallen(
+        //boxHeight, boxWidth
+    );
   }
 var num =1;
   int change(){
@@ -109,7 +113,9 @@ var num =1;
                           Image.asset('assets/images/meow.png',height: 400,),
                           if(audio==0)
                            SizedBox(height: 50,),
-                          //if(audio==0&&userType==3)
+                          if(audio==0
+                              &&userType==3
+                          )
                           TextButton(
                             onPressed: ()async{
                               setState(() {
@@ -123,7 +129,7 @@ var num =1;
                                 await record.start(
                                   path:path+'/myFile.wav' ,
                                   encoder: AudioEncoder.wav, // by default
-                                  bitRate: 128000, // by default//كم بيت ف الثانية
+                                  bitRate: 128000,
                                 );
                               }
                             },
@@ -137,7 +143,7 @@ var num =1;
                           ),
                         //2
                           if(audio==1)
-                        Image(image: AssetImage("assets/images/catanimatedot.png")),
+                        const Image(image: AssetImage("assets/images/catanimatedot.png")),
                           if(audio==1)
                           Container(
 
@@ -152,21 +158,16 @@ var num =1;
                                       onTap:expandBox ,
                                       child:UnconstrainedBox(
                                         child: AnimatedContainer(
-
-                                          // decoration: BoxDecoration(
-                                          //     //color: Colors.green,
-                                          //   image:DecorationImage(image: AssetImage('assets/images/Rectangle 150.png',),)
-                                          // ),
-                                          height: boxHeight,
-                                          width: boxWidth,
-                                          duration: Duration(seconds: 1,),
-                                          child: Image(image:AssetImage('assets/images/Rectangle 150.png',) ,),
+                                          height: TranslateCubit.get(context).boxHeight,
+                                          width: TranslateCubit.get(context).boxWidth,
+                                          duration: const Duration(seconds: 1,),
+                                          child: const Image(image:AssetImage('assets/images/Rectangle 150.png',) ,),
                                          // child:Image(image: AssetImage("assets/images/Rectangle 150.png"),) ,
                                         ),
                                       )
                                     ),
                                   ),
-                                  Positioned(
+                                  const Positioned(
                                     left: 60,
                                       top: 15,
                                       child: Image(image: AssetImage("assets/images/catanimate.png"))),
@@ -182,12 +183,8 @@ var num =1;
                                 await record.stop();
                           Directory tempDir = await getApplicationDocumentsDirectory();
                               String path = tempDir.path;
-                              // AudioPlayer player=AudioPlayer();
-                              // player.play(DeviceFileSource(path+'/myFile.wav'));
                               File f=File(path+'/myFile.wav');
-                              // _writeFileToStorage();
                              _createFile(f.path);
-                              print("file path"+f.path.toString());
                               TranslateCubit.get(context).translate(
                                   fileName:"myFile" ,filePath: f.path.toString(),
                               );
@@ -203,7 +200,7 @@ var num =1;
                           ),
                           //3
                           if(audio==2)
-                          Image(image: AssetImage('assets/images/Group 64.png')),
+                          const Image(image: AssetImage('assets/images/Group 64.png')),
                           if(audio==2)
                             SizedBox(height: 30,),
                           if(audio==2)
@@ -211,7 +208,7 @@ var num =1;
                              padding: const EdgeInsets.only(right: 15.0,),
                              child: Row(
                                mainAxisAlignment: MainAxisAlignment.end,
-                               children: [
+                               children: const [
                                  CircleAvatar(
                                    child: Image(image: AssetImage('assets/images/Ellipse 35.png')),
                                  ),
@@ -227,7 +224,7 @@ var num =1;
                                   width: 180,
                                   height: 40,
                                   decoration: BoxDecoration(
-                                    color:Color.fromRGBO(244,231,189, 1),
+                                    color:const Color.fromRGBO(244,231,189, 1),
                                     borderRadius: BorderRadius.circular(4)
                                   ),
                                   child: Center(child: Text(' ${transModel!.translation.toString()}')),

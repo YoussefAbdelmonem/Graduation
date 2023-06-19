@@ -11,5 +11,7 @@ class PostUpdateErrorState extends GetStates{}
 class UploadPostImageErrorState extends GetStates{}
 class PostGetDataSuccessState extends GetStates{}
 class PostUpdateLoadingState extends GetStates{}
+class DataGetUserSuccessState extends GetStates{}
+
 
 

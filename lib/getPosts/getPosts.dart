@@ -78,7 +78,7 @@ class _GetPostsState extends State<GetPosts> {
                               child: ListView.separated(
                                   shrinkWrap: true,
                                   itemBuilder:(context,index)=>buildPost(postsModel,index),
-                                  separatorBuilder:(context,index)=>SizedBox(
+                                  separatorBuilder:(context,index)=>const SizedBox(
                                     height: 12,
                                   ) ,
                                   itemCount: postsModel.length

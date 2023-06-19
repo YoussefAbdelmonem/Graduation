@@ -338,6 +338,7 @@ class _BuildFilterState extends State<BuildFilter> {
                             borderRadius: BorderRadius.circular(7),
                           ),
                           child:TextButton(onPressed:(){
+                            print('first');
                             List<String> resultgender = [];
                             List<String> resultage = [];
                             List<String> resultweight = [];

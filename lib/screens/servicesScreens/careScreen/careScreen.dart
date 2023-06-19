@@ -60,8 +60,6 @@ class _CareScreenState extends State<CareScreen> {
                                     views: careList[index].views!,
                                   type: careList[index].type!
                                 );
-                                print('yuuii'+careList[index].id!);
-                                print('yuuii'+careList[index].views!.toString());
                                 navigateTo(context, Article(
                                   body: careList[index].body!,
                                   title:careList[index].title! ,
@@ -72,7 +70,7 @@ class _CareScreenState extends State<CareScreen> {
                               },
                               image: 'assets/images/G-removebg-preview 1 (1).png',
                             ),
-                            separatorBuilder: (context,index)=>SizedBox(
+                            separatorBuilder: (context,index)=>const SizedBox(
                               height: 15,
                             ),
                             itemCount: careList.length

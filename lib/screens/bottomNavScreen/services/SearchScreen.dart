@@ -27,40 +27,12 @@ class _SearchScreenState extends State<SearchScreen> {
           articleAppBaar(context: context, label: 'Articles', width:  100.h
 
           ),
-          // Row(
-          //   children: [
-          //     InkWell(
-          //       onTap: () {
-          //         //navigateAndFinish(context, screen);
-          //          Utils.backWidget(context);
-          //       },
-          //       child: Image(
-          //           image: AssetImage('assets/images/arrowleft.png')),
-          //     ),
-          //     SizedBox(
-          //       width: 100.h,
-          //     ),
-          //     Text(
-          //       'Articles',
-          //       style: GoogleFonts.roboto(
-          //           fontSize: 26,
-          //           color: Colors.black,
-          //           fontWeight: FontWeight.w500),
-          //     ),
-          //   ],
-          // ),
-          // appBaar(
-          //     context: context,
-          //     screen: ServicesScreen(),
-          //     label:'Articles' ,
-          //     width: 100.h
-          // ),
           SizedBox(
             height: 30.h,
           ),
           ListView.separated(
           shrinkWrap: true,
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           itemBuilder: (context,index)=>  buildContainer(
             title:'${widget.articleModel[index].title}',
             onPressed:(){
@@ -72,8 +44,6 @@ class _SearchScreenState extends State<SearchScreen> {
                   views: widget.articleModel[index].views!,
                 type: widget.articleModel[index].type!,
               );
-              print('yuuii'+widget.articleModel[index].id!);
-              print('yuuii'+widget.articleModel[index].views!.toString());
               navigateTo(context, Article(
                 body: widget.articleModel[index].body!,
                 title:widget.articleModel[index].title! ,
@@ -84,10 +54,10 @@ class _SearchScreenState extends State<SearchScreen> {
             },
             image: 'assets/images/catDiseas.png',
           ),
-          separatorBuilder: (context,index)=>SizedBox(
+          separatorBuilder: (context,index)=>const SizedBox(
             height: 15,
           ),
-          itemCount: resultSet.length
+          itemCount: sArticleModelResults.length
       )
         ],
       ),

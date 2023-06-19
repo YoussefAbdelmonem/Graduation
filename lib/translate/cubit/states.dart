@@ -21,3 +21,5 @@ class RecordTranslateState extends TranslateStates{}
 class RecordTranslateSuccesstate extends TranslateStates{}
 class StopTranslateLoadingState extends TranslateStates{}
 class StopTranslateSuccessState extends TranslateStates{}
+class animateTranslateSuccessState extends TranslateStates{}
+class animateSmallenTranslateSuccessState extends TranslateStates{}

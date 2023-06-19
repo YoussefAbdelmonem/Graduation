@@ -99,9 +99,9 @@ class _AddProductTextFieldState extends State<AddProductTextField> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Directionality(
-        textDirection: widget.textDirection ?? TextDirection.rtl,
+        textDirection: widget.textDirection ?? TextDirection.ltr,
         child: TextFormField(
-            textDirection: widget.textDirection ?? TextDirection.rtl,
+            textDirection: widget.textDirection ?? TextDirection.ltr,
             enabled: widget.enable ?? true,
             onChanged: widget.onChange,
             focusNode: widget.focusNode,

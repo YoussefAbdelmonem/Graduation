@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:meaw/components/components.dart';
+import 'package:meaw/screens/profileScreen/profileScreen.dart';
 
 import '../../../components/constants.dart';
 
@@ -32,7 +34,9 @@ class SettingScreen extends StatelessWidget {
         leading: Container(
             margin: const EdgeInsets.only(top: 7).r,
             child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  navigateTo(context, ProfileScreen());
+                },
                 icon: const Icon(
                   Icons.arrow_back,
                 ))),
@@ -48,7 +52,7 @@ class SettingScreen extends StatelessWidget {
                       child: ListTile(onTap: (){},
                         leading: IconButton(
                             onPressed: () {},
-                            icon: ImageIcon(AssetImage(setting[i]['img']),color: KColorPrimary,)),
+                            icon:Image.asset(setting[i]['img']),color: KColorPrimary,),
                         title:Text(setting[i]['title'],style: TextStyle(fontSize: 18.sp),) ,
                         trailing: IconButton(
                             onPressed: () {},

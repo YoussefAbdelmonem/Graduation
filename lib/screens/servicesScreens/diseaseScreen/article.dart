@@ -36,6 +36,7 @@ class _ArticleState extends State<Article> {
         stream:
         ArticleCubit.get(context).getArticles(),
         builder: (context, snapshot) {
+          print('articlrrrr');
           if (snapshot.hasData) {
 
             for (var doc in snapshot.data!.docs) {

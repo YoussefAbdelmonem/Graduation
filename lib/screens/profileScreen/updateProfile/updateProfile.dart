@@ -74,19 +74,19 @@ class _UpdateProfileState extends State<UpdateProfile> {
                 padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 60,
                     ),
                     Row(
                       children: [
                         InkWell(
                           onTap: () {
-                            navigateTo(context, ProfileScreen());
+                            navigateTo(context, const ProfileScreen());
                           },
-                          child: Image(
+                          child: const Image(
                               image: AssetImage('assets/images/arrowleft.png')),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 70,
                         ),
                         Text(
@@ -98,7 +98,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Stack(
@@ -122,7 +122,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                   onPressed: () {
                                     cubit.getProfileImage();
                                   },
-                                  icon: Image(
+                                  icon: const Image(
                                     image: AssetImage('assets/images/Group-4.png'),
                                     height: 15,
                                   ),
@@ -306,7 +306,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
 
                     Container(
                       width: double.infinity,
-                      decoration: BoxDecoration(),
+                      decoration: const BoxDecoration(),
                       child: DropdownButton<String>(
                         focusColor: Colors.transparent,
                           isExpanded: true,
@@ -356,7 +356,6 @@ class _UpdateProfileState extends State<UpdateProfile> {
     );
 
   }
-
   void handleUpdate(var cubit,var gender) {
     cubit.updateUser(
       name: nameController.text,

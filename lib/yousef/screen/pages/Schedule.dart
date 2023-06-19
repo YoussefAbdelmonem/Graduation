@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:meaw/components/components.dart';
+import 'package:meaw/screens/profileScreen/profileScreen.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../../components/constants.dart';
@@ -46,7 +48,9 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
           leading: Container(
               margin: const EdgeInsets.only(top: 7).r,
               child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    navigateTo(context, ProfileScreen());
+                  },
                   icon: const Icon(
                     Icons.arrow_back,
                   ))),

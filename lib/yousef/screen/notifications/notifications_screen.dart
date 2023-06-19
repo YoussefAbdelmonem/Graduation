@@ -26,7 +26,7 @@ class NotificationScreen extends StatelessWidget {
                   fontSize: 26.sp,
                   fontWeight: FontWeight.w700,
                 ),
-                Spacer(),
+                const Spacer(),
 
 
               ],
@@ -41,7 +41,7 @@ class NotificationScreen extends StatelessWidget {
                   fontSize: 26.sp,
                   fontWeight: FontWeight.w700,
                 ),
-                Spacer(),
+                const Spacer(),
                 TextButton(
                   onPressed: () {},
                   child: TextWidget(

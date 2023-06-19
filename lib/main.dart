@@ -13,6 +13,7 @@ import 'package:meaw/screens/servicesScreens/diseaseScreen/cubit/cubit.dart';
 import 'package:meaw/screens/splashScreen/splashScreen.dart';
 import 'package:meaw/translate/cubit/cubit.dart';
 import 'package:meaw/translate/dio.dart';
+import 'package:meaw/userReport/cubit/reportCubit.dart';
 import 'package:meaw/yousef/constant/colors.dart';
 import 'package:meaw/yousef/screen/shelter/filterCubit/filterCunbit.dart';
 import 'package:meaw/yousef/utilis/theme.dart';
@@ -26,7 +27,7 @@ Future<void> main()async {
   await CacheHelper.init();
   uId = CacheHelper.getData(key: 'uId');
   print('uid${uId}');
-  userType=CacheHelper.getData(key: 'userType');
+  // userType=CacheHelper.getData(key: 'userType');
   print('usertype${userType}');
  // print('idddd'+uId!);
   runApp(const MyApp());
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (BuildContext context)=> CatCubit()..getMyData()
+        BlocProvider(create: (BuildContext context)=> CatCubit()
           // ..getCatData()
         ),
         BlocProvider(create:(BuildContext context)=>LoginCubit()..checkLogin()
@@ -55,6 +56,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (BuildContext context)=> FilterCubit()
         ),
         BlocProvider(create: (BuildContext context)=> TranslateCubit()
+        ),
+        BlocProvider(create: (BuildContext context)=> ReportCubit()
         ),
       ],
       child:ScreenUtilInit(

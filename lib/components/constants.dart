@@ -10,9 +10,13 @@ bool reverse= false;
 var audio=0;
 int? userType;
 List<ArticleModel>careList=[];
-Set<ArticleModel> articleModelResultSet = {};
-Set<String>bodySet = {};
-Set<String> resultSet={};
+List<ArticleModel>diseaseList=[];
+List<ArticleModel> sArticleModelResults=[];
+
+
+// Set<ArticleModel> articleModelResultSet = {};
+// Set<String>bodySet = {};
+// Set<String> resultSet={};
 
 
 const KPrimaryColor=Color(0xff274460);

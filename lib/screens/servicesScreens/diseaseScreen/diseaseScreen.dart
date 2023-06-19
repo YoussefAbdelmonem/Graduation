@@ -17,11 +17,15 @@ class DiseaseScreen extends StatefulWidget {
 }
 
 class _DiseaseScreenState extends State<DiseaseScreen> {
-  List<String> bodyList=[];
-  List<ArticleModel>diseaseList=[];
-  Set<String> bodySet={};
-  Set<ArticleModel> careSet={};
-  Set<ArticleModel>diseaseSet={};
+  // List<String> bodyList=[];
+  // List<ArticleModel>diseaseList=[];
+  // Set<String> bodySet={};
+  // Set<ArticleModel> careSet={};
+  // Set<ArticleModel>diseaseSet={};
+
+  List<ArticleModel> sCareList=[];
+  List<ArticleModel>sDiseaseList=[];
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ArticleCubit,ArticleStates>(
@@ -39,9 +43,18 @@ class _DiseaseScreenState extends State<DiseaseScreen> {
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       List<ArticleModel> articleModel = [];
+
+
                       for (var doc in snapshot.data!.docs) {
                         var data =
                         doc.data() as Map<String, dynamic>;
+
+                        sDiseaseList.clear();
+                        sCareList.clear();
+
+
+                        // articleModel.clear();
+
                         articleModel.add(ArticleModel(
                             title: data['title'],
                             body: data['body'],
@@ -50,26 +63,39 @@ class _DiseaseScreenState extends State<DiseaseScreen> {
                             id: data["id"].toString().trim(),
                             type: data["type"]
                         ));
-                        articleModel!.forEach((element1) {
-                          bodySet.add(element1.body.toString());
-                          if (element1.type =='disease' ) {
-                            diseaseSet.add(element1);
-                            print("disase set${diseaseSet.length.toString()}");
-                          }else{
-                            careSet.add(element1);
-                          }
-                        });
-                        bodySet!.forEach((element1) {
-                          bodyList.add(element1);
-                        });
-                        diseaseSet!.forEach((element1) {
-                          diseaseList.add(element1);
-                          print("disase List${diseaseList.length.toString()}");
-                        });
-                        careSet!.forEach((element1) {
-                          careList.add(element1);
-                        });
+
+                        print("MLength: "+articleModel.length.toString());
+
+
+
+                        // articleModel.forEach((element1) {
+                        //   bodySet.add(element1.body.toString());
+                        //   if (element1.type =='disease' ) {
+                        //     diseaseSet.add(element1);
+                        //     print("disase set${diseaseSet.length.toString()}");
+                        //   }else{
+                        //     careSet.add(element1);
+                        //   }
+                        // });
+
+                        // bodySet.forEach((element1) {
+                        //   bodyList.add(element1);
+                        // });
+                        // diseaseSet.forEach((element1) {
+                        //   diseaseList.add(element1);
+                        //   print("disase List${diseaseList.length.toString()}");
+                        // });
+                        // careSet.forEach((element1) {
+                        //   careList.add(element1);
+                        // });
                       }
+
+                      // articleModel.forEach((element) {
+                      //
+                      // });
+
+
+
                       // List<Widget> mWidgets = [];
                       //
                       // catModel.map((e) {
@@ -86,28 +112,46 @@ class _DiseaseScreenState extends State<DiseaseScreen> {
                       //       child: addItem(),
                       //     ));
 
+                      articleModel.forEach((element) {
+                        if(element.type == "disease"){
+                          sDiseaseList.add(element);
+                        }else{
+                          sCareList.add(element);
+                        }
+                      });
+
+
+
+                      print("Artcile0: "+articleModel[0].type.toString());
+                      print("Artcile1: "+articleModel[1].type.toString());
+
+                      print("DiseaseList: "+sDiseaseList.length.toString());
+                      print("CareList: "+sCareList.length.toString());
+
+                      careList = sCareList;
+                      diseaseList = sDiseaseList;
+
                       return ListView.separated(
                         shrinkWrap: true,
-                          physics: BouncingScrollPhysics(),
+                          physics: const BouncingScrollPhysics(),
                           itemBuilder: (context,index)=>  buildContainer(
-                            title:'${diseaseList[index].title}',
+                            title:'${sDiseaseList[index].title}',
                             onPressed:(){
                              ArticleCubit.get(context).updateArticle(
-                               id:diseaseList[index].id! ,
-                               title:diseaseList[index].title!,
-                               body: diseaseList[index].body!,
-                               likes: diseaseList[index].likes!,
-                                 views: diseaseList[index].views!,
-                               type: diseaseList[index].type!
+                               id:sDiseaseList[index].id! ,
+                               title:sDiseaseList[index].title!,
+                               body: sDiseaseList[index].body!,
+                               likes: sDiseaseList[index].likes!,
+                                 views: sDiseaseList[index].views!,
+                               type: sDiseaseList[index].type!
                              );
-                              print('yuuii'+diseaseList[index].id!);
-                             print('yuuii'+diseaseList[index].views!.toString());
+
                               navigateTo(context, Article(
-                                body: diseaseList[index].body!,
-                                title:diseaseList[index].title! ,
-                                likes: diseaseList[index].likes!,
-                                views: diseaseList[index].views!,
-                                id:diseaseList[index].id! ,
+                                body: sDiseaseList[index].body!,
+                                title:sDiseaseList[index].title! ,
+                                likes: sDiseaseList[index].likes!,
+                                views: sDiseaseList[index].views!,
+                                id:sDiseaseList[index].id! ,
                               ));
                             },
                             image: 'assets/images/catDiseas.png',
@@ -115,7 +159,7 @@ class _DiseaseScreenState extends State<DiseaseScreen> {
                           separatorBuilder: (context,index)=>SizedBox(
                             height: 15,
                           ),
-                          itemCount: diseaseSet.length
+                          itemCount: sDiseaseList.length
                       ) ;
                     } else {
                       return const Center(

@@ -371,6 +371,7 @@ import 'package:meaw/components/components.dart';
 import 'package:meaw/getPosts/getCubit/getCubit.dart';
 import 'package:meaw/getPosts/getCubit/getStates.dart';
 import 'package:meaw/getPosts/getCubit/model.dart';
+import 'package:meaw/getPosts/getPosts.dart';
 import 'package:meaw/petProfileList/petProfileListCubit/petComponent.dart';
 class EditPost extends StatefulWidget {
   EditPost({required this.model}) : super();
@@ -426,11 +427,11 @@ class _EditPostState extends State<EditPost> {
                   physics: const BouncingScrollPhysics(),
                   child: Column(
                     children: [
-                      // appBaar(
-                      //     context: context,
-                      //     screen: ListScreen(),
-                      //     label: 'Edit Profile',
-                      //     width: 65.0),
+                      appBaar(
+                          context: context,
+                          screen: GetPosts(),
+                          label: 'Edit Post',
+                          width: 70.0),
                       SizedBox(
                         height: 30,
                       ),

@@ -221,7 +221,7 @@ class OrderSummary extends StatelessWidget {
                         margin: const EdgeInsets.only(left: 20, right: 20, top: 20).r,
                         child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: Color(0xffA35638),
+                                backgroundColor: const Color(0xffA35638),
                                 padding: const EdgeInsets.symmetric(vertical: 15)),
                             onPressed: () async{
                               FirebaseFirestore firestoreInstance = FirebaseFirestore.instance;

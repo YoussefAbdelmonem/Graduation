@@ -9,11 +9,15 @@ import 'package:meaw/components/local/shared_pref.dart';
 import 'package:meaw/cubit/animalCubit.dart';
 import 'package:meaw/cubit/animalStates.dart';
 import 'package:meaw/favorites/favorites_screen.dart';
+import 'package:meaw/getPosts/getPosts.dart';
 import 'package:meaw/petProfileList/list.dart';
+import 'package:meaw/screens/homeScreen/HomeScreen.dart';
 import 'package:meaw/screens/loginScreen/loginScreen.dart';
 import 'package:meaw/screens/profileScreen/updateProfile/updateProfile.dart';
+import 'package:meaw/screens/yourReports.dart';
+import 'package:meaw/yousef/screen/add_product/add_product_screen.dart';
 import 'package:meaw/yousef/screen/notifications/notifications_screen.dart';
-import 'package:meaw/yousef/screen/pages/Report.dart';
+import 'package:meaw/userReport/Report.dart';
 import 'package:meaw/yousef/screen/pages/Setting.dart';
 import 'package:meaw/yousef/screen/shelter/shelter_screen.dart';
 import 'package:meaw/yousef/utilis/urilis.dart';
@@ -64,7 +68,13 @@ class ProfileScreen extends StatelessWidget {
                             ),
                             Row(
                               children: [
-                                Utils.backWidget(context),
+                                InkWell(
+                                  onTap: (){
+                                    navigateTo(context, HomeScreen());
+                                  },
+                                  child: Image(
+                                      image: AssetImage('assets/images/arrowleft.png')),
+                                ),
                                 Spacer(),
                                 Text(
                                   'My Profile',
@@ -185,7 +195,7 @@ class ProfileScreen extends StatelessWidget {
                       Container(
                         height: .6 * height,
                           child:
-                          // userType==3?
+                           userType==3?
                          SingleChildScrollView(
                           child: Column(
                               children: [
@@ -239,7 +249,7 @@ class ProfileScreen extends StatelessWidget {
                                     icon: 'assets/images/Vector.png',
                                     function: (){
 
-                                      Utils.openScreen(context, SettingScreen());
+                                     // Utils.openScreen(context, SettingScreen());
 
                                     },
                                     label: 'Setting'),
@@ -255,36 +265,45 @@ class ProfileScreen extends StatelessWidget {
                               ],
                             ),
                         )
-                          // :Column(
-                          //   children: [
-                          //     listTile(
-                          //         function:(){
-                          //           navigateTo(context,AddProduct());
-                          //         },
-                          //         image: 'assets/images/🦆 emoji _heavy plus sign_.png',
-                          //         icon: 'assets/images/Vector.png',
-                          //         label: 'Add post'),
-                          //     listTile(
-                          //         function:(){
-                          //           navigateTo(context,GetPosts());
-                          //         },
-                          //         image: 'assets/images/house.png',
-                          //         icon: 'assets/images/Vector.png',
-                          //         label: 'Your posts'),
-                          //     listTile(
-                          //         image: 'assets/images/global.png',
-                          //         icon: 'assets/images/Vector.png',
-                          //         label: 'Language'),
-                          //     listTile(
-                          //         image: 'assets/images/setting2.png',
-                          //         icon: 'assets/images/Vector.png',
-                          //         label: 'Setting'),
-                          //     listTile(
-                          //         image: 'assets/images/messagequestion.png',
-                          //         icon: 'assets/images/Vector.png',
-                          //         label: 'Help')
-                          //   ],
-                          // )
+                          :Column(
+                            children: [
+                              listTile(
+                                  function:(){
+                                    navigateTo(context,AddProduct());
+                                  },
+                                  image: 'assets/images/🦆 emoji _heavy plus sign_.png',
+                                  icon: 'assets/images/Vector.png',
+                                  label: 'Add post'),
+                              listTile(
+                                  function:(){
+                                    navigateTo(context,GetPosts());
+                                  },
+                                  image: 'assets/images/house.png',
+                                  icon: 'assets/images/Vector.png',
+                                  label: 'Your posts'),
+                              listTile(
+                                function: (){
+                                  navigateTo(context, YourReports());
+                                },
+                                  image: 'assets/images/report.png',
+                                  icon: 'assets/images/Vector.png',
+                                  label: 'Reports'),
+                              listTile(
+                                function: (){
+                                 // navigateTo(context, SettingScreen());
+                                },
+                                  image: 'assets/images/setting2.png',
+                                  icon: 'assets/images/Vector.png',
+                                  label: 'Setting'),
+                              listTile(
+                                function: (){
+                                  navigateTo(context, HelpScreen());
+                                },
+                                  image: 'assets/images/messagequestion.png',
+                                  icon: 'assets/images/Vector.png',
+                                  label: 'Help')
+                            ],
+                          )
 
                       ),
                       myDividerLong(),
@@ -301,10 +320,20 @@ class ProfileScreen extends StatelessWidget {
                             ),
                             TextButton(
                                 onPressed: () {
-                                  CacheHelper.removeData(key: 'uId');
-                                  CacheHelper.removeData(key: 'userType');
-                                  uId='';
+                                  if(CacheHelper.getData(key: 'uId') != null){
+                                    CacheHelper.removeData(key: 'uId');
+                                  }
+                                  if(CacheHelper.getData(key: 'userType') != null){
+                                    CacheHelper.removeData(key: 'userType');
+                                  }
+                                  uId=null;
                                   userType=null;
+                                  if(CacheHelper.getData(key: 'email') != null){
+                                    CacheHelper.removeData(key: 'email');
+                                  }
+                                  if(CacheHelper.getData(key: 'password') != null){
+                                    CacheHelper.removeData(key: 'password');
+                                  }
                                   CatCubit.get(context).signOut();
                                 },
                                 child: Text(

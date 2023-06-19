@@ -152,10 +152,12 @@ class CatCubit extends Cubit<CatStates>
 
   UserModel? userData;
   Future<void> getMyData()async{
-    await FirebaseFirestore.instance.collection("users").doc(uId??CacheHelper.getData(key: 'uId')).get().then((value){
+    await FirebaseFirestore.instance.collection("users").doc(CacheHelper.getData(key: 'uId')==null ||CacheHelper.getData(key: 'uId')==""?uId:CacheHelper.getData(key: 'uId')
+    ).get().then((value){
       userData = UserModel.fromJson(value.data()!);
       CacheHelper.saveData(key: 'userType', value: userData!.userType);
-      print('your typeee${userData!.userType}');
+      userType=CacheHelper.getData(key: 'userType');
+      print('your cash${userType}');
       emit(CatGetUserSuccessState());
     });
   }

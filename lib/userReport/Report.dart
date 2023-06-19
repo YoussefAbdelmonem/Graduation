@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:meaw/userReport/repotModel.dart';
 import 'package:meaw/yousef/screen/pages/services/constants.dart';
 
-import '../../utilis/urilis.dart';
+import '../yousef/utilis/urilis.dart';
 
 class ReportScreen extends StatefulWidget {
   const ReportScreen({Key? key}) : super(key: key);
@@ -185,15 +186,31 @@ class _ReportScreenState extends State<ReportScreen> {
                             borderSide: BorderSide(color: KColorPrimary))),
                   )),
               Container(
-                margin: EdgeInsets.only(left: 30, right: 36).r,
+                margin: const EdgeInsets.only(left: 30, right: 36).r,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       backgroundColor: KColorPrimary,
                       padding: const EdgeInsets.symmetric(vertical: 15)),
-                  onPressed: () {
+                  onPressed: () async {
                     if (formKey.currentState!.validate()) {
                       submitForm();
                     }
+                    FirebaseFirestore firestoreInstance = FirebaseFirestore.instance;
+                    ReportModel reportModel =
+                    ReportModel(
+                        type:radioValue ,
+                        phone:numberController3.text ,
+                        addressDetails: textController2.text,
+                        city: textController1.text,
+                      email: emailController4.text
+                    );
+                    // UserModel user ;
+                    ///
+                    await firestoreInstance
+                        .collection("reports")
+                    ///TODO .id and then pass the user id to  add product
+                        .add(reportModel.toMap());
+                    //Utils.openScreen();
                   },
                   child:  Text(
                     'Send',
@@ -238,9 +255,9 @@ class _ReportScreenState extends State<ReportScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                  margin: const EdgeInsets.only(bottom: 40).r,
-                  child: Image.asset('assets/images/report_img.png')),
+              // Container(
+              //     margin: const EdgeInsets.only(bottom: 40).r,
+              //     child: Image.asset('assets/images/report_img.png')),
                Text(
                 'Form has been sent',
                 style: TextStyle(color: Colors.black, fontSize: 24.sp),

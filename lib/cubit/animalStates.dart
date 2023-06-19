@@ -32,8 +32,8 @@ class CatSignUpChangeVisibilityPasswordState extends CatStates{}
 class CatSignInLoadingState extends CatStates{}
 class CatSignInSuccessState extends CatStates {
   final String uId;
-
-  CatSignInSuccessState(this.uId);
+  // final String userTypee;
+  CatSignInSuccessState(this.uId,);
 }
 class CatSignInErrorState extends CatStates {
   final String error;
@@ -100,15 +100,16 @@ class CatUploadCatImageErrorState extends CatStates{}
 class CatLoginFaceLoadingState extends CatStates{}
 class CatLoginFaceSuccessState extends CatStates{
   final String uId;
-
-  CatLoginFaceSuccessState(this.uId);
+  // final String userTypee;
+  CatLoginFaceSuccessState(this.uId,);
 
 }
 class CatLoginFaceErrorState extends CatStates{
 }
 class CatLoginGoogleSuccessState extends CatStates{
   final String uGoogleId;
-  CatLoginGoogleSuccessState(this.uGoogleId);
+  // final String userTypee;
+  CatLoginGoogleSuccessState(this.uGoogleId,);
 }
 class CatLoginCheck1ChangedState extends CatStates{}
 class CatLoginCheck2ChangedState extends CatStates{}

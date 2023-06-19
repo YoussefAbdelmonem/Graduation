@@ -17,9 +17,9 @@ class Utils
       {VoidCallback? onBack, bool arabicLang = true}) {
     return GestureDetector(
       onTap: () {
-        if (onBack != null) {
-          onBack.call();
-        }
+        // if (onBack != null) {
+        //   onBack.call();
+        // }
         Navigator.pop(context);
       },
       child:

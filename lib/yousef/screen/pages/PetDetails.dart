@@ -30,7 +30,7 @@ PostModel petModel;
             child: Column(
           children: [
             Container(
-              margin: EdgeInsets.only(top: 25, right: 29),
+              margin: const EdgeInsets.only(top: 25, right: 29),
               child: Image.network('${petModel!.image}'),
             ),
             SizedBox(

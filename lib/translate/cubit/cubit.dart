@@ -90,4 +90,25 @@ class TranslateCubit extends Cubit<TranslateStates>
 //       fileName:"myFile" ,filePath: f.path.toString(),
 //     );
 //   }
+  double boxHeight = 250;
+  double boxWidth = 250;
+animate(
+   // double boxHeight,double boxWidth
+    ){
+  if (boxHeight == 300) {
+    boxHeight = 250;
+    boxWidth = 250;
+  } else {
+    boxHeight = 300;
+    boxWidth = 300;
+  }
+  emit(animateTranslateSuccessState());
+}
+animateSmallen(
+   // double boxHeight,double boxWidth
+    ){
+  boxHeight=100;
+  boxWidth=100;
+  emit(animateSmallenTranslateSuccessState());
+}
 }
