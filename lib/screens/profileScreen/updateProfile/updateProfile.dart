@@ -111,7 +111,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                         ),
                         Positioned(
                             bottom: 0,
-                            left: MediaQuery.of(context).size.width * 0.24,
+                            left: MediaQuery.of(context).size.width * 0.20,
                             child: CircleAvatar(
                               radius: 19,
                               backgroundColor: Colors.white,

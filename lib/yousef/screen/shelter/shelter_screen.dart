@@ -15,6 +15,8 @@ import 'package:meaw/yousef/screen/shelter_details/shelter_details_screen.dart';
 import 'package:meaw/yousef/utilis/urilis.dart';
 import 'package:meaw/yousef/widgets/text_widget.dart';
 
+import '../../../components/constants.dart';
+
 enum ShelterData {
   nearbyPets,
   shelter,
@@ -83,7 +85,6 @@ class _ShelterScreenState extends State<ShelterScreen> {
                   }
 
                   List<Map<String, dynamic>> postsList = [];
-                  List<PostModel> postModelsList = [];
                   for (var i = 0; i < usersList.length; i++) {
                     Future<QuerySnapshot<Map<String, dynamic>>> snapshotssssss =
                         FirebaseFirestore.instance
@@ -171,11 +172,14 @@ class _ShelterScreenState extends State<ShelterScreen> {
                             SizedBox(
                               height: 21.h,
                             ),
-                            TextWidget(
-                              title: "Nearby Pets",
-                              fontWeight: FontWeight.w500,
-                              fontSize: 26.sp,
-                              color: mainColor,
+                            Padding(
+                              padding:  EdgeInsets.all(8.0.w),
+                              child: TextWidget(
+                                title: "Nearby Pets",
+                                fontWeight: FontWeight.w500,
+                                fontSize: 26.sp,
+                                color: mainColor,
+                              ),
                             ),
                             // SizedBox(
                             //   height: 200.h,
@@ -378,11 +382,14 @@ class _ShelterScreenState extends State<ShelterScreen> {
                             SizedBox(
                               height: 21.h,
                             ),
-                            TextWidget(
-                              title: "Shelters",
-                              fontWeight: FontWeight.w500,
-                              fontSize: 26.sp,
-                              color: mainColor,
+                            Padding(
+                              padding:  EdgeInsets.all(12.0.w),
+                              child: TextWidget(
+                                title: "Shelters",
+                                fontWeight: FontWeight.w500,
+                                fontSize: 26.sp,
+                                color: mainColor,
+                              ),
                             ),
                             StreamBuilder<QuerySnapshot>(
                                 stream: FirebaseFirestore.instance

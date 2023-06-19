@@ -49,16 +49,13 @@ class ProductsScreen extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  SizedBox(
-                    width: 110.w,
-                  ),
+                  Spacer(),
                   TextWidget(
                     title: "Products".tr(),
                     fontWeight: FontWeight.w400,
                     fontSize: 26.sp,
                   ),
                   Spacer(),
-                  Image.asset("assets/images/search.png")
                 ],
               ),
               SizedBox(
@@ -93,31 +90,31 @@ class ProductsScreen extends StatelessWidget {
 
                 ),
               ),
-              SizedBox(
-                height: 10.h,
-              ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 130.w,
-                  ),
-                  SmoothPageIndicator(
-                    controller: controller,
-                    count: 4,
-                    axisDirection: Axis.horizontal,
-                    effect: const SlideEffect(
-                        spacing: 4.0,
-                        radius: 4.0,
-                        dotWidth: 12.0,
-                        dotHeight: 8.0,
-
-                        paintStyle: PaintingStyle.stroke,
-                        strokeWidth: 1.5,
-                        dotColor: greyDot,
-                        activeDotColor: greyDotFill),
-                  ),
-                ],
-              ),
+              // SizedBox(
+              //   height: 10.h,
+              // ),
+              // Row(
+              //   children: [
+              //     SizedBox(
+              //       width: 130.w,
+              //     ),
+              //     SmoothPageIndicator(
+              //       controller: controller,
+              //       count: 4,
+              //       axisDirection: Axis.horizontal,
+              //       effect: const SlideEffect(
+              //           spacing: 4.0,
+              //           radius: 4.0,
+              //           dotWidth: 12.0,
+              //           dotHeight: 8.0,
+              //
+              //           paintStyle: PaintingStyle.stroke,
+              //           strokeWidth: 1.5,
+              //           dotColor: greyDot,
+              //           activeDotColor: greyDotFill),
+              //     ),
+              //   ],
+              // ),
               SizedBox(
                 height: 10.h,
               ),

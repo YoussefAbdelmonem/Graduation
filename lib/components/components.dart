@@ -47,8 +47,8 @@ Widget defaultTextFormField({
 
         decoration: InputDecoration(
           labelText: label,
-          labelStyle: TextStyle(color: Colors.blue),
-          hintStyle: TextStyle(color: Colors.blue),
+          labelStyle: TextStyle(color: Colors.grey),
+          hintStyle: TextStyle(color: Colors.grey),
 
           hintText: hint,
           helperStyle:  GoogleFonts.roboto(

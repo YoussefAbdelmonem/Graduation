@@ -55,7 +55,6 @@ class AddProduct extends StatelessWidget {
           print(pickedImage);
         },
       ),
-      /// اعمل اي
 
       body: SingleChildScrollView(
         child: Column(
@@ -96,9 +95,7 @@ class AddProduct extends StatelessWidget {
                         ),
                         AddProductTextField(
                           label: 'Age',
-                          /// الووووو
-                          /// عمر اي اللي في المنتج
-                          /// سبحان الله
+
                           keyboardType: TextInputType.number,
                           validate: Validation().defaultValidation,
                           controller: age,
@@ -199,7 +196,7 @@ class AddProduct extends StatelessWidget {
 
                                 ///TODO .id and then pass the user id to  add product
                                     .add(addPet.toMap()).then((value) {
-                                      Overlay.of(context).widget.clipBehavior.name;
+                                      Overlay.of(context)?.widget.clipBehavior.name;
                                       Utils.openScreen(context, HomeScreen());
                                       // ScaffoldMessenger.of(context).widget.child.
                                 });

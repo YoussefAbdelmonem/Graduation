@@ -133,7 +133,14 @@ class _MyCartState extends State<MyCart> {
                                                   ),
                                                   20.pw,
                                                   GestureDetector(
-                                                    onTap: () {},
+                                                    onTap: () {
+                                                      setState(() {
+                                                        if(quantity > 1){
+                                                          quantity--;
+                                                        }
+
+                                                      });
+                                                    },
                                                     child: const Icon(
                                                       Icons.minimize,
                                                       color: mainColor,
@@ -143,7 +150,7 @@ class _MyCartState extends State<MyCart> {
                                                   SizedBox(
                                                     width: 10.w,
                                                   ),
-                                                  Text('1'),
+                                                  Text('$quantity'),
                                                   SizedBox(
                                                     width: 10.w,
                                                   ),
@@ -153,7 +160,11 @@ class _MyCartState extends State<MyCart> {
                                                       color: mainColor,
                                                       size: 20,
                                                     ),
-                                                    onTap: () {},
+                                                    onTap: () {
+                                                      setState(() {
+                                                        quantity++;
+                                                      });
+                                                    },
                                                   ),
                                                 ],
                                               )

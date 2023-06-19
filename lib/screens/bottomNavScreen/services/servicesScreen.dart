@@ -107,46 +107,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
 
                   return Container();
 
-                  // return Form(
-                  //   key: formKey,
-                  //   child: Column(
-                  //     children: [
-                  //       defaultTextFormFieldForSearch(
-                  //           onSubmit: (v){
-                  //             List<String> result=[];
-                  //             for(var i=0;i<bodyList.length;i++) {
-                  //               if(bodyList[i].toLowerCase().trim().contains(v.toLowerCase())){
-                  //                 resultSet.add(bodyList[i]);
-                  //                 articleModelResultSet.add(articleModel[i]);
-                  //               }
-                  //               print("result set${resultSet.length}");
-                  //               print("articleModelResultSet${articleModelResultSet.length}");
-                  //             };
-                  //             // articleModelResultSet!.forEach((element1) {
-                  //             //   articleModelResult.add(element1);
-                  //             // });
-                  //             articleModelResult.addAll(articleModelResultSet);
-                  //             print("your result real${articleModelResult.length}");
-                  //             if(result!=null&&searchController.text!=''){
-                  //               navigateTo(context, SearchScreen(articleModel: articleModelResultSet.toList(),));
-                  //             }
-                  //             // // print('my List'+result.first);
-                  //           },
-                  //           controller: searchController,
-                  //           validator: (value){
-                  //             if(value!.isEmpty){
-                  //               return 'Type anything to search';
-                  //             }
-                  //             return null;
-                  //           },
-                  //           inputType: TextInputType.text,
-                  //           label: 'Search for services',
-                  //           prefix: IconBroken.Search,
-                  //           context: context
-                  //       ),
-                  //     ],
-                  //   ),
-                  // );
+
                 } else {
                   return Container();
                 }

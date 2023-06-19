@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,13 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:meaw/components/colors.dart';
 import 'package:meaw/components/components.dart';
-import 'package:meaw/screens/bottomNavScreen/services/servicesScreen.dart';
-import 'package:meaw/screens/homeScreen/HomeScreen.dart';
 import 'package:meaw/screens/servicesScreens/diseaseScreen/cubit/articleModel.dart';
 import 'package:meaw/screens/servicesScreens/diseaseScreen/cubit/cubit.dart';
 import 'package:meaw/screens/servicesScreens/diseaseScreen/cubit/states.dart';
-import 'package:meaw/screens/servicesScreens/diseaseScreen/diseaseScreen.dart';
-import 'package:meaw/yousef/utilis/urilis.dart';
 class Article extends StatefulWidget {
   Article({required this.views,required this.body,required this.title,required this.likes,required this.id}) : super();
 String body;
@@ -68,6 +62,7 @@ class _ArticleState extends State<Article> {
                 ),
                 Positioned(
                   top: 10,
+                  left: 16.w,
                   child: Container(
                     padding: EdgeInsets.only(left: 19),
                     height:220 ,
@@ -161,7 +156,7 @@ class _ArticleState extends State<Article> {
                             ),
                           ),
                           Spacer(),
-                          Image(image:AssetImage('assets/images/Iconsax/Linear/save2.png')),
+                          // Image(image:AssetImage('assets/images/Iconsax/Linear/save2.png')),
                           SizedBox(
                             width: 7.w
                             ,
