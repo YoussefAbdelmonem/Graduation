@@ -128,7 +128,7 @@ class ChatPage extends StatelessWidget {
                                 Column(
                                   children: [
                                     Image.asset(
-                                        'assets/images/chat/human.png'),
+                                        'assets/images/instructor5.png',width: 40.w),
                                     Text(
                                       DateFormat.Hm().format(DateTime
                                           .fromMillisecondsSinceEpoch(
@@ -170,10 +170,11 @@ class ChatPage extends StatelessWidget {
                               },
                               decoration: InputDecoration(
                                 prefixIconColor: Colors.black,
-                                prefixIcon: SvgPicture.asset(
-                                    "assets/images/emoji.svg",
-                                  
-                                ),
+                                // prefixIcon: SvgPicture.asset(
+                                //     "assets/images/emoji.svg",
+                                //
+                                //
+                                // ),
                                 suffixIcon: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [

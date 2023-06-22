@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -65,6 +66,7 @@ class _ShelterScreenState extends State<ShelterScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    // GetCubit.get(context).getUsersIDs();
   }
 
   @override
@@ -72,6 +74,7 @@ class _ShelterScreenState extends State<ShelterScreen> {
     return BlocConsumer<GetCubit, GetStates>(
       listener: (context, state) {},
       builder: (context, state) {
+        GetCubit cubit= BlocProvider.of(context);
         return Scaffold(
           body: StreamBuilder<QuerySnapshot>(
               stream: GetCubit.get(context).getPostsTest(),
@@ -384,135 +387,237 @@ class _ShelterScreenState extends State<ShelterScreen> {
                             ),
                             Padding(
                               padding:  EdgeInsets.all(12.0.w),
-                              child: TextWidget(
-                                title: "Shelters",
-                                fontWeight: FontWeight.w500,
-                                fontSize: 26.sp,
-                                color: mainColor,
+                              child: GestureDetector(
+                                onTap: (){
+                                  print(cubit.users.length);
+                                },
+                                child: TextWidget(
+                                  title: "Shelters",
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 26.sp,
+                                  color: mainColor,
+                                ),
                               ),
                             ),
-                            StreamBuilder<QuerySnapshot>(
-                                stream: FirebaseFirestore.instance
-                                    .collection('shelters')
-                                    .doc(isShelter.name)
-                                    .collection(isShelter.name)
-                                    .snapshots(),
-                                builder: (context, snapshot) {
-                                  if (snapshot.connectionState ==
-                                      ConnectionState.waiting) {
-                                    return const Center(
-                                      child: CircularProgressIndicator(
-                                        color: mainColor,
-                                      ),
-                                    );
-                                  }
-                                  if (snapshot.connectionState ==
-                                      ConnectionState.none) {
-                                    return const Center(
-                                      child: Text('No Internet Concction'),
-                                    );
-                                  }
-                                  if (snapshot.hasError) {
-                                    return const Center(
-                                      child: Text('Error in Data'),
-                                    );
-                                  }
-                                  if (!snapshot.hasData) {
-                                    return const Center(
-                                      child: Text('No Data Found'),
-                                    );
-                                  }
-                                  if (snapshot.hasData) {
-                                    return SizedBox(
-                                      height: 180.h,
-                                      child: ListView.builder(
-                                          primary: false,
-                                          padding: const EdgeInsets.all(10),
-                                          itemCount: snapshot.data?.docs.length,
-                                          shrinkWrap: true,
-                                          scrollDirection: Axis.horizontal,
-                                          physics: BouncingScrollPhysics(),
-                                          itemBuilder: (context, index) {
-                                            final data =
-                                                snapshot.data?.docs[index];
-                                            return GestureDetector(
-                                              onTap: () {
-                                                Utils.openScreen(
-                                                    context,
-                                                    ShelterDetailsScreen(
-                                                        name: data?['name']??"",
-                                                        email: data?['email']??"",
-                                                        phone: data?['phone']??"",
-                                                        address: data?['address']??"",
-                                                        petsNumber: data?['pets number']??"",
-                                                        open: data?['open']??"",
-                                                        days: data?['days']??"",
-                                                        image: data?['image']??""));
-                                              },
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 4),
-                                                child: Card(
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
+                            // StreamBuilder<QuerySnapshot>(
+                            //     stream: FirebaseFirestore.instance
+                            //         .collection('shelters')
+                            //         .doc(isShelter.name)
+                            //         .collection(isShelter.name)
+                            //         .snapshots(),
+                            //     builder: (context, snapshot) {
+                            //       if (snapshot.connectionState ==
+                            //           ConnectionState.waiting) {
+                            //         return const Center(
+                            //           child: CircularProgressIndicator(
+                            //             color: mainColor,
+                            //           ),
+                            //         );
+                            //       }
+                            //       if (snapshot.connectionState ==
+                            //           ConnectionState.none) {
+                            //         return const Center(
+                            //           child: Text('No Internet Concction'),
+                            //         );
+                            //       }
+                            //       if (snapshot.hasError) {
+                            //         return const Center(
+                            //           child: Text('Error in Data'),
+                            //         );
+                            //       }
+                            //       if (!snapshot.hasData) {
+                            //         return const Center(
+                            //           child: Text('No Data Found'),
+                            //         );
+                            //       }
+                            //       if (snapshot.hasData) {
+                            //         return SizedBox(
+                            //           height: 180.h,
+                            //           child: ListView.builder(
+                            //               primary: false,
+                            //               padding: const EdgeInsets.all(10),
+                            //               itemCount: snapshot.data?.docs.length,
+                            //               shrinkWrap: true,
+                            //               scrollDirection: Axis.horizontal,
+                            //               physics: BouncingScrollPhysics(),
+                            //               itemBuilder: (context, index) {
+                            //                 final data =
+                            //                     snapshot.data?.docs[index];
+                            //                 return GestureDetector(
+                            //                   onTap: () {
+                            //                     Utils.openScreen(
+                            //                         context,
+                            //                         ShelterDetailsScreen(
+                            //                             name: data?['name']??"",
+                            //                             email: data?['email']??"",
+                            //                             phone: data?['phone']??"",
+                            //                             address: data?['address']??"",
+                            //                             petsNumber: data?['pets number']??"",
+                            //                             open: data?['open']??"",
+                            //                             days: data?['days']??"",
+                            //                             image: data?['image']??""));
+                            //                   },
+                            //                   child: Padding(
+                            //                     padding:
+                            //                         const EdgeInsets.symmetric(
+                            //                             horizontal: 4),
+                            //                     child: Card(
+                            //                       child: Column(
+                            //                         crossAxisAlignment:
+                            //                             CrossAxisAlignment
+                            //                                 .start,
+                            //                         children: [
+                            //                           Image.network(
+                            //                             data!['image'],
+                            //                             height: 90.h,
+                            //                             width: 0.33.sw,
+                            //                           ),
+                            //                           Padding(
+                            //                             padding:
+                            //                                 EdgeInsets.only(
+                            //                                     left: 6.w),
+                            //                             child: TextWidget(
+                            //                               title: data['name'],
+                            //                               fontWeight:
+                            //                                   FontWeight.w400,
+                            //                               fontSize: 20.sp,
+                            //                             ),
+                            //                           ),
+                            //                           SizedBox(
+                            //                             height: 6.h,
+                            //                           ),
+                            //                           Padding(
+                            //                             padding:
+                            //                                 EdgeInsets.only(
+                            //                                     left: 6.w),
+                            //                             child: Row(
+                            //                               children: [
+                            //                                 TextWidget(
+                            //                                   title: data[
+                            //                                       'pets number'],
+                            //                                   fontWeight:
+                            //                                       FontWeight
+                            //                                           .w400,
+                            //                                   fontSize: 12.sp,
+                            //                                 ),
+                            //                                 6.pw,
+                            //                                 TextWidget(
+                            //                                   title: "Pets",
+                            //                                   fontWeight:
+                            //                                       FontWeight
+                            //                                           .w400,
+                            //                                   fontSize: 12.sp,
+                            //                                 ),
+                            //                               ],
+                            //                             ),
+                            //                           ),
+                            //                         ],
+                            //                       ),
+                            //                     ),
+                            //                   ),
+                            //                 );
+                            //               }),
+                            //         );
+                            //       }
+                            //       return const Text('NO data');
+                            //     }),
+
+                            ConditionalBuilder(
+                                condition: cubit.users.isNotEmpty,
+                                builder: (BuildContext context){
+                              return  SizedBox(
+                                height: 180.h,
+                                child: ListView.builder(
+                                    primary: false,
+                                    padding: const EdgeInsets.all(10),
+                                    itemCount: cubit.users.length,
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.horizontal,
+                                    physics: const BouncingScrollPhysics(),
+                                    itemBuilder: (context, index) {
+                                      final data = GetCubit.get(context).users[index];
+                                      return GestureDetector(
+                                        onTap: () {
+                                          Utils.openScreen(
+                                              context,
+                                              ShelterDetailsScreen(
+                                                  name: data.name??"",
+                                                  email: data.email??"",
+                                                  phone: data.phone??"",
+                                                  address: "Sherbin mansoura",
+                                                  petsNumber: data.petsNumber??"",
+                                                  open: "8:00 AM - 8:00 PM",
+                                                  days: "Saturday- Sunday",
+                                                  image: data.profileImage??""));
+                                        },
+                                        child: Padding(
+                                          padding:
+                                          const EdgeInsets.symmetric(
+                                              horizontal: 4),
+                                          child: Card(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment
+                                                  .start,
+                                              children: [
+                                                Image.network(
+                                                  data.profileImage??"",
+                                                  height: 90.h,
+                                                  width: 0.33.sw,
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                  EdgeInsets.only(
+                                                      left: 6.w),
+                                                  child: TextWidget(
+                                                    title: data.name??"",
+                                                    fontWeight:
+                                                    FontWeight.w400,
+                                                    fontSize: 20.sp,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: 6.h,
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                  EdgeInsets.only(
+                                                      left: 6.w),
+                                                  child: Row(
                                                     children: [
-                                                      Image.network(
-                                                        data!['image'],
-                                                        height: 90.h,
-                                                        width: 0.33.sw,
+                                                      TextWidget(
+                                                        title: data.petsNumber??"",
+                                                        fontWeight:
+                                                        FontWeight
+                                                            .w400,
+                                                        fontSize: 12.sp,
                                                       ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsets.only(
-                                                                left: 6.w),
-                                                        child: TextWidget(
-                                                          title: data['name'],
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                          fontSize: 20.sp,
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        height: 6.h,
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsets.only(
-                                                                left: 6.w),
-                                                        child: Row(
-                                                          children: [
-                                                            TextWidget(
-                                                              title: data[
-                                                                  'pets number'],
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                              fontSize: 12.sp,
-                                                            ),
-                                                            6.pw,
-                                                            TextWidget(
-                                                              title: "Pets",
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                              fontSize: 12.sp,
-                                                            ),
-                                                          ],
-                                                        ),
+                                                      6.pw,
+                                                      TextWidget(
+                                                        title: "Pets",
+                                                        fontWeight:
+                                                        FontWeight
+                                                            .w400,
+                                                        fontSize: 12.sp,
                                                       ),
                                                     ],
                                                   ),
                                                 ),
-                                              ),
-                                            );
-                                          }),
-                                    );
-                                  }
-                                  return const Text('NO data');
-                                }),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }),
+                              );
+
+                                },
+                                fallback:(BuildContext context){
+                                  return Center( child: CircularProgressIndicator(
+                                    color: defaultColor,
+
+                                  ));
+                                })
                           ],
                         ),
                       ),

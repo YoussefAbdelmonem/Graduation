@@ -172,9 +172,6 @@ int selected_index=3;
       child: Scaffold(
         // drawer: const Drawer(),
         appBar: AppBar(
-          systemOverlayStyle: const SystemUiOverlayStyle(
-              statusBarIconBrightness: Brightness.dark,
-              statusBarColor:KColorPrimary),
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(80.h),
             child: Container(
@@ -200,14 +197,14 @@ int selected_index=3;
             ),
           ),
           backgroundColor: KColorPrimary,
-          actions: [
-            Container(
-                margin: const EdgeInsets.only(right: 16, top: 15),
-                child: const Icon(
-                  Icons.search_outlined,
-                  size: 22,
-                ))
-          ],
+          // actions: [
+          //   Container(
+          //       margin: const EdgeInsets.only(right: 16, top: 15),
+          //       child: const Icon(
+          //         Icons.search_outlined,
+          //         size: 22,
+          //       ))
+          // ],
         ),
 
         ///TabBarView

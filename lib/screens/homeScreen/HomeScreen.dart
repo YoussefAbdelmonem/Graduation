@@ -60,54 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
               //userType==null?
               Scaffold(
               backgroundColor: Colors.white,
-              appBar: AppBar(
-                leading: InkWell(
-                  onTap: (){
-                    if (reverse==true)
-                    navigateTo(context, (HomeScreen()));
-                    audio=0;
-                    reverse=false;
-                  },
-                    child:reverse==true? Icon(Icons.arrow_back,size: 30,color: defaultColor,):Icon(Icons.arrow_back,size: 26,color: Colors.white,)),
-                backgroundColor: Colors.white,
-                elevation: 0.0,
-                actions: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 3),
-                    child: GestureDetector(
-                      onTap: ()async{
-                        await CatCubit().getDataaaaa();
-                        navigateTo(context, const ProfileScreen());
 
-                        //navigateTo(context, const ProfileScreen());
-                      },
-                      child:Container(
-                        height: 80,
-                        width: 50,
-                        decoration: BoxDecoration(
-                          color: Colors.lightBlue,
-                          borderRadius: BorderRadius.circular(80),
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                           image:CatCubit.get(context).userData==null?NetworkImage('https://i.pinimg.com/564x/a1/d8/62/a1d862711ba51f2a19c6c0c4a891eb42.jpg'): NetworkImage('${CatCubit.get(context).userData?.profileImage}')
-                          )
-                        ),
-                        // child:CatCubit.get(context).userData==null?
-                        // CircleAvatar(backgroundImage:AssetImage('assets/images/profile.jpg',),
-                        //   radius: 50,
-                        // ):
-                        // CircleAvatar(
-                        //     radius: 50,
-                        //     backgroundImage:NetworkImage( '${CatCubit.get(context).userData?.profileImage}')),
-                      ),
-                      // CircleAvatar(
-                      //   radius: 25,
-                      //   backgroundImage: NetworkImage('${CatCubit.get(context).userData?.profileImage}'),
-                      // ),
-                    ),
-                  ),
-                ],
-              ),
               bottomNavigationBar: BottomNavigationBar(
                 elevation: 8.0,
                 items:  [
@@ -139,7 +92,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: (index){
                   setState(() {
                     currentScreen = index;
-                    // print(CacheHelper.getData(key: 'email'));
+                    print('index');
+                    print(index);
                   });
                 },
                 currentIndex: currentScreen,

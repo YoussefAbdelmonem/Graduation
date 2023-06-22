@@ -4,6 +4,7 @@ class UserModel
   String? phone;
   String? uId;
   String? email;
+  String? petsNumber;
   String? profileImage;
   String? gender;
   int? userType;
@@ -16,7 +17,8 @@ class UserModel
     required this.email,
     required this.profileImage,
     required this.gender,
-    required this.userType
+    required this.userType,
+     this.petsNumber
   });
   UserModel.fromJson(Map<String,dynamic>json)
   {
@@ -27,6 +29,7 @@ class UserModel
     profileImage = json['profileImage'];
     gender = json['gender'];
     userType = json['userType'];
+    petsNumber = json['petsNumber'];
   }
   Map<String,dynamic> toMap()
   {
@@ -38,6 +41,7 @@ class UserModel
       'profileImage':profileImage,
       'gender':gender,
       'userType':userType,
+      'petsNumber':petsNumber
     };
   }
 }

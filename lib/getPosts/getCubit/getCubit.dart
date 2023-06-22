@@ -160,33 +160,33 @@ class GetCubit extends Cubit<GetStates>
     }
     return test;
   }
-// List<UserModel> users=[];
-// Future<List<UserModel>> getUsersIDs()async{
-//   List<String> test=[];
-//
-//   QuerySnapshot snapshots = await FirebaseFirestore.instance.collection('users').get();
-//   for(var i in snapshots.docs){
-//     test.add(i.id.toString());
-//     print('youidddd${test[0]}');
-//    // UserModel? MODEL=
-//     await getMyUserData(i.id);
-//     print('dddddd${userDataaa!.name}');
-//     //print('rrrrr${MODEL!.name}');
-//     if(userDataaa!.userType==1){
-//      users.add(userDataaa!);
-//     print('dddddd${userDataaa!.name}');}
-//   }
-//   print('dddddd${users.length}');
-//   return users;
-// }
-// UserModel? userDataaa;
-// Future<UserModel?> getMyUserData(String idd)async{
-//
-//   await FirebaseFirestore.instance.collection("users").doc(idd).get().then((value){
-//     userDataaa = UserModel.fromJson(value.data()!);
-//     print('your jjj${userDataaa!.userType}');
-//     //emit(DataGetUserSuccessState());
-//     return userDataaa;
-//   });
-// }
+List<UserModel> users=[];
+Future<List<UserModel>> getUsersIDs()async{
+  List<String> test=[];
+
+  QuerySnapshot snapshots = await FirebaseFirestore.instance.collection('users').get();
+  for(var i in snapshots.docs){
+    test.add(i.id.toString());
+    print('youidddd${test[0]}');
+   // UserModel? MODEL=
+    await getMyUserData(i.id);
+    print('dddddd${userDataaa!.name}');
+    //print('rrrrr${MODEL!.name}');
+    if(userDataaa!.userType==1){
+     users.add(userDataaa!);
+    print('dddddd${userDataaa!.name}');}
+  }
+  print('dddddd${users.length}');
+  return users;
+}
+UserModel? userDataaa;
+Future<UserModel?> getMyUserData(String idd)async{
+
+  await FirebaseFirestore.instance.collection("users").doc(idd).get().then((value){
+    userDataaa = UserModel.fromJson(value.data()!);
+    print('your jjj${userDataaa!.userType}');
+    //emit(DataGetUserSuccessState());
+    return userDataaa;
+  });
+}
 }

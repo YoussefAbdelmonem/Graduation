@@ -101,6 +101,7 @@ class CatCubit extends Cubit<CatStates>
       name: name,
       email: email,
       phone: phone,
+
       uId: uId,
       profileImage:image?? 'https://i.pinimg.com/564x/a1/d8/62/a1d862711ba51f2a19c6c0c4a891eb42.jpg',
       gender:gender,

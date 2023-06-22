@@ -17,6 +17,11 @@ import 'package:flutter/services.dart';
 import 'package:audio_waveforms/audio_waveforms.dart';
 import 'dart:async';
 
+import '../../../components/components.dart';
+import '../../../cubit/animalCubit.dart';
+import '../../homeScreen/HomeScreen.dart';
+import '../../profileScreen/profileScreen.dart';
+
 class TranslationScreen extends StatefulWidget {
   TranslationScreen({Key? key}) : super(key: key);
 
@@ -99,146 +104,197 @@ var num =1;
         listener: (context,state){},
         builder: (context,state){
           return Scaffold(
+              appBar:  AppBar(
+                leading: InkWell(
+                    onTap: (){
+                      if (reverse==true) {
+                        navigateTo(context, (HomeScreen()));
+                      }
+                      audio=0;
+                      reverse=false;
+                    },
+                    child:reverse==true? Icon(Icons.arrow_back,size: 30,color: defaultColor,):Icon(Icons.arrow_back,size: 26,color: Colors.white,)),
+                backgroundColor: Colors.white,
+                elevation: 0.0,
+                actions: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 3),
+                    child: GestureDetector(
+                      onTap: ()async{
+                        await CatCubit().getDataaaaa();
+                        navigateTo(context, const ProfileScreen());
+
+                        //navigateTo(context, const ProfileScreen());
+                      },
+                      child:Container(
+                        height: 80,
+                        width: 50,
+                        decoration: BoxDecoration(
+                            color: Colors.lightBlue,
+                            borderRadius: BorderRadius.circular(80),
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image:CatCubit.get(context).userData==null?NetworkImage('https://i.pinimg.com/564x/a1/d8/62/a1d862711ba51f2a19c6c0c4a891eb42.jpg'): NetworkImage('${CatCubit.get(context).userData?.profileImage}')
+                            )
+                        ),
+                        // child:CatCubit.get(context).userData==null?
+                        // CircleAvatar(backgroundImage:AssetImage('assets/images/profile.jpg',),
+                        //   radius: 50,
+                        // ):
+                        // CircleAvatar(
+                        //     radius: 50,
+                        //     backgroundImage:NetworkImage( '${CatCubit.get(context).userData?.profileImage}')),
+                      ),
+                      // CircleAvatar(
+                      //   radius: 25,
+                      //   backgroundImage: NetworkImage('${CatCubit.get(context).userData?.profileImage}'),
+                      // ),
+                    ),
+                  ),
+                ],
+              ),
             body:
               Center(
                 child: SingleChildScrollView(
-                  child: Column(
-                    children: [
+                  child: SafeArea(
+                    child: Column(
+                      children: [
 
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
 
-                          if(audio==0)
-                          Image.asset('assets/images/meow.png',height: 400,),
-                          if(audio==0)
-                           SizedBox(height: 50,),
-                          if(audio==0
-                              &&userType==3
-                          )
-                          TextButton(
-                            onPressed: ()async{
-                              setState(() {
-                                audio=1;
-                              });
-                              Directory tempDir = await getApplicationDocumentsDirectory();
-                              String path = tempDir.path;
-// Check and request permission
-                              if (await record.hasPermission()) {
-                                // Start recording
-                                await record.start(
-                                  path:path+'/myFile.wav' ,
-                                  encoder: AudioEncoder.wav, // by default
-                                  bitRate: 128000,
-                                );
-                              }
-                            },
-                            child: const Text('Tap to translate',
-                              style: TextStyle(
-                                fontSize: 25,
-                                fontFamily: 'Jannah',
-                                color: defaultColor
-                              ),
+                            if(audio==0)
+                            Image.asset('assets/images/meow.png',height: 400,),
+                            if(audio==0)
+                             SizedBox(height: 50,),
+                            if(audio==0
+                                &&userType==3
                             )
-                          ),
-                        //2
-                          if(audio==1)
-                        const Image(image: AssetImage("assets/images/catanimatedot.png")),
-                          if(audio==1)
-                          Container(
-
-                          //  color: Colors.blue,
-                            child: Center(
-                              child: Stack(
-                                children: [
-                                  SizedBox(
-                                    height: 300,
-                                    width: 300,
-                                    child: GestureDetector(
-                                      onTap:expandBox ,
-                                      child:UnconstrainedBox(
-                                        child: AnimatedContainer(
-                                          height: TranslateCubit.get(context).boxHeight,
-                                          width: TranslateCubit.get(context).boxWidth,
-                                          duration: const Duration(seconds: 1,),
-                                          child: const Image(image:AssetImage('assets/images/Rectangle 150.png',) ,),
-                                         // child:Image(image: AssetImage("assets/images/Rectangle 150.png"),) ,
-                                        ),
-                                      )
-                                    ),
-                                  ),
-                                  const Positioned(
-                                    left: 60,
-                                      top: 15,
-                                      child: Image(image: AssetImage("assets/images/catanimate.png"))),
-                                ],
-                              ),
-                            ),
-                          ),
-                          if(audio==1)
-                          TextButton(
+                            TextButton(
                               onPressed: ()async{
-                                audio=2;
-                                reverse=true;
-                                await record.stop();
-                          Directory tempDir = await getApplicationDocumentsDirectory();
-                              String path = tempDir.path;
-                              File f=File(path+'/myFile.wav');
-                             _createFile(f.path);
-                              TranslateCubit.get(context).translate(
-                                  fileName:"myFile" ,filePath: f.path.toString(),
-                              );
-
+                                setState(() {
+                                  audio=1;
+                                });
+                                Directory tempDir = await getApplicationDocumentsDirectory();
+                                String path = tempDir.path;
+// Check and request permission
+                                if (await record.hasPermission()) {
+                                  // Start recording
+                                  await record.start(
+                                    path:path+'/myFile.wav' ,
+                                    encoder: AudioEncoder.wav, // by default
+                                    bitRate: 128000,
+                                  );
+                                }
                               },
-                              child: const Text('Tap to Stop',
+                              child: const Text('Tap to translate',
                                 style: TextStyle(
-                                    fontSize: 25,
-                                    fontFamily: 'Jannah',
-                                    color: defaultColor
+                                  fontSize: 25,
+                                  fontFamily: 'Jannah',
+                                  color: defaultColor
                                 ),
                               )
-                          ),
-                          //3
-                          if(audio==2)
-                          const Image(image: AssetImage('assets/images/Group 64.png')),
-                          if(audio==2)
-                            SizedBox(height: 30,),
-                          if(audio==2)
-                           Padding(
-                             padding: const EdgeInsets.only(right: 15.0,),
-                             child: Row(
-                               mainAxisAlignment: MainAxisAlignment.end,
-                               children: const [
-                                 CircleAvatar(
-                                   child: Image(image: AssetImage('assets/images/Ellipse 35.png')),
-                                 ),
-                               ],
-                             ),
-                           ),
-                          if(audio==2)
-                            ConditionalBuilder(
-                              condition: state is! TranslateLoadingState&&transModel!=null,
-                              builder: (BuildContext context) => Padding(
-                                padding: const EdgeInsets.only(left: 60.0),
-                                child: Container(
-                                  width: 180,
-                                  height: 40,
-                                  decoration: BoxDecoration(
-                                    color:const Color.fromRGBO(244,231,189, 1),
-                                    borderRadius: BorderRadius.circular(4)
-                                  ),
-                                  child: Center(child: Text(' ${transModel!.translation.toString()}')),
-                                ),
-                              ),
-                              fallback: (BuildContext context) => const Center(
-                                child: CircularProgressIndicator(
-                                  color: defaultColor,
+                            ),
+                          //2
+                            if(audio==1)
+                          const Image(image: AssetImage("assets/images/catanimatedot.png")),
+                            if(audio==1)
+                            Container(
+
+                            //  color: Colors.blue,
+                              child: Center(
+                                child: Stack(
+                                  children: [
+                                    SizedBox(
+                                      height: 300,
+                                      width: 300,
+                                      child: GestureDetector(
+                                        onTap:expandBox ,
+                                        child:UnconstrainedBox(
+                                          child: AnimatedContainer(
+                                            height: TranslateCubit.get(context).boxHeight,
+                                            width: TranslateCubit.get(context).boxWidth,
+                                            duration: const Duration(seconds: 1,),
+                                            child: const Image(image:AssetImage('assets/images/Rectangle 150.png',) ,),
+                                           // child:Image(image: AssetImage("assets/images/Rectangle 150.png"),) ,
+                                          ),
+                                        )
+                                      ),
+                                    ),
+                                    const Positioned(
+                                      left: 60,
+                                        top: 15,
+                                        child: Image(image: AssetImage("assets/images/catanimate.png"))),
+                                  ],
                                 ),
                               ),
                             ),
-                        ],
-                      ),
-                    ],
+                            if(audio==1)
+                            TextButton(
+                                onPressed: ()async{
+                                  audio=2;
+                                  reverse=true;
+                                  await record.stop();
+                            Directory tempDir = await getApplicationDocumentsDirectory();
+                                String path = tempDir.path;
+                                File f=File(path+'/myFile.wav');
+                               _createFile(f.path);
+                                TranslateCubit.get(context).translate(
+                                    fileName:"myFile" ,filePath: f.path.toString(),
+                                );
+
+                                },
+                                child: const Text('Tap to Stop',
+                                  style: TextStyle(
+                                      fontSize: 25,
+                                      fontFamily: 'Jannah',
+                                      color: defaultColor
+                                  ),
+                                )
+                            ),
+                            //3
+                            if(audio==2)
+                            const Image(image: AssetImage('assets/images/Group 64.png')),
+                            if(audio==2)
+                              SizedBox(height: 30,),
+                            if(audio==2)
+                             Padding(
+                               padding: const EdgeInsets.only(right: 15.0,),
+                               child: Row(
+                                 mainAxisAlignment: MainAxisAlignment.end,
+                                 children: const [
+                                   CircleAvatar(
+                                     child: Image(image: AssetImage('assets/images/Ellipse 35.png')),
+                                   ),
+                                 ],
+                               ),
+                             ),
+                            if(audio==2)
+                              ConditionalBuilder(
+                                condition: state is! TranslateLoadingState&&transModel!=null,
+                                builder: (BuildContext context) => Padding(
+                                  padding: const EdgeInsets.only(left: 60.0),
+                                  child: Container(
+                                    width: 180,
+                                    height: 40,
+                                    decoration: BoxDecoration(
+                                      color:const Color.fromRGBO(244,231,189, 1),
+                                      borderRadius: BorderRadius.circular(4)
+                                    ),
+                                    child: Center(child: Text(' ${transModel!.translation.toString()}')),
+                                  ),
+                                ),
+                                fallback: (BuildContext context) => const Center(
+                                  child: CircularProgressIndicator(
+                                    color: defaultColor,
+                                  ),
+                                ),
+                              ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               )
