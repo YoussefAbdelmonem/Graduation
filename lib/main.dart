@@ -66,8 +66,11 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         builder: (context,screenUtil){
           return  MaterialApp(
-          theme:theme(),
+          theme:theme(
+
+          ),
           debugShowCheckedModeBanner: false,
+
           home: SplashScreen()
           // Scaffold(body: HomeScreen())
           // Ath()

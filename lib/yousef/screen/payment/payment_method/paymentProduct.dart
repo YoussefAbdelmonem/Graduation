@@ -14,8 +14,8 @@ enum PaymentType {
 }
 
 class PaymentMethodsProductScreen extends StatefulWidget {
-  PaymentMethodsProductScreen() : super();
-
+  PaymentMethodsProductScreen({required this.price}) : super();
+String?price;
   @override
   State<PaymentMethodsProductScreen> createState() => _PaymentMethodsProductScreenState();
 }
@@ -178,6 +178,7 @@ class _PaymentMethodsProductScreenState extends State<PaymentMethodsProductScree
 
 
                            Utils.openScreen(context,  CashPaymentSellerScreen(
+                             price: widget.price,
                           //   shelterid: widget.shelterid,postid:widget.postid,price: widget.price,petweight: widget.petweight,
                           //   petname:widget.petname,petage: widget.petage,petcategory: widget.petcategory,petgender: widget.petgender,
                           //   petimage: widget.petimage,

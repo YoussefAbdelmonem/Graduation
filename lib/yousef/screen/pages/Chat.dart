@@ -172,6 +172,12 @@ int selected_index=3;
       child: Scaffold(
         // drawer: const Drawer(),
         appBar: AppBar(
+            systemOverlayStyle: const SystemUiOverlayStyle(
+                statusBarIconBrightness: Brightness.light,
+statusBarBrightness: Brightness.light,
+               // statusBarBrightness: Brightness.
+                statusBarColor: Colors.white
+            ),
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(80.h),
             child: Container(

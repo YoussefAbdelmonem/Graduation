@@ -54,15 +54,17 @@ class _ArticleState extends State<Article> {
                   child: SingleChildScrollView(child: Column(
                     children: [
                       SizedBox(
-                        height: 220,
+                        height: 270.h,
                       ),
-                      Text('${widget.body}'),
+                      Text('${widget.body}',style: TextStyle(
+                        fontSize: 20
+                      ),),
                     ],
                   )),
                 ),
                 Positioned(
                   top: 10,
-                  left: 16.w,
+                  left: 2.w,
                   child: Container(
                     padding: EdgeInsets.only(left: 19),
                     height:220 ,
@@ -156,7 +158,7 @@ class _ArticleState extends State<Article> {
                             ),
                           ),
                           Spacer(),
-                          // Image(image:AssetImage('assets/images/Iconsax/Linear/save2.png')),
+                           Image(image:AssetImage('assets/images/Iconsax/Linear/save2.png')),
                           SizedBox(
                             width: 7.w
                             ,

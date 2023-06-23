@@ -1,25 +1,37 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:meaw/components/components.dart';
-import 'package:meaw/screens/profileScreen/profileScreen.dart';
+import 'package:meaw/yousef/screen/pages/services/constants.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-import '../../../components/constants.dart';
+import 'Chat.dart';
+import 'Products.dart';
+import 'Services.dart';
+import 'Translate.dart';
 
-
-class ScheduleScreen extends StatefulWidget {
-  const ScheduleScreen({Key? key}) : super(key: key);
+class Schedule extends StatefulWidget {
+  const Schedule({Key? key}) : super(key: key);
 
   @override
-  State<ScheduleScreen> createState() => _ScheduleScreenState();
+  State<Schedule> createState() => _ScheduleState();
 }
 
-class _ScheduleScreenState extends State<ScheduleScreen> {
+class _ScheduleState extends State<Schedule> {
+  List<Map> imgTime = [
+    {'img': 'assets/images/chat/Frame (1).png', 'time': '09:00 AM'},
+    {'img': 'assets/images/chat/Frame.png', 'time': '11:45 AM'},
+    {'img': 'assets/images/chat/Frame (1).png', 'time': '12:30 AM'},
+    {'img':'assets/images/chat/image 2.png','time':'02:00 PM'},
+    // {'img':'assets/images/bottle.png','time':'03:00 PM'},
+    // {'img':'assets/images/food.png','time':'06:00 PM'}
+  ];
+  List text=['Breakfast','Vet appointment','Walk','Lunch','Take medication','Dinner'];
 
 
-  int selected_index=2;
+
+  int selected_index = 2;
   DateTime today = DateTime.now();
   void _onDaySelected(DateTime day, DateTime focusedDay) {
     setState(() {
@@ -30,7 +42,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+        backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
@@ -45,32 +57,24 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
           systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarIconBrightness: Brightness.dark,
               statusBarColor: Colors.white),
-          leading: Container(
-              margin: const EdgeInsets.only(top: 7).r,
-              child: IconButton(
-                  onPressed: () {
-                    navigateTo(context, ProfileScreen());
-                  },
-                  icon: const Icon(
-                    Icons.arrow_back,
-                  ))),
+
           iconTheme: const IconThemeData(color: Colors.black),
         ),
         body: Container(
-          padding:  EdgeInsets.only(left: 27.r, right: 26.r),
+          padding: const EdgeInsets.only(left: 27, right: 26),
           child: SingleChildScrollView(
             child: Column(
               children: [
                 TableCalendar(
                     daysOfWeekStyle: DaysOfWeekStyle(
                       dowTextFormatter: (date, locale) =>
-                          DateFormat.E(locale).format(date)[0],
+                      DateFormat.E(locale).format(date)[0],
                       weekdayStyle: TextStyle(fontSize: 16.sp),
                       weekendStyle: TextStyle(fontSize: 16.sp),
                       decoration: const BoxDecoration(
                           border: Border(
                               bottom:
-                                  BorderSide(color: Colors.black, width: 1.3))),
+                              BorderSide(color: Colors.black, width: 1.3))),
                     ),
                     daysOfWeekHeight: 35,
                     locale: "en_US",
@@ -114,50 +118,86 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                           padding: const EdgeInsets.all(10),
                           child: Center(
                               child: Text(
-                            today.toString().split(" ")[0],
-                            style:
+                                today.toString().split(" ")[0],
+                                style:
                                 TextStyle(color: Colors.white, fontSize: 18.sp),
-                          )),
+                              )),
                         ),
-                        Container(decoration: const BoxDecoration(border: Border(right: BorderSide(width: 1,color: KColorPrimary,),left: BorderSide(width: 1,color: KColorPrimary),)),
+                        Container(
+                          decoration: const BoxDecoration(
+                              border: Border(
+                                right: BorderSide(
+                                  width: 1,
+                                  color: KColorPrimary,
+                                ),
+                                left: BorderSide(width: 1, color: KColorPrimary),
+                              )),
                           child: Row(
                             children: [
                               Flexible(
-                                child: Container(padding: EdgeInsets.only(top: 75,left: 12),
+                                child: Container(
+                                    padding: EdgeInsets.only(top: 75, left: 12),
                                     color: Colors.white,
                                     child: Column(
                                       children: [
                                         ...List.generate(
-                                            1,
-                                            (index) => Column(
-                                              children: [
-                                                Row(
-                                                      children: [
-                                                        Image.asset(
-                                                            'assets/images/food.png',width: 60.w),
-                                                        SizedBox(
-                                                          width: 18.w,
-                                                        ),
-                                                         Text('09:00 AM',style: TextStyle(fontSize: 18.sp,color: KColorPrimary),),
-                                                      ],
-                                                    ),SizedBox(height: 56.h,)
-                                              ],
-                                            ),)
+                                          imgTime.length,
+                                              (index) => Column(
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Image.asset(
+                                                      imgTime[index]['img']),
+                                                  SizedBox(
+                                                    width: 18.w,
+                                                  ),
+                                                  Text(
+                                                    imgTime[index]['time'],
+                                                    style: TextStyle(
+                                                        fontSize: 18.sp,
+                                                        color: KColorPrimary),
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: 55.h,
+                                              )
+                                            ],
+                                          ),
+                                        )
                                       ],
                                     )),
                               ),
                               Flexible(
-                                child: Align(alignment: Alignment.topLeft,
-                                  child: Container(padding: EdgeInsets.only(top: 75,left: 18),
-                                      color: const Color(0xffE08F62), child: Column(children: [  ...List.generate(
-                                    1,
-                                        (index) => Align(alignment: Alignment.topLeft,
-                                          child: Column(
-                                      children: [
-                                           Text('Breakfast',style: TextStyle(fontSize: 19.sp,color: Colors.white),),SizedBox(height: 56.h,)
-                                      ],
-                                    ),
-                                        ),)],)),
+                                child: Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Container(
+                                      padding:
+                                      EdgeInsets.only(top: 75, left: 18),
+                                      color: const Color(0xffE08F62),
+                                      child: Column(
+                                        children: [
+                                          ...List.generate(
+                                            imgTime.length,
+                                                (index) => Align(
+                                              alignment: Alignment.topLeft,
+                                              child: Column(
+                                                children: [
+                                                  Text(
+                                                    text[index],
+                                                    style: TextStyle(
+                                                        fontSize: 19.sp,
+                                                        color: Colors.white),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 53.h,
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      )),
                                 ),
                               )
                             ],
@@ -171,3 +211,4 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
         ));
   }
 }
+

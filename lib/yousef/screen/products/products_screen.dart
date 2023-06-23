@@ -52,8 +52,8 @@ class ProductsScreen extends StatelessWidget {
                   audio=0;
                   reverse=false;
                 },
-                child:reverse==true? Icon(Icons.arrow_back,size: 30,color: defaultColor,):Icon(Icons.arrow_back,size: 26,color: Colors.white,)),
-            backgroundColor: Colors.white,
+                child:reverse==true? Icon(Icons.arrow_back,size: 30,color: defaultColor,):Icon(Icons.arrow_back,size: 26,color: Colors.transparent,)),
+            backgroundColor: Colors.transparent,
             elevation: 0.0,
             actions: [
               Padding(

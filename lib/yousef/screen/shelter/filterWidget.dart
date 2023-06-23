@@ -5,6 +5,7 @@ import 'package:meaw/components/components.dart';
 import 'package:meaw/components/constants.dart';
 import 'package:meaw/getPosts/getCubit/getCubit.dart';
 import 'package:meaw/getPosts/getCubit/model.dart';
+import 'package:meaw/yousef/constant/colors.dart';
 import 'package:meaw/yousef/screen/shelter/filterCubit/filterCunbit.dart';
 import 'package:meaw/yousef/screen/shelter/filterCubit/filterCunbit.dart';
 import 'package:meaw/yousef/screen/shelter/filterCubit/filterStates.dart';
@@ -218,6 +219,7 @@ class _BuildFilterState extends State<BuildFilter> {
                       min: 1,
                       max: 10,
                       labels: FilterCubit.get(context).labels,
+                      activeColor: mainColor,
                       onChanged:(newvalues){
                     FilterCubit.get(context).onChangeSlider(newvalues);
                       }),

@@ -16,8 +16,8 @@ import 'Services.dart';
 import 'Translate.dart';
 
 class MyCart extends StatefulWidget {
-  const MyCart({Key? key}) : super(key: key);
-
+   MyCart({this.price}) : super();
+   String?price;
   @override
   State<MyCart> createState() => _MyCartState();
 }
@@ -207,7 +207,7 @@ class _MyCartState extends State<MyCart> {
                           backgroundColor: KColorPrimary,
                           padding: const EdgeInsets.symmetric(vertical: 15)),
                       onPressed: () {
-                        Utils.openScreen(context, PaymentMethodsProductScreen());
+                        Utils.openScreen(context, PaymentMethodsProductScreen(price: widget.price,));
                       },
                       child: Text(
                         'Pay Now',

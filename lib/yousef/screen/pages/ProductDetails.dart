@@ -37,7 +37,7 @@ class _ProductDetailsState extends State<ProductDetails> {
         elevation: 0,
         leading: Utils.backWidget(context),
         title: Text(
-          'Cat Collar',
+          widget.name ?? "",
           style: TextStyle(color: Colors.black, fontSize: 26.sp),
         ),
         centerTitle: true,
@@ -256,7 +256,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                               padding: const EdgeInsets.symmetric(
                                   vertical: 5, horizontal: 80)),
                           onPressed: () {
-                            Utils.openScreen(context, MyCart());
+                            Utils.openScreen(context, MyCart(
+                              price: widget.price,
+                            ));
                           },
                           child: Text(
                             'Buy Now',

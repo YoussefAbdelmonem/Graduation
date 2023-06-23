@@ -11,5 +11,7 @@ unselectedWidgetColor: defaultColor,
 bannerTheme: MaterialBannerThemeData(
   backgroundColor: Colors.white,
 
-)
+),
+
+
 );

@@ -117,7 +117,7 @@ class ProfileScreen extends StatelessWidget {
                                               onPressed: () {
                                                 cubit.getProfileImage();
                                               },
-                                              icon: Image(
+                                              icon: const Image(
                                                 image: AssetImage(
                                                     'assets/images/Group-4.png'),
                                               ),
@@ -132,6 +132,7 @@ class ProfileScreen extends StatelessWidget {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Row(
+
                                         children: [
                                           Row(
                                             children: [
@@ -147,15 +148,12 @@ class ProfileScreen extends StatelessWidget {
                                         ],
                                       ),
                                       Container(
-                                        width: 200,
+                                        width: MediaQuery.of(context).size.width*0.4,
                                         child: TextWidget(
                                           title: '${userData.email}',
-
                                           color: Colors.grey,
                                           maxLines: 1,
                                           fontSize: 20.sp,
-
-
                                         ),
                                       )
                                       // TextButton(
@@ -229,7 +227,7 @@ class ProfileScreen extends StatelessWidget {
                                     image: 'assets/images/schedule.png',
                                     function: (){
 
-                                      Utils.openScreen(context, ScheduleScreen());
+                                      Utils.openScreen(context, Schedule());
 
                                     },
                                     icon: 'assets/images/Vector.png',

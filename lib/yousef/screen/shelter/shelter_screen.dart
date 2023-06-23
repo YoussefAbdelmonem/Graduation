@@ -8,6 +8,7 @@ import 'package:meaw/components/components.dart';
 import 'package:meaw/getPosts/getCubit/getCubit.dart';
 import 'package:meaw/getPosts/getCubit/getStates.dart';
 import 'package:meaw/getPosts/getCubit/model.dart';
+import 'package:meaw/screens/profileScreen/profileScreen.dart';
 import 'package:meaw/style/icon_broken.dart';
 import 'package:meaw/yousef/constant/colors.dart';
 import 'package:meaw/yousef/screen/donate/donate_screen.dart';
@@ -98,12 +99,19 @@ class _ShelterScreenState extends State<ShelterScreen> {
                     snapshotssssss.then((value) {
                       QuerySnapshot<Map<String, dynamic>> sss = value;
                       var postsListAsJsonDocumentSnapshot = sss.docs;
+                      print("PostsSnapshot: "+postsListAsJsonDocumentSnapshot.length.toString());
+                      postsList.clear();
+                      postModelsList.clear();
                       for (var j in postsListAsJsonDocumentSnapshot) {
                         DocumentSnapshot ss = j;
+
                         postsList.add(ss.data() as Map<String, dynamic>);
+
                         postModelsList.add(PostModel.fromJson(
                             ss.data() as Map<String, dynamic>));
                       }
+                      print("PostsListLength: "+postsList.length.toString());
+                      print("PostModelsListLength: "+postModelsList.length.toString());
                       print("PostsList: " +
                           postModelsList[0].category.toString());
                     });
@@ -125,7 +133,21 @@ class _ShelterScreenState extends State<ShelterScreen> {
                             Row(
                               children: [
                                 /// back Widget
-                                Utils.backWidget(context),
+                                GestureDetector(
+                                  onTap: () {
+                                    // if (onBack != null) {
+                                    //   onBack.call();
+                                    // }
+                                    navigateTo(context, ProfileScreen());
+                                  },
+                                  child:
+                                  Image.asset(
+                                    "assets/images/arrowleft.png",
+                                    width: 30.w,
+                                    height: 30.w,
+                                  ),
+                                ),
+
                                 const Spacer(),
                                 TextWidget(
                                   title: "Shelter",

@@ -4,8 +4,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:meaw/components/colors.dart';
 import 'package:meaw/components/components.dart';
 import 'package:meaw/components/constants.dart';
+import 'package:meaw/cubit/animalCubit.dart';
 import 'package:meaw/model.dart';
 import 'package:meaw/models/userModel.dart';
 import 'package:meaw/screens/profileScreen/profileScreen.dart';
@@ -55,7 +57,57 @@ class AddProduct extends StatelessWidget {
           print(pickedImage);
         },
       ),
+      appBar:  AppBar(
+        leading: InkWell(
+            onTap: (){
+              if (reverse==true) {
+                navigateTo(context, (HomeScreen()));
+              }
+              audio=0;
+              reverse=false;
+            },
+            child:reverse==true?
+            Icon(Icons.arrow_back,size: 30,color: defaultColor,)
+                :Icon(Icons.arrow_back,size: 26,color: Colors.transparent,)),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 3),
+            child: GestureDetector(
+              onTap: ()async{
+                await CatCubit().getDataaaaa();
+                navigateTo(context, const ProfileScreen());
 
+                //navigateTo(context, const ProfileScreen());
+              },
+              child:Container(
+                height: 80,
+                width: 50,
+                decoration: BoxDecoration(
+                    color: Colors.lightBlue,
+                    borderRadius: BorderRadius.circular(80),
+                    image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image:CatCubit.get(context).userData==null?NetworkImage('https://i.pinimg.com/564x/a1/d8/62/a1d862711ba51f2a19c6c0c4a891eb42.jpg'): NetworkImage('${CatCubit.get(context).userData?.profileImage}')
+                    )
+                ),
+                // child:CatCubit.get(context).userData==null?
+                // CircleAvatar(backgroundImage:AssetImage('assets/images/profile.jpg',),
+                //   radius: 50,
+                // ):
+                // CircleAvatar(
+                //     radius: 50,
+                //     backgroundImage:NetworkImage( '${CatCubit.get(context).userData?.profileImage}')),
+              ),
+              // CircleAvatar(
+              //   radius: 25,
+              //   backgroundImage: NetworkImage('${CatCubit.get(context).userData?.profileImage}'),
+              // ),
+            ),
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

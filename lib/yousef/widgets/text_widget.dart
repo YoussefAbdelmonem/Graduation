@@ -27,6 +27,7 @@ class TextWidget extends StatelessWidget {
         fontSize: fontSize,
         fontWeight: fontWeight,
         fontFamily: "Montserrat-Arabic",
+        overflow: TextOverflow.ellipsis,
         decoration: isOffer ? TextDecoration.lineThrough : null,
         height: 1.2,
         color: color ?? Theme.of(context).textTheme.bodyText1!.color,

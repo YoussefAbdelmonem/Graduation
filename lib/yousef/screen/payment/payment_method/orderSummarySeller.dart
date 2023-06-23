@@ -11,16 +11,18 @@ class OrderSummarySeller extends StatelessWidget {
   OrderSummarySeller({
     required this.name,
     required this.phone,
-    required this.address
+    required this.address,
+    required this.price
   }) : super();
   String? name;
   String? address;
   String? phone;
-  // double? priceCompute(){
-  //   double total=0.0;
-  //   total=(double.tryParse(price!)!+50)!;
-  //   return total;
-  // }
+  String? price;
+  double? priceCompute(){
+    double total=0.0;
+    total=(double.tryParse(price!)!+50)!;
+    return total;
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -71,7 +73,7 @@ class OrderSummarySeller extends StatelessWidget {
                                 style: TextStyle(color: KColorPrimary),
                               ),
                               Expanded(child: Container()),
-                              Text('100 EGP')
+                              Text('${price} EGP')
                             ],
                           ),
                           SizedBox(
@@ -98,7 +100,7 @@ class OrderSummarySeller extends StatelessWidget {
                                 style: TextStyle(color: KColorPrimary),
                               ),
                               Expanded(child: Container()),
-                              Text('150 EGP')
+                              Text('${priceCompute()} EGP')
                             ],
                           )
                         ],
