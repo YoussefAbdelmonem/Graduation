@@ -16,8 +16,8 @@ import 'Services.dart';
 import 'Translate.dart';
 
 class MyCart extends StatefulWidget {
-  const MyCart({Key? key}) : super(key: key);
-
+   MyCart({this.price}) : super();
+   String?price;
   @override
   State<MyCart> createState() => _MyCartState();
 }
@@ -133,7 +133,14 @@ class _MyCartState extends State<MyCart> {
                                                   ),
                                                   20.pw,
                                                   GestureDetector(
-                                                    onTap: () {},
+                                                    onTap: () {
+                                                      setState(() {
+                                                        if(quantity > 1){
+                                                          quantity--;
+                                                        }
+
+                                                      });
+                                                    },
                                                     child: const Icon(
                                                       Icons.minimize,
                                                       color: mainColor,
@@ -143,7 +150,7 @@ class _MyCartState extends State<MyCart> {
                                                   SizedBox(
                                                     width: 10.w,
                                                   ),
-                                                  Text('1'),
+                                                  Text('$quantity'),
                                                   SizedBox(
                                                     width: 10.w,
                                                   ),
@@ -153,7 +160,11 @@ class _MyCartState extends State<MyCart> {
                                                       color: mainColor,
                                                       size: 20,
                                                     ),
-                                                    onTap: () {},
+                                                    onTap: () {
+                                                      setState(() {
+                                                        quantity++;
+                                                      });
+                                                    },
                                                   ),
                                                 ],
                                               )
@@ -196,7 +207,7 @@ class _MyCartState extends State<MyCart> {
                           backgroundColor: KColorPrimary,
                           padding: const EdgeInsets.symmetric(vertical: 15)),
                       onPressed: () {
-                        Utils.openScreen(context, PaymentMethodsProductScreen());
+                        Utils.openScreen(context, PaymentMethodsProductScreen(price: widget.price,));
                       },
                       child: Text(
                         'Pay Now',

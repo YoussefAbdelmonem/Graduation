@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:meaw/screens/servicesScreens/diseaseScreen/cubit/articleModel.dart';
 
+import '../getPosts/getCubit/model.dart';
+
 String? uId;
 List<Map<String,dynamic>> list=[];
 String? ShelterId;
@@ -13,6 +15,7 @@ List<ArticleModel>careList=[];
 List<ArticleModel>diseaseList=[];
 List<ArticleModel> sArticleModelResults=[];
 
+List<PostModel> postModelsList = [];
 
 // Set<ArticleModel> articleModelResultSet = {};
 // Set<String>bodySet = {};

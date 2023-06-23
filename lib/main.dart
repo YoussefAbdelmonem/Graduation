@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(create: (BuildContext context)=> ArticleCubit()
         ),
-        BlocProvider(create: (BuildContext context)=> GetCubit()
+        BlocProvider(create: (BuildContext context)=> GetCubit()..getUsersIDs()..getIDs()
         ),
         BlocProvider(create: (BuildContext context)=> FilterCubit()
         ),
@@ -66,8 +66,11 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         builder: (context,screenUtil){
           return  MaterialApp(
-          theme:theme(),
+          theme:theme(
+
+          ),
           debugShowCheckedModeBanner: false,
+
           home: SplashScreen()
           // Scaffold(body: HomeScreen())
           // Ath()

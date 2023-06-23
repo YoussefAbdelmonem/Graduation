@@ -6,8 +6,8 @@ import 'package:meaw/yousef/widgets/button_widget.dart';
 import 'package:meaw/yousef/widgets/text_form_field.dart';
 import 'package:meaw/yousef/widgets/text_widget.dart';
 class CashPaymentSellerScreen extends StatelessWidget {
-  CashPaymentSellerScreen() : super();
-
+  CashPaymentSellerScreen({required this.price}) : super();
+String? price;
   TextEditingController name =  TextEditingController();
   TextEditingController phone =  TextEditingController();
   TextEditingController addressDetails =  TextEditingController();
@@ -100,6 +100,7 @@ class CashPaymentSellerScreen extends StatelessWidget {
                          address:address.text,
                          phone:phone.text,
                          name:name.text,
+                         price: price,
                        ));
                     },
 

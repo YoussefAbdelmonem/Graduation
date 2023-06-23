@@ -22,6 +22,9 @@ import 'package:meaw/yousef/screen/map/map_screen/cubit/map_cubit.dart';
 import 'package:meaw/yousef/screen/map/map_screen/map_screen.dart';
 import 'package:meaw/yousef/utilis/urilis.dart';
 
+import '../../homeScreen/HomeScreen.dart';
+import '../../profileScreen/profileScreen.dart';
+
 class ServicesScreen extends StatefulWidget {
    ServicesScreen() : super();
 
@@ -61,310 +64,322 @@ class _ServicesScreenState extends State<ServicesScreen> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    return Padding(
-      padding:  EdgeInsets.all(16.0.w),
-      child: Column(
-        children: [
-          StreamBuilder<QuerySnapshot>(
-              stream:
-              ArticleCubit.get(context).getArticles(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
+    return Scaffold(
+      appBar:  AppBar(
+        leading: InkWell(
+            onTap: (){
+              if (reverse==true) {
+                navigateTo(context, (HomeScreen()));
+              }
+              audio=0;
+              reverse=false;
+            },
+            child:reverse==true? Icon(Icons.arrow_back,size: 30,color: defaultColor,):Icon(Icons.arrow_back,size: 26,color: Colors.transparent,)),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 3),
+            child: GestureDetector(
+              onTap: ()async{
+                await CatCubit().getDataaaaa();
+                navigateTo(context, const ProfileScreen());
 
-                  for (var doc in snapshot.data!.docs) {
-                    var data =
-                    doc.data() as Map<String, dynamic>;
-                    articleModel.add(ArticleModel(
-                        title: data['title'],
-                        body: data['body'],
-                        likes: data['likes'],
-                        views: data['views'],
-                        id: data["id"].toString().trim(),
-                      type: data['type']
-                    ));
-                    // bodySet.add(data['body']
-                    // );
-                    // bodySet!.forEach((element1) {
-                    //   bodyList.add(element1);
-                    // });
-                  }
-                  // List<Widget> mWidgets = [];
-                  //
-                  // catModel.map((e) {
-                  //   var c = petItem(e: e);
-                  //   mWidgets.add(c);
-                  // }).toList();
-                  //
-                  // mWidgets.insert(
-                  //     0,
-                  //     InkWell(
-                  //       onTap: () {
-                  //         navigateTo(context, AddCatScreen());
-                  //       },
-                  //       child: addItem(),
-                  //     ));
-
-
-                  return Container();
-
-                  // return Form(
-                  //   key: formKey,
-                  //   child: Column(
-                  //     children: [
-                  //       defaultTextFormFieldForSearch(
-                  //           onSubmit: (v){
-                  //             List<String> result=[];
-                  //             for(var i=0;i<bodyList.length;i++) {
-                  //               if(bodyList[i].toLowerCase().trim().contains(v.toLowerCase())){
-                  //                 resultSet.add(bodyList[i]);
-                  //                 articleModelResultSet.add(articleModel[i]);
-                  //               }
-                  //               print("result set${resultSet.length}");
-                  //               print("articleModelResultSet${articleModelResultSet.length}");
-                  //             };
-                  //             // articleModelResultSet!.forEach((element1) {
-                  //             //   articleModelResult.add(element1);
-                  //             // });
-                  //             articleModelResult.addAll(articleModelResultSet);
-                  //             print("your result real${articleModelResult.length}");
-                  //             if(result!=null&&searchController.text!=''){
-                  //               navigateTo(context, SearchScreen(articleModel: articleModelResultSet.toList(),));
-                  //             }
-                  //             // // print('my List'+result.first);
-                  //           },
-                  //           controller: searchController,
-                  //           validator: (value){
-                  //             if(value!.isEmpty){
-                  //               return 'Type anything to search';
-                  //             }
-                  //             return null;
-                  //           },
-                  //           inputType: TextInputType.text,
-                  //           label: 'Search for services',
-                  //           prefix: IconBroken.Search,
-                  //           context: context
-                  //       ),
-                  //     ],
-                  //   ),
-                  // );
-                } else {
-                  return Container();
-                }
-              }),
-//t3deeeel
-           //if(CatCubit.get(context).userData!.userType==3)
-
-          /////////////////////////////////////////////////
-
-          Form(
-            key: formKey,
-            child: Column(
-              children: [
-                defaultTextFormFieldForSearch(
-                  onSubmit: (v){
-                    List<String> result=[];
-                   for(var i=0;i<bodyList.length;i++) {
-                     if(bodyList[i].toLowerCase().trim().contains(v.toLowerCase())){
-                       // resultSet.add(bodyList[i]);
-                       sArticleModelResults.add(articleModel[i]);
-                     }
-                     print("result set${sArticleModelResults.length}");
-                     // print("articleModelResultSet${articleModelResultSet.length}");
-                   };
-                    // articleModelResultSet!.forEach((element1) {
-                    //   articleModelResult.add(element1);
-                    // });
-                    // articleModelResult.addAll(articleModelResultSet);
-                    print("your result real${articleModelResult.length}");
-                   if(result!=null&&searchController.text!=''){
-                   navigateTo(context, SearchScreen(articleModel: sArticleModelResults.toList(),));
-                   }
-                   // print('my List'+result.first);
-                  },
-                  controller: searchController,
-                  validator: (value){
-                    if(value!.isEmpty){
-                      return 'Type anything to search';
-                    }
-                    return null;
-                  },
-                  inputType: TextInputType.text,
-                  label: 'Search for services',
-                  prefix: IconBroken.Search,
-                  context: context
+                //navigateTo(context, const ProfileScreen());
+              },
+              child:Container(
+                height: 80,
+                width: 50,
+                decoration: BoxDecoration(
+                    color: Colors.lightBlue,
+                    borderRadius: BorderRadius.circular(80),
+                    image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image:CatCubit.get(context).userData==null?NetworkImage('https://i.pinimg.com/564x/a1/d8/62/a1d862711ba51f2a19c6c0c4a891eb42.jpg'): NetworkImage('${CatCubit.get(context).userData?.profileImage}')
+                    )
                 ),
-              ],
-            ),
-          ),
-
-          ///////////////////////////////////////////////////////
-
-           //if(CatCubit.get(context).userData!.userType==3)
-          const SizedBox(height: 10,),
-           //if(CatCubit.get(context).userData!.userType==3)
-          Expanded(
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Column(
-                children: [
-                  Row(
-                    children: const [
-                      Text('Services',
-                        style: TextStyle(
-                          fontSize: 30,
-                          color: defaultColor,
-                          fontFamily: 'Jannah'
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: (){
-                            setState(() {
-                              button1 = true;
-                              button2 = false;
-                              button3 = false;
-                              button4 = false;
-                            });
-                          },
-                          child: Column(
-                            children: [
-                              Container(
-                                height: screenHeight*0.13,
-                                decoration: BoxDecoration(
-                                  color: button1? secondaryButtonColor:defaultButtonColor,
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: Image.asset('assets/images/diseses.png',color: button1? defaultButtonColor:secondaryButtonColor,),
-                              ),
-                              const SizedBox(height: 8,),
-                               Text('Diseases',
-                                style: TextStyle(
-                                  fontSize: 17,
-                                  fontFamily: 'Jannah',
-                                  color: button1? defaultColor:Colors.black,
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 10,),
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: (){
-                            setState(() {
-                              button1 = false;
-                              button2 = true;
-                              button3 = false;
-                              button4 = false;
-                            });
-                          },
-                          child: Column(
-                            children: [
-                              Container(
-                                height: screenHeight*0.13,
-                                decoration: BoxDecoration(
-                                  color: button2? defaultColor:defaultButtonColor,
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: Image.asset('assets/images/chat/care.png'),
-                              ),
-                              const SizedBox(height: 8,),
-                               Text('Care',
-                                style: TextStyle(
-                                  fontSize: 17.sp,
-                                  fontFamily: 'Jannah',
-                                  color: button2? defaultColor:Colors.black,
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 10,),
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: (){
-                            setState(() {
-                              button1 = false;
-                              button2 = false;
-                              button3 = true;
-                              button4 = false;
-                            });
-                          },
-                          child: Column(
-                            children: [
-                              Container(
-                                height: screenHeight*0.13,
-                                decoration: BoxDecoration(
-                                  color: button3? secondaryButtonColor:defaultButtonColor,
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: Image.asset('assets/images/scan.png'),
-                              ),
-                               SizedBox(height: 8.h,),
-                               Text('Scan',
-                                style: TextStyle(
-                                  fontSize: 17.sp,
-                                  fontFamily: 'Jannah',
-                                  color: button3? secondaryButtonColor:Colors.black,
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 10,),
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: (){
-                            Utils.openScreen(context, BlocProvider(
-                                create: (BuildContext context)=>MapsCubit(MapsRepository(PlacesWebservices())),
-                                child: const MapScreen()));
-                          },
-                          child: Column(
-                            children: [
-                              Container(
-                                height: screenHeight*0.13,
-                                decoration: BoxDecoration(
-                                  color: button4? secondaryButtonColor:defaultButtonColor,
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: Image.asset('assets/images/map.png'),
-                              ),
-                              const SizedBox(height: 8,),
-                               Text(
-                                 'Hospitals',
-                                style: TextStyle(
-                                  fontSize: 17.sp,
-                                  fontFamily: 'Jannah',
-                                  color: button4 ? secondaryButtonColor:Colors.black,
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20,),
-                  if(button1)
-                    const DiseaseScreen(),
-                  if(button2)
-                    const CareScreen(),
-                  if(button3)
-                    const ScanScreen(),
-                  if(button4)
-                    const HospitalsScreen(),
-                ],
+                // child:CatCubit.get(context).userData==null?
+                // CircleAvatar(backgroundImage:AssetImage('assets/images/profile.jpg',),
+                //   radius: 50,
+                // ):
+                // CircleAvatar(
+                //     radius: 50,
+                //     backgroundImage:NetworkImage( '${CatCubit.get(context).userData?.profileImage}')),
               ),
+              // CircleAvatar(
+              //   radius: 25,
+              //   backgroundImage: NetworkImage('${CatCubit.get(context).userData?.profileImage}'),
+              // ),
             ),
           ),
         ],
+      ),
+      body: Padding(
+        padding:  EdgeInsets.all(16.0.w),
+        child: Column(
+          children: [
+            StreamBuilder<QuerySnapshot>(
+                stream:
+                ArticleCubit.get(context).getArticles(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+
+                    for (var doc in snapshot.data!.docs) {
+                      var data =
+                      doc.data() as Map<String, dynamic>;
+                      articleModel.add(ArticleModel(
+                          title: data['title'],
+                          body: data['body'],
+                          likes: data['likes'],
+                          views: data['views'],
+                          id: data["id"].toString().trim(),
+                        type: data['type']
+                      ));
+                      // bodySet.add(data['body']
+                      // );
+                      // bodySet!.forEach((element1) {
+                      //   bodyList.add(element1);
+                      // });
+                    }
+                    // List<Widget> mWidgets = [];
+                    //
+                    // catModel.map((e) {
+                    //   var c = petItem(e: e);
+                    //   mWidgets.add(c);
+                    // }).toList();
+                    //
+                    // mWidgets.insert(
+                    //     0,
+                    //     InkWell(
+                    //       onTap: () {
+                    //         navigateTo(context, AddCatScreen());
+                    //       },
+                    //       child: addItem(),
+                    //     ));
+
+
+                    return Container();
+
+
+                  } else {
+                    return Container();
+                  }
+                }),
+//t3deeeel
+             //if(CatCubit.get(context).userData!.userType==3)
+
+            /////////////////////////////////////////////////
+
+            Form(
+              key: formKey,
+              child: Column(
+                children: [
+                  defaultTextFormFieldForSearch(
+                    onSubmit: (v){
+                      List<String> result=[];
+                     for(var i=0;i<bodyList.length;i++) {
+                       if(bodyList[i].toLowerCase().trim().contains(v.toLowerCase())){
+                         // resultSet.add(bodyList[i]);
+                         sArticleModelResults.add(articleModel[i]);
+                       }
+                       print("result set${sArticleModelResults.length}");
+                       // print("articleModelResultSet${articleModelResultSet.length}");
+                     };
+                      // articleModelResultSet!.forEach((element1) {
+                      //   articleModelResult.add(element1);
+                      // });
+                      // articleModelResult.addAll(articleModelResultSet);
+                      print("your result real${articleModelResult.length}");
+                     if(result!=null&&searchController.text!=''){
+                     navigateTo(context, SearchScreen(articleModel: sArticleModelResults.toList(),));
+                     }
+                     // print('my List'+result.first);
+                    },
+                    controller: searchController,
+                    validator: (value){
+                      if(value!.isEmpty){
+                        return 'Type anything to search';
+                      }
+                      return null;
+                    },
+                    inputType: TextInputType.text,
+                    label: 'Search for services',
+                    prefix: IconBroken.Search,
+                    context: context
+                  ),
+                ],
+              ),
+            ),
+
+            ///////////////////////////////////////////////////////
+
+             //if(CatCubit.get(context).userData!.userType==3)
+            const SizedBox(height: 10,),
+             //if(CatCubit.get(context).userData!.userType==3)
+            Expanded(
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Column(
+                  children: [
+                    Row(
+                      children: const [
+                        Text('Services',
+                          style: TextStyle(
+                            fontSize: 30,
+                            color: defaultColor,
+                            fontFamily: 'Jannah'
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: (){
+                              setState(() {
+                                button1 = true;
+                                button2 = false;
+                                button3 = false;
+                                button4 = false;
+                              });
+                            },
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: screenHeight*0.13,
+                                  decoration: BoxDecoration(
+                                    color: button1? secondaryButtonColor:defaultButtonColor,
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: Image(image: AssetImage('assets/images/dis.png'),color: button1? defaultButtonColor:secondaryButtonColor,),
+                                ),
+                                const SizedBox(height: 8,),
+                                 Text('Diseases',
+                                  style: TextStyle(
+                                    fontSize: 17,
+                                    fontFamily: 'Jannah',
+                                    color: button1? defaultColor:Colors.black,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 10,),
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: (){
+                              setState(() {
+                                button1 = false;
+                                button2 = true;
+                                button3 = false;
+                                button4 = false;
+                              });
+                            },
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: screenHeight*0.13,
+                                  decoration: BoxDecoration(
+                                    color: button2? defaultColor:defaultButtonColor,
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: Image.asset('assets/images/chat/care.png'),
+                                ),
+                                const SizedBox(height: 8,),
+                                 Text('Care',
+                                  style: TextStyle(
+                                    fontSize: 17.sp,
+                                    fontFamily: 'Jannah',
+                                    color: button2? defaultColor:Colors.black,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 10,),
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: (){
+                              setState(() {
+                                button1 = false;
+                                button2 = false;
+                                button3 = true;
+                                button4 = false;
+                              });
+                            },
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: screenHeight*0.13,
+                                  decoration: BoxDecoration(
+                                    color: button3? secondaryButtonColor:defaultButtonColor,
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: Image.asset('assets/images/scan.png'),
+                                ),
+                                 SizedBox(height: 8.h,),
+                                 Text('Scan',
+                                  style: TextStyle(
+                                    fontSize: 17.sp,
+                                    fontFamily: 'Jannah',
+                                    color: button3? secondaryButtonColor:Colors.black,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 10,),
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: (){
+                              Utils.openScreen(context, BlocProvider(
+                                  create: (BuildContext context)=>MapsCubit(MapsRepository(PlacesWebservices())),
+                                  child: const MapScreen()));
+                            },
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: screenHeight*0.13,
+                                  decoration: BoxDecoration(
+                                    color: button4? secondaryButtonColor:defaultButtonColor,
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: Image.asset('assets/images/map.png'),
+                                ),
+                                const SizedBox(height: 8,),
+                                 Text(
+                                   'Hospitals',
+                                  style: TextStyle(
+                                    fontSize: 17.sp,
+                                    fontFamily: 'Jannah',
+                                    color: button4 ? secondaryButtonColor:Colors.black,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20,),
+                    if(button1)
+                      const DiseaseScreen(),
+                    if(button2)
+                      const CareScreen(),
+                    if(button3)
+                      const ScanScreen(),
+                    if(button4)
+                      const HospitalsScreen(),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

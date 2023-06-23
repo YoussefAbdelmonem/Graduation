@@ -24,6 +24,7 @@ import 'package:meaw/yousef/utilis/urilis.dart';
 
 import '../../yousef/screen/pages/Schedule.dart';
 import '../../yousef/screen/pages/help.dart';
+import '../../yousef/widgets/text_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -105,18 +106,18 @@ class ProfileScreen extends StatelessWidget {
                                     Positioned(
                                         bottom: 0,
                                         left: MediaQuery.of(context).size.width *
-                                            0.25,
+                                            0.22,
                                         child: CircleAvatar(
-                                          radius: 21,
+                                          radius: 23,
                                           backgroundColor: Colors.white,
                                           child: CircleAvatar(
                                             backgroundColor: Colors.white,
-                                            radius: 21,
+                                            radius: 23,
                                             child: IconButton(
                                               onPressed: () {
                                                 cubit.getProfileImage();
                                               },
-                                              icon: Image(
+                                              icon: const Image(
                                                 image: AssetImage(
                                                     'assets/images/Group-4.png'),
                                               ),
@@ -131,6 +132,7 @@ class ProfileScreen extends StatelessWidget {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Row(
+
                                         children: [
                                           Row(
                                             children: [
@@ -145,21 +147,22 @@ class ProfileScreen extends StatelessWidget {
                                           ),
                                         ],
                                       ),
-
-                                      Text(
-                                        '${userData.email}',
-                                        style: GoogleFonts.roboto(
-                                            fontSize: 20.sp,
-                                            color: Colors.black54,
-                                            fontWeight: FontWeight.w400),
-                                      ),
+                                      Container(
+                                        width: MediaQuery.of(context).size.width*0.4,
+                                        child: TextWidget(
+                                          title: '${userData.email}',
+                                          color: Colors.grey,
+                                          maxLines: 1,
+                                          fontSize: 20.sp,
+                                        ),
+                                      )
                                       // TextButton(
                                       //     child:Text('LogOut') ,
                                       //     onPressed: (){
                                       //       CatCubit.get(context).signOut();
                                       //     }
                                       // ),
-                                      SizedBox(
+                                      ,SizedBox(
                                         height: 10,
                                       ),
 
@@ -224,7 +227,7 @@ class ProfileScreen extends StatelessWidget {
                                     image: 'assets/images/schedule.png',
                                     function: (){
 
-                                      Utils.openScreen(context, ScheduleScreen());
+                                      Utils.openScreen(context, Schedule());
 
                                     },
                                     icon: 'assets/images/Vector.png',

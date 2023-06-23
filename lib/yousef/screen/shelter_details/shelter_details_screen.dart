@@ -98,7 +98,7 @@ class _ShelterDetailsScreenState extends State<ShelterDetailsScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // Image.asset("assets/images/happy_friend.png"),
-                  Image.network(widget.image),
+                  Image.network(widget.image,fit: BoxFit.cover),
                 ],
               ),
               SizedBox(

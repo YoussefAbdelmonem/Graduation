@@ -18,13 +18,13 @@ class Order_Done extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        systemOverlayStyle: const SystemUiOverlayStyle(
-            statusBarIconBrightness: Brightness.dark,
-            statusBarColor: Colors.white),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.transparent,
+      //   elevation: 0,
+      //   systemOverlayStyle: const SystemUiOverlayStyle(
+      //       statusBarIconBrightness: Brightness.dark,
+      //       statusBarColor: Colors.white),
+      // ),
       body: Container(
           margin: const EdgeInsets.only(left: 35, right: 34),
           child: Column(

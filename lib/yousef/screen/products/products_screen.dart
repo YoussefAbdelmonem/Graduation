@@ -8,6 +8,11 @@ import 'package:meaw/yousef/screen/products_accessories/products_accessories_scr
 import 'package:meaw/yousef/utilis/urilis.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../../components/colors.dart';
+import '../../../components/components.dart';
+import '../../../components/constants.dart';
+import '../../../screens/homeScreen/HomeScreen.dart';
+import '../../../screens/profileScreen/profileScreen.dart';
 import '../../constant/colors.dart';
 import '../../widgets/text_widget.dart';
 
@@ -38,6 +43,55 @@ class ProductsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+          appBar:  AppBar(
+            leading: InkWell(
+                onTap: (){
+                  if (reverse==true) {
+                    navigateTo(context, (HomeScreen()));
+                  }
+                  audio=0;
+                  reverse=false;
+                },
+                child:reverse==true? Icon(Icons.arrow_back,size: 30,color: defaultColor,):Icon(Icons.arrow_back,size: 26,color: Colors.transparent,)),
+            backgroundColor: Colors.transparent,
+            elevation: 0.0,
+            actions: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 3),
+                child: GestureDetector(
+                  onTap: ()async{
+                    await CatCubit().getDataaaaa();
+                    navigateTo(context, const ProfileScreen());
+
+                    //navigateTo(context, const ProfileScreen());
+                  },
+                  child:Container(
+                    height: 80,
+                    width: 50,
+                    decoration: BoxDecoration(
+                        color: Colors.lightBlue,
+                        borderRadius: BorderRadius.circular(80),
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image:CatCubit.get(context).userData==null?NetworkImage('https://i.pinimg.com/564x/a1/d8/62/a1d862711ba51f2a19c6c0c4a891eb42.jpg'): NetworkImage('${CatCubit.get(context).userData?.profileImage}')
+                        )
+                    ),
+                    // child:CatCubit.get(context).userData==null?
+                    // CircleAvatar(backgroundImage:AssetImage('assets/images/profile.jpg',),
+                    //   radius: 50,
+                    // ):
+                    // CircleAvatar(
+                    //     radius: 50,
+                    //     backgroundImage:NetworkImage( '${CatCubit.get(context).userData?.profileImage}')),
+                  ),
+                  // CircleAvatar(
+                  //   radius: 25,
+                  //   backgroundImage: NetworkImage('${CatCubit.get(context).userData?.profileImage}'),
+                  // ),
+                ),
+              ),
+            ],
+          ),
           body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
@@ -49,16 +103,13 @@ class ProductsScreen extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  SizedBox(
-                    width: 110.w,
-                  ),
+                  Spacer(),
                   TextWidget(
                     title: "Products".tr(),
                     fontWeight: FontWeight.w400,
                     fontSize: 26.sp,
                   ),
                   Spacer(),
-                  Image.asset("assets/images/search.png")
                 ],
               ),
               SizedBox(
@@ -93,31 +144,31 @@ class ProductsScreen extends StatelessWidget {
 
                 ),
               ),
-              SizedBox(
-                height: 10.h,
-              ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 130.w,
-                  ),
-                  SmoothPageIndicator(
-                    controller: controller,
-                    count: 4,
-                    axisDirection: Axis.horizontal,
-                    effect: const SlideEffect(
-                        spacing: 4.0,
-                        radius: 4.0,
-                        dotWidth: 12.0,
-                        dotHeight: 8.0,
-
-                        paintStyle: PaintingStyle.stroke,
-                        strokeWidth: 1.5,
-                        dotColor: greyDot,
-                        activeDotColor: greyDotFill),
-                  ),
-                ],
-              ),
+              // SizedBox(
+              //   height: 10.h,
+              // ),
+              // Row(
+              //   children: [
+              //     SizedBox(
+              //       width: 130.w,
+              //     ),
+              //     SmoothPageIndicator(
+              //       controller: controller,
+              //       count: 4,
+              //       axisDirection: Axis.horizontal,
+              //       effect: const SlideEffect(
+              //           spacing: 4.0,
+              //           radius: 4.0,
+              //           dotWidth: 12.0,
+              //           dotHeight: 8.0,
+              //
+              //           paintStyle: PaintingStyle.stroke,
+              //           strokeWidth: 1.5,
+              //           dotColor: greyDot,
+              //           activeDotColor: greyDotFill),
+              //     ),
+              //   ],
+              // ),
               SizedBox(
                 height: 10.h,
               ),

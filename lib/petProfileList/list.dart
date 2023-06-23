@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:meaw/components/colors.dart';
 import 'package:meaw/components/components.dart';
 import 'package:meaw/models/catModel.dart';
@@ -33,7 +34,7 @@ class ListScreen extends StatelessWidget {
                         context: context,
                         label: 'My Pet',
                         screen: ProfileScreen(),
-                        width: 90.0),
+                        width: 130.0.w),
                     Padding(
                       padding: const EdgeInsets.all(7.0),
                       child: Column(
