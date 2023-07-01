@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:uuid/uuid.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -7,15 +6,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-// import 'package:flutter_login_facebook/flutter_login_facebook.dart';
-// import 'package:google_sign_in/google_sign_in.dart';
+
 import 'package:image_picker/image_picker.dart';
-import 'package:meaw/class.dart';
-import 'package:meaw/components/constants.dart';
-import 'package:meaw/components/local/shared_pref.dart';
+import 'package:meaw/core/components/constants.dart';
+import 'package:meaw/core/components/local/shared_pref.dart';
 import 'package:meaw/cubit/animalStates.dart';
-import 'package:meaw/models/catModel.dart';
-import 'package:meaw/models/userModel.dart';
+import 'package:meaw/data/models/catModel.dart';
+import 'package:meaw/data/models/userModel.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -375,78 +372,10 @@ CatModel? catModel ;
       print('Null Photo');
       emit(CatPickProfileImageErrorState());
     }
-    //
-    // if(pickedImage !=null)
-    // {
-    //   catImage = File(pickedImage.path.toString());
-    //   emit(CatPickCatImageSuccessState());
-    // }
-    // else
-    // {
-    //   emit(CatPickProfileImageErrorState());
-    // }
+
   }
 
-  // void addCat({
-  //   required String catName,
-  //   required String gender,
-  //   required String year,
-  //   required String catImage,
-  //   String? id,
-  // }) {
-  //
-  //   print('AddFCat: '+uId!);
-  //
-  //   emit(CatAddCatLoadingState());
-  //   CatModel model = CatModel(
-  //     name: catName,
-  //     year: year,
-  //     gender: gender,
-  //     catImage: catImage,
-  //     id: id
-  //   );
-  //   FirebaseFirestore.instance
-  //       .collection('users').doc(uId).collection('cats').doc(id).set(model.toMap())
-  //       .then((value) async{
-  //         await getCatData(id.toString());
-  //     emit(CatAddCatSuccessState());
-  //   })
-  //       .catchError((error) {
-  //     emit(CatAddCatErrorState(error.toString()));
-  //   });
-  // }
-  // var uuid = Uuid();
-  // Future<void> uploadCatImage({
-  //   required String catName,
-  //   required String year,
-  //   required String gender,
-  // })async
-  // {
-  //   print('Dataa ${catName},${year},${gender},${catImage}');
-  //   emit(CatUploadCatImageLoadingState());
-  //   await firebase_storage.FirebaseStorage.instance
-  //       .ref()
-  //       .child('Cats/${Uri.file(catImage!.path).pathSegments.last}')
-  //       .putFile(catImage!)
-  //       .then((value) {
-  //     value.ref.getDownloadURL()
-  //         .then((value) {
-  //       addCat(
-  //         catName: catName,
-  //         year: year,
-  //         catImage: value,
-  //         gender: gender,
-  //           id:uuid.v1().toString()
-  //       );
-  //     })
-  //         .catchError((error){
-  //       emit(CatUploadCatImageErrorState());
-  //     });
-  //   })
-  //       .catchError((error){
-  //     emit(CatUploadCatImageErrorState());
-  //   });
-  // }
+
 
 
 
@@ -464,25 +393,7 @@ CatModel? catModel ;
   }
 
 
-  // List<SocialUserModel> users =[];
-  // void getUsers()
-  // {
-  //   users=[];
-  //   FirebaseFirestore.instance
-  //       .collection('users')
-  //       .get()
-  //       .then((value) {
-  //     for (var element in value.docs) {
-  //       if(element.data()['uId'] != userModel!.uId) {
-  //         users.add(SocialUserModel.fromJson(element.data()));
-  //       }
-  //       emit(SocialGetUsersSuccessState());
-  //     }
-  //   })
-  //       .catchError((error){
-  //     emit(SocialGetUsersErrorState(error.toString()));
-  //   });
-  // }
+
 
 
   UserModel? userFaceModel;
@@ -556,10 +467,7 @@ CatModel? catModel ;
     );
 
     await FirebaseAuth.instance.signInWithCredential(credential);
-    // final graphResponse = await http.get(Uri.parse(
-    //     'https://graph.facebook.com/v2.12/me?fields=name,picture.width(800).height(800),first_name,last_name,email&access_token=${credential.idToken}'));
-    // String imageUrl = jsonDecode(graphResponse.body)['picture']['data']['url'];
-    //print('graph image ${imageUrl}');
+
     userCreate(
         name: userGoogle.displayName.toString(),
         email: userGoogle.email.toString(),

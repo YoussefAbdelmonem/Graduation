@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:meaw/components/colors.dart';
-import 'package:meaw/components/components.dart';
+import 'package:meaw/core/components/colors.dart';
+import 'package:meaw/core/components/components.dart';
 import 'package:meaw/cubit/animalCubit.dart';
 import 'package:meaw/cubit/animalStates.dart';
 import 'package:meaw/petProfileList/list.dart';
-import 'package:meaw/models/catModel.dart';
 import 'package:meaw/petProfileList/petProfileListCubit/petComponent.dart';
 import 'package:meaw/screens/profileScreen/updateProfile/updateProfile.dart';
+
+import '../../data/models/catModel.dart';
 
 class EditCatScreen extends StatefulWidget {
   EditCatScreen(
@@ -130,7 +131,7 @@ class _EditCatScreenState extends State<EditCatScreen> {
                                 catName: catName.text,
                                 year: catYear.toString(),
                                 gender:
-                                    cubit.catModel!.gender.toString() ?? 'Male');
+                                    cubit.catModel!.gender.toString() );
                           },
                         ),
                         fallback: (BuildContext context) => const Center(

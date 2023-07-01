@@ -4,41 +4,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:meaw/components/constants.dart';
-import 'package:meaw/components/local/shared_pref.dart';
+import 'package:meaw/core/components/constants.dart';
+import 'package:meaw/core/components/local/shared_pref.dart';
 import 'package:meaw/getPosts/getCubit/getStates.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:meaw/getPosts/getCubit/model.dart';
-import 'package:meaw/models/userModel.dart';
+import 'package:meaw/data/models/userModel.dart';
 
 class GetCubit extends Cubit<GetStates>
 {
   GetCubit(): super(GetInitialState());
   static GetCubit get(context) => BlocProvider.of(context);
-  // Future<void> getPostData(String ID)async{
-  //   await FirebaseFirestore.instance.collection("posts").doc(ID).collection("posts").doc().get().then((value){
-  //    PostModel postModel = PostModel.fromJson(value.data()!);
-  //    postModel!.experiments!.forEach((element) {
-  //      if (element.category == "physics") {
-  //        physicsList.add(element);
-  //      }
-  //    });
-  //     print('iddd'+postModel!.id.toString());
-  //     emit(PostGetSuccessState());
-  //   });
-  // }
-  // Future<void> getDataaaaa()async {
-  //   QuerySnapshot<
-  //       Map<String, dynamic>> yasmeenSnapshots = await FirebaseFirestore
-  //       .instance.collection('posts')
-  //       .doc(uId).collection('posts').get();
-  //   List<QueryDocumentSnapshot<
-  //       Map<String, dynamic>>> snapshots = yasmeenSnapshots.docs;
-  //   for (var i in snapshots) {
-  //     list.add(i.data() as Map<String, dynamic>);
-  //     //( i.data() as Map<String,dynamic>)
-  //   }
-  // }
+
 
   File? postImage;
   var picker = ImagePicker();

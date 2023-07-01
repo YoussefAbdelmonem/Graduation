@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:meaw/components/colors.dart';
-import 'package:meaw/components/components.dart';
+import 'package:meaw/core/components/colors.dart';
+import 'package:meaw/core/components/components.dart';
+import 'package:meaw/core/widgets/text_widget.dart';
 import 'package:meaw/petProfileList/list.dart';
 import 'package:meaw/petProfileList/petProfileListCubit/cubit.dart';
 import 'package:meaw/petProfileList/petProfileListCubit/petComponent.dart';
 import 'package:meaw/petProfileList/petProfileListCubit/states.dart';
-import 'package:meaw/yousef/utilis/urilis.dart';
-import 'package:meaw/yousef/widgets/text_widget.dart';
+import 'package:meaw/utilis/urilis.dart';
+// import 'package:meaw/widgets/text_widget.dart';
 
 class AddCatScreen extends StatefulWidget {
   const AddCatScreen({Key? key}) : super(key: key);

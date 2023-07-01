@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:meaw/components/colors.dart';
-import 'package:meaw/components/components.dart';
-import 'package:meaw/components/local/shared_pref.dart';
+import 'package:meaw/core/components/colors.dart';
+import 'package:meaw/core/components/components.dart';
+import 'package:meaw/core/components/local/shared_pref.dart';
 import 'package:meaw/screens/loginScreen/loginScreen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 

@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:meaw/components/components.dart';
-import 'package:meaw/components/constants.dart';
-import 'package:meaw/screens/bottomNavScreen/services/servicesScreen.dart';
+import 'package:meaw/core/components/components.dart';
+import 'package:meaw/core/components/constants.dart';
+// import 'package:meaw/core/components/components.dart';
 import 'package:meaw/screens/servicesScreens/diseaseScreen/article.dart';
-import 'package:meaw/screens/servicesScreens/diseaseScreen/cubit/articleModel.dart';
 import 'package:meaw/screens/servicesScreens/diseaseScreen/cubit/cubit.dart';
-import 'package:meaw/yousef/utilis/urilis.dart';
 class SearchScreen extends StatefulWidget {
    SearchScreen({required this .articleModel}) : super();
 List articleModel;

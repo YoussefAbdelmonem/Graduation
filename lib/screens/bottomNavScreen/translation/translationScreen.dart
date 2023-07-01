@@ -1,23 +1,23 @@
-import 'package:animate_do/animate_do.dart';
-import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-import 'package:flutter_sound/flutter_sound.dart';
+import 'dart:async';
 import 'dart:io';
-import 'package:audioplayers/audioplayers.dart';
+
+import 'package:audio_waveforms/audio_waveforms.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lecle_downloads_path_provider/constants/downloads_directory_type.dart';
-import 'package:meaw/components/colors.dart';
-import 'package:meaw/components/constants.dart';
-import 'package:meaw/translate/cubit/cubit.dart';
-import 'package:meaw/translate/cubit/states.dart';
-import 'package:meaw/translate/translateModel.dart';
+import 'package:meaw/core/components/colors.dart';
+import 'package:meaw/core/components/components.dart';
+import 'package:meaw/core/components/constants.dart';
+import 'package:meaw/core/components/constants.dart';
+import 'package:meaw/screens/bottomNavScreen/translation/translate/cubit/cubit.dart';
+import 'package:meaw/screens/bottomNavScreen/translation/translate/cubit/states.dart';
+import 'package:meaw/screens/bottomNavScreen/translation/translate/translateModel.dart';
+
 import 'package:path_provider/path_provider.dart';
 import 'package:record/record.dart';
-import 'package:flutter/services.dart';
-import 'package:audio_waveforms/audio_waveforms.dart';
-import 'dart:async';
 
-import '../../../components/components.dart';
+// import '../../../core/components/components.dart';
 import '../../../cubit/animalCubit.dart';
 import '../../homeScreen/HomeScreen.dart';
 import '../../profileScreen/profileScreen.dart';
@@ -41,27 +41,14 @@ class _TranslationScreenState extends State<TranslationScreen> {
       ..iosEncoder = IosEncoder.kAudioFormatMPEG4AAC
       ..sampleRate = 16000;
   }
-  // double boxHeight = 250;
-  // double boxWidth = 250;
+
   void expandBox(){
-    // setState(() {
-    //   if (boxHeight == 300) {
-    //     boxHeight = 250;
-    //     boxWidth = 250;
-    //   } else {
-    //     boxHeight = 300;
-    //     boxWidth = 300;
-    //   }
-    // });
+
     TranslateCubit.get(context).animate(
-        //boxHeight, boxWidth
     );
   }
   void opposeBox(){
-    // setState(() {
-    //   boxHeight=100;
-    //   boxWidth=100;
-    // });
+
     TranslateCubit.get(context).animateSmallen(
         //boxHeight, boxWidth
     );
@@ -80,20 +67,7 @@ var num =1;
 
      timer = Timer.periodic(Duration(seconds: 2), (Timer t) => expandBox());
    }
- //
- //  @override
- //  void dispose() {
- //    timer?.cancel();
- //    super.dispose();
- //  }
-// @override
-//   void initState() {
-//     // TODO: implement initState
-//   _initialiseController();
-//     super.initState();
-//   }
 
- // String? path;
 
 
   @override
@@ -274,7 +248,7 @@ var num =1;
                              ),
                             if(audio==2)
                               ConditionalBuilder(
-                                condition: state is! TranslateLoadingState&&transModel!=null,
+                                condition: state is! TranslateLoadingState&&TranslateCubit.get(context).translateModel?.translation!=null,
                                 builder: (BuildContext context) => Padding(
                                   padding: const EdgeInsets.only(left: 60.0),
                                   child: Container(
@@ -284,7 +258,7 @@ var num =1;
                                       color:const Color.fromRGBO(244,231,189, 1),
                                       borderRadius: BorderRadius.circular(4)
                                     ),
-                                    child: Center(child: Text(' ${transModel!.translation.toString()}')),
+                                    child: Center(child: Text(' ${TranslateCubit.get(context).translateModel?.translation.toString()}')),
                                   ),
                                 ),
                                 fallback: (BuildContext context) => const Center(

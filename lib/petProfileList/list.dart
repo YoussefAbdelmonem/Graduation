@@ -2,15 +2,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:meaw/components/colors.dart';
-import 'package:meaw/components/components.dart';
-import 'package:meaw/models/catModel.dart';
+import 'package:meaw/core/components/colors.dart';
+import 'package:meaw/core/components/components.dart';
 import 'package:meaw/petProfileList/addCat/addCat.dart';
 import 'package:meaw/petProfileList/petProfileListCubit/cubit.dart';
 import 'package:meaw/petProfileList/petProfileListCubit/petComponent.dart';
 import 'package:meaw/petProfileList/petProfileListCubit/states.dart';
 import 'package:meaw/screens/editCatProfile/editCatProfile.dart';
 import 'package:meaw/screens/profileScreen/profileScreen.dart';
+
+import '../data/models/catModel.dart';
 
 class ListScreen extends StatelessWidget {
   const ListScreen({Key? key}) : super(key: key);

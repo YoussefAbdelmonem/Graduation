@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:meaw/components/colors.dart';
-import 'package:meaw/models/catModel.dart';
+import 'package:meaw/core/components/colors.dart';
 import 'package:meaw/petProfileList/petProfileListCubit/cubit.dart';
+
+import '../../data/models/catModel.dart';
 Widget petItem({
   required CatModel e
 }){

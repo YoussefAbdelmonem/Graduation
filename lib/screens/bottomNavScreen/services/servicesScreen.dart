@@ -3,11 +3,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:meaw/components/colors.dart';
-import 'package:meaw/components/components.dart';
-import 'package:meaw/components/constants.dart';
+import 'package:meaw/core/components/colors.dart';
+import 'package:meaw/core/components/components.dart';
+import 'package:meaw/core/components/constants.dart';
 import 'package:meaw/cubit/animalCubit.dart';
-import 'package:meaw/model.dart';
 import 'package:meaw/screens/bottomNavScreen/services/SearchScreen.dart';
 import 'package:meaw/screens/servicesScreens/careScreen/careScreen.dart';
 import 'package:meaw/screens/servicesScreens/diseaseScreen/cubit/articleModel.dart';
@@ -16,12 +15,13 @@ import 'package:meaw/screens/servicesScreens/diseaseScreen/diseaseScreen.dart';
 import 'package:meaw/screens/servicesScreens/hospitalsScreen/hospitalScreen.dart';
 import 'package:meaw/screens/servicesScreens/scanScreen/scanScreen.dart';
 import 'package:meaw/style/icon_broken.dart';
-import 'package:meaw/yousef/data/maps/repo/maps_repo.dart';
-import 'package:meaw/yousef/data/maps/web_services/maps_web_servies.dart';
-import 'package:meaw/yousef/screen/map/map_screen/cubit/map_cubit.dart';
-import 'package:meaw/yousef/screen/map/map_screen/map_screen.dart';
-import 'package:meaw/yousef/utilis/urilis.dart';
+import 'package:meaw/data/maps/repo/maps_repo.dart';
+import 'package:meaw/data/maps/web_services/maps_web_servies.dart';
+import 'package:meaw/screen/map/map_screen/cubit/map_cubit.dart';
+import 'package:meaw/screen/map/map_screen/map_screen.dart';
+import 'package:meaw/utilis/urilis.dart';
 
+import '../../../data/models/user_uid_model.dart';
 import '../../homeScreen/HomeScreen.dart';
 import '../../profileScreen/profileScreen.dart';
 
@@ -53,7 +53,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
    List<ArticleModel> articleModel = [];
    List<ArticleModel> articleModelResult = [];
 
-   UserModelDymmy? userModel;
+   UserModelUID? userModel;
    @override
   void initState() {
     // TODO: implement initState

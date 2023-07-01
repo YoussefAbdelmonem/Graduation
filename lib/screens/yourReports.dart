@@ -3,16 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:meaw/components/colors.dart';
-import 'package:meaw/components/components.dart';
-import 'package:meaw/components/constants.dart';
+import 'package:meaw/core/components/colors.dart';
+import 'package:meaw/core/components/components.dart';
+import 'package:meaw/core/components/constants.dart';
 import 'package:meaw/cubit/animalCubit.dart';
 import 'package:meaw/screens/homeScreen/HomeScreen.dart';
 import 'package:meaw/screens/profileScreen/profileScreen.dart';
-import 'package:meaw/userReport/cubit/reportCubit.dart';
-import 'package:meaw/userReport/cubit/reportStates.dart';
-import 'package:meaw/userReport/repotModel.dart';
-import 'package:meaw/yousef/utilis/urilis.dart';
+import 'package:meaw/screens/userReport/cubit/reportCubit.dart';
+import 'package:meaw/screens/userReport/cubit/reportStates.dart';
+import 'package:meaw/screens/userReport/repotModel.dart';
+
+import 'package:meaw/utilis/urilis.dart';
 class YourReports extends StatefulWidget {
   const YourReports({Key? key}) : super(key: key);
 

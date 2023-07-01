@@ -1,26 +1,18 @@
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:meaw/components/colors.dart';
-import 'package:meaw/components/components.dart';
-import 'package:meaw/components/constants.dart';
-import 'package:meaw/components/local/shared_pref.dart';
+import 'package:meaw/core/components/colors.dart';
+import 'package:meaw/core/components/constants.dart';
 import 'package:meaw/cubit/animalCubit.dart';
 import 'package:meaw/cubit/animalStates.dart';
 import 'package:meaw/getPosts/getPosts.dart';
-import 'package:meaw/petProfileList/list.dart';
-import 'package:meaw/screens/bottomNavScreen/chat/chatScreen.dart';
-import 'package:meaw/screens/bottomNavScreen/products/productScreen.dart';
+import 'package:meaw/screen/add_product/add_product_screen.dart';
+import 'package:meaw/screen/pages/Chat.dart';
+import 'package:meaw/screen/products/products_screen.dart';
 import 'package:meaw/screens/bottomNavScreen/services/servicesScreen.dart';
 import 'package:meaw/screens/bottomNavScreen/translation/translationScreen.dart';
-import 'package:meaw/screens/profileScreen/profileScreen.dart';
-import 'package:meaw/screens/servicesScreens/diseaseScreen/article.dart';
 import 'package:meaw/screens/yourReports.dart';
-import 'package:meaw/yousef/screen/add_product/add_product_screen.dart';
-import 'package:meaw/yousef/screen/pages/Chat.dart';
-import 'package:meaw/yousef/screen/products/products_screen.dart';
 
 class HomeScreen extends StatefulWidget {
    const HomeScreen({Key? key}) : super(key: key);

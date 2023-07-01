@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:meaw/components/colors.dart';
-import 'package:meaw/components/components.dart';
+import 'package:meaw/core/components/colors.dart';
+import 'package:meaw/core/components/components.dart';
 import 'package:meaw/screens/servicesScreens/diseaseScreen/cubit/articleModel.dart';
 import 'package:meaw/screens/servicesScreens/diseaseScreen/cubit/cubit.dart';
 import 'package:meaw/screens/servicesScreens/diseaseScreen/cubit/states.dart';
@@ -130,16 +130,16 @@ class _ArticleState extends State<Article> {
                               if(ArticleCubit.get(context).liked==true){
                               ArticleCubit.get(context).updateArticle(
                                   id:widget.id! ,
-                                  title:widget.title!,
-                                  body: widget.body!,
+                                  title:widget.title,
+                                  body: widget.body,
                                   likes: articleModel!.likes!+1,
                                   views: articleModel!.views!,
                                 type: articleModel!.type!
                               );}else{
                                 ArticleCubit.get(context).updateArticle(
                                     id:widget.id! ,
-                                    title:widget.title!,
-                                    body: widget.body!,
+                                    title:widget.title,
+                                    body: widget.body,
                                     likes: articleModel!.likes!-1,
                                     views: articleModel!.views!,
                                   type: articleModel!.type!

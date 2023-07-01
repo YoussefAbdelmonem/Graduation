@@ -4,8 +4,8 @@
 import 'dart:async';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:meaw/components/constants.dart';
-import 'package:meaw/components/local/shared_pref.dart';
+import 'package:meaw/core/components/constants.dart';
+import 'package:meaw/core/components/local/shared_pref.dart';
 import 'package:meaw/screens/homeScreen/HomeScreen.dart';
 import 'package:meaw/screens/loginScreen/loginScreen.dart';
 import 'package:meaw/screens/onBoarding/onBoarding.dart';
