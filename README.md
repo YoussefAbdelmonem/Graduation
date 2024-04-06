@@ -1,4 +1,4 @@
-# meaw
+# Graduation project
 
 A new Flutter project.
 
